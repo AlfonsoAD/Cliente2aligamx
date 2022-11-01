@@ -11,7 +11,7 @@ const FormSignUp = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    fetch("http://192.168.2.3/users/signup", {
+    fetch("https://j2sligamxapi.herokuapp.com//users/signup", {
       method: "POST",
       body: JSON.stringify({
         email: email,

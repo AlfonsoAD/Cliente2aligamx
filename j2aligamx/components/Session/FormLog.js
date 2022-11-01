@@ -80,6 +80,14 @@ const FormLog = () => {
               Forgot password?
             </a>
           </div>
+          <div className="flex items-baseline justify-center mt-2">
+            <a
+              href="../../pages/signup.js"
+              className="text-sm text-blue-600 hover:underline"
+            >
+              Registrarse
+            </a>
+          </div>
         </div>
       </form>
     </ContainerForm>
