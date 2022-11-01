@@ -21,7 +21,7 @@ const FormLog = () => {
       .then((res) => {
         if (res.status == 200) {
           // sweetAlert("Éxito", "Usuario encontrado", "success");
-          <Link href={"/home" ?? ""}></Link>;
+          location.assign("/home");
           console.log("Ok");
         } else {
           // sweetAlert("Error", "Usuario no encontrado", "error");
