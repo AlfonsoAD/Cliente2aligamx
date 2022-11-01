@@ -8,37 +8,26 @@ import { useEffect } from "react";
 
 export default function Home() {
   useEffect(() => {
-    console.log(window.location);
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
-    console.log(auxUrl);
     let auxSplit = auxUrl.split("=");
-    console.log(auxSplit);
+    let token = auxSplit[1];
 
-    if (auxSplit[0] == "token") {
+    confirmation(token);
+  }, []);
+
+  const confirmation = (token) => {
+    if (token != null) {
       console.log("entré");
-      async () => {
-        try {
-          let url = `https://j2sligamxapi.herokuapp.com/confirmation/"${auxSplit[1]}`;
-          let res = await fetch(url, {
-            headers: {
-              "content-Type": "application/JSON",
-            },
-          });
-          json = await res.json();
-          if (res.status == 200) {
-            console.log("OK");
-          } else {
-            console.log(res.status);
-          }
-        } catch (err) {
-          console.log(err);
-        }
-      };
+      try {
+        fetch(`https://j2sligamxapi.herokuapp.com/confirmation/${token}`);
+      } catch {
+        console.log("error");
+      }
     } else {
       console.log("no entré");
     }
-  }, []);
+  };
 
   return (
     <LayoutSession>
