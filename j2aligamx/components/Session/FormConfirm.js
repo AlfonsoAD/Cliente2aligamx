@@ -15,9 +15,7 @@ const FormConfirm = () => {
         </p>
       </div>
       <div className="mt-6 justify-center items-center">
-        <a className="text-sm text-blue-600 hover:underline">
-          <Link>Iniciar sesión</Link>
-        </a>
+        <Link>Iniciar sesión</Link>
       </div>
     </ContainerForm>
   );

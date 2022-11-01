@@ -77,14 +77,10 @@ const FormLog = () => {
             />
           </div>
           <div className="flex items-baseline justify-center mt-2">
-            <a className="text-sm text-blue-600 hover:underline">
-              <Link href="/forgotpassword">Olvidó la contraseña?</Link>
-            </a>
+            <Link href="/forgotpassword">Olvidó la contraseña?</Link>
           </div>
           <div className="flex items-baseline justify-center mt-2">
-            <a className="text-sm text-blue-600 hover:underline">
-              <Link href="/signup">Registrarse aquí</Link>
-            </a>
+            <Link href="/signup">Registrarse aquí</Link>
           </div>
         </div>
       </form>
