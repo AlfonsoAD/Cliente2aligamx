@@ -2,6 +2,7 @@ import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
 import { useState } from "react";
+import Link from "next/link";
 
 const FormLog = () => {
   const [email, setEmail] = useState(null);
@@ -81,9 +82,10 @@ const FormLog = () => {
             </a>
           </div>
           <div className="flex items-baseline justify-center mt-2">
-            <a href="/signup" className="text-sm text-blue-600 hover:underline">
+            <Link href="/signup">Registrarse aquí</Link>
+            {/* <a href="/signup" className="text-sm text-blue-600 hover:underline">
               Registrarse
-            </a>
+            </a> */}
           </div>
         </div>
       </form>
