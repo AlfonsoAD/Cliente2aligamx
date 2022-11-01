@@ -16,6 +16,7 @@ export default function Home() {
     console.log(auxSplit);
 
     if (auxSplit[0] == "token") {
+      console.log("entré");
       async () => {
         try {
           let url = `https://j2sligamxapi.herokuapp.com/confirmation/"${auxSplit[1]}`;
