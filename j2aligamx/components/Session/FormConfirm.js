@@ -15,7 +15,7 @@ const FormConfirm = () => {
         </p>
       </div>
       <div className="mt-6 justify-center items-center">
-        <Link>Iniciar sesión</Link>
+        <Link href={"/index" ?? ""}>Iniciar sesión</Link>
       </div>
     </ContainerForm>
   );
