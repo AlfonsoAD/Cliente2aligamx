@@ -10,7 +10,7 @@ const FormLog = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/users/login", {
+    fetch("https://j2sligamxapi.herokuapp.com/users/login", {
       method: "POST",
       body: JSON.stringify({
         email: email,
@@ -21,10 +21,11 @@ const FormLog = () => {
       .then((res) => {
         if (res.status == 200) {
           // sweetAlert("Éxito", "Usuario encontrado", "success");
+          <Link href={"/home" ?? ""}></Link>;
           console.log("Ok");
         } else {
           // sweetAlert("Error", "Usuario no encontrado", "error");
-          console.log("Error");
+          alert("Error");
         }
 
         return res.json();
