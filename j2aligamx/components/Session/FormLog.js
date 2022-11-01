@@ -82,7 +82,7 @@ const FormLog = () => {
           </div>
           <div className="flex items-baseline justify-center mt-2">
             <a
-              href="../../pages/signup.js"
+              href="../../pages/signup"
               className="text-sm text-blue-600 hover:underline"
             >
               Registrarse
