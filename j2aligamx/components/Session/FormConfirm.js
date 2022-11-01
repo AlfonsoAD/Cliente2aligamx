@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ContainerForm from "./ContainerForm";
 
 const FormConfirm = () => {
@@ -13,8 +14,10 @@ const FormConfirm = () => {
           Ya puedes iniciar sesión
         </p>
       </div>
-      <div className="mt-6">
-        <a className="text-dark">Iniciar sesión</a>
+      <div className="mt-6 justify-center items-center">
+        <a className="text-sm text-blue-600 hover:underline">
+          <Link>Iniciar sesión</Link>
+        </a>
       </div>
     </ContainerForm>
   );
