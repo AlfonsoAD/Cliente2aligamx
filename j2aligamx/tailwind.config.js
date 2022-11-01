@@ -9,6 +9,9 @@ module.exports = {
       colors: {
         header: "#264C4B",
       },
+      container: {
+        center: true,
+      },
     },
   },
   plugins: [],

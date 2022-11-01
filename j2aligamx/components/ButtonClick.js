@@ -1,12 +1,12 @@
 const ButtonClick = (props) => {
   let { type, classN, text, click } = props;
 
-  const Click = (e) => {
-    console.log(click);
+  const ClickAction = (e) => {
+    if (click) click(e);
   };
 
   return (
-    <button type={type} className={classN} onClick={Click}>
+    <button type={type} className={classN} onClick={ClickAction}>
       {text}
     </button>
   );
