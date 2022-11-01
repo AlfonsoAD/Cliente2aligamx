@@ -9,13 +9,13 @@ import { useEffect } from "react";
 export default function Home() {
   useEffect(() => {
     console.log(window.location);
-    let url = window.location.pathname;
+    let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
     console.log(auxUrl);
-    let auxSplit = auxUrl.split("/");
+    let auxSplit = auxUrl.split("=");
     console.log(auxSplit);
 
-    if (auxSplit[0] == "confirm") {
+    if (auxSplit[0] == "token") {
       async () => {
         try {
           let url = `https://j2sligamxapi.herokuapp.com/confirmation/"${auxSplit[1]}`;
