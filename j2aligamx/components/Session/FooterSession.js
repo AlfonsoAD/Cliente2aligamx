@@ -9,7 +9,7 @@ const FooterLogin = () => {
       </div>
       <hr className="my-6 border-gray-200 sm:mx-auto dark:border-emerald-900 lg:my-8" />
       <span className="block text-sm text-emerald-900 sm:text-center">
-        © 2022 . 18100149 - 18100145.
+        © 2022 - J2A-LIGA MX.
       </span>
     </footer>
   );

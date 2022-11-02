@@ -31,13 +31,16 @@ const FormSignUp = () => {
             "success"
           );
         } else if (422) {
-          //sweetAlert("Error", "Algo ha salido mal", "error");
-          console.log("Error");
+          Swal.fire(
+            "Registro fallido",
+            "Verifica tus datos, o el correo ya existe en la cuenta",
+            "error"
+          );
         }
       })
       .then((res) => console.log(res))
       .catch((err) => {
-        //sweetAlert("Error", err, "error");
+        Swal.fire("Algo ha salido mal", `${err}`, "error");
       });
   };
 
