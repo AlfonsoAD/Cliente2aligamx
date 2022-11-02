@@ -26,8 +26,8 @@ const FormSignUp = () => {
       .then((res) => {
         if (res.status == 200) {
           Swal.fire(
-            "Usuario registrado",
             "Excelente ya puedes tener una mejor experiencia",
+            "VERIFICA TU CORREO ELECTRÓNICO PARA CONFIRMAR",
             "success"
           );
         } else if (422) {
