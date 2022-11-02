@@ -1,7 +1,10 @@
+import { useState } from "react";
+
+import Swal from "sweetalert2";
+
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-import { useState } from "react";
 
 const FormSignUp = () => {
   const [email, setEmail] = useState(null);
@@ -22,8 +25,11 @@ const FormSignUp = () => {
     })
       .then((res) => {
         if (res.status == 200) {
-          //sweetAlert("Éxito", "Se ha registrado el usuario", "success");
-          console.log("Ok");
+          Swal.fire(
+            "Usuario registrado",
+            "Excelente ya puedes tener una mejor experiencia",
+            "success"
+          );
         } else if (422) {
           //sweetAlert("Error", "Algo ha salido mal", "error");
           console.log("Error");

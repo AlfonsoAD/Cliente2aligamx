@@ -8,6 +8,8 @@ module.exports = {
     extend: {
       colors: {
         header: "#264C4B",
+        button: "#3452eb",
+        button2: "#0a22d1",
       },
       container: {
         center: true,
