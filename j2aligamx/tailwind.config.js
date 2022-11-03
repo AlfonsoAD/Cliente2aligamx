@@ -14,6 +14,9 @@ module.exports = {
       container: {
         center: true,
       },
+      animation: {
+        "spin-slow": "spin 2s linear infinite",
+      },
     },
   },
   plugins: [],

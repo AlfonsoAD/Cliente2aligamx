@@ -2,8 +2,8 @@ import Head from "next/head";
 import Image from "next/image";
 import styles from "../styles/Home.module.css";
 
-import LayoutSession from "../components/Session/LayoutSession";
-import FormConfirm from "../components/Session/FormConfirm";
+import LayoutSession from "../../components/Session/LayoutSession";
+import FormConfirm from "../../components/Session/FormConfirm";
 import { useEffect } from "react";
 
 export default function Home() {
