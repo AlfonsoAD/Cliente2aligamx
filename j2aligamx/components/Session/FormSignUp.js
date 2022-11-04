@@ -6,6 +6,8 @@ import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
 
+import { petitionSignUp } from "../../api/petitionsUser";
+
 const FormSignUp = () => {
   const [email, setEmail] = useState(null);
   const [userName, setUserName] = useState(null);
@@ -14,51 +16,26 @@ const FormSignUp = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    fetch("https://j2sligamxapi.herokuapp.com/users/signup", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        password: password,
-        username: userName,
-      }),
-      headers: { "content-Type": "application/JSON" },
-    })
-      .then((res) => {
-        if (res.status == 200) {
-          Swal.fire(
-            "Excelente ya puedes tener una mejor experiencia",
-            "VERIFICA TU CORREO ELECTRÓNICO PARA CONFIRMAR",
-            "success"
-          );
-        } else if (422) {
-          Swal.fire(
-            "Registro fallido",
-            "Verifica tus datos, o el correo ya existe en la cuenta",
-            "error"
-          );
-        }
-      })
-      .then((res) => console.log(res))
-      .catch((err) => {
-        Swal.fire("Algo ha salido mal", `${err}`, "error");
-      });
+    if (
+      email == null ||
+      password == null ||
+      userName == null ||
+      passwordConfirm == null
+    ) {
+      Swal.fire("Error", "Llena todos los campos", "error");
+      setEmail(null);
+      setPassword(null);
+      setUserName(null);
+      setPasswordConfirm(null);
+    } else {
+      petitionSignUp(email, password, userName);
+    }
   };
 
-  const onChangeUserName = (e) => {
-    setUserName(e.target.value);
-  };
-
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
-  };
-
-  const onChangePasswordConfirm = (e) => {
-    setPasswordConfirm(e.target.value);
-  };
+  const onChangeUserName = (e) => setUserName(e.target.value);
+  const onChangeEmail = (e) => setEmail(e.target.value);
+  const onChangePassword = (e) => setPassword(e.target.value);
+  const onChangePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
 
   return (
     <ContainerForm>

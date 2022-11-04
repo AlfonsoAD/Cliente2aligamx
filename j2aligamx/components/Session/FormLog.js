@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import { useState } from "react";
 import Link from "next/link";
 
@@ -5,59 +6,25 @@ import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
 
-import Swal from "sweetalert2";
+import { petitionLogin } from "../../api/petitionsUser";
 
 const FormLog = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
 
+  const onChangeEmail = (e) => setEmail(e.target.value);
+  const onChangePassword = (e) => setPassword(e.target.value);
+
   const submit = (e) => {
     e.preventDefault();
 
-    fetch("https://j2sligamxapi.herokuapp.com/users/login", {
-      method: "POST",
-      body: JSON.stringify({
-        email: email,
-        password: password,
-      }),
-      headers: { "content-Type": "application/JSON" },
-    })
-      .then((res) => {
-        if (res.status == 200) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Disfruta de la información",
-            showConfirmButton: true,
-            confirmButtonColor: "bg-button",
-            timer: 2500,
-          });
-
-          location.assign("/home");
-        } else {
-          Swal.fire(
-            "Error",
-            "Verifica o ingresa bien tus credenciales",
-            "error"
-          );
-        }
-
-        return res.json();
-      })
-      .then((res) => {
-        window.localStorage.setItem("token", res.token);
-      })
-      .catch((err) => {
-        Swal.fire("Error", `Algo ha salido mal ${err}`, "error");
-      });
-  };
-
-  const onChangeEmail = (e) => {
-    setEmail(e.target.value);
-  };
-
-  const onChangePassword = (e) => {
-    setPassword(e.target.value);
+    if (email == null || password == null) {
+      Swal.fire("Error", "Llena todos los campos", "error");
+      setEmail(null);
+      setPassword(null);
+    } else {
+      petitionLogin(email, password);
+    }
   };
 
   return (
@@ -91,12 +58,12 @@ const FormLog = () => {
             />
           </div>
           <div className="flex items-baseline justify-center mt-2">
-            <Link href={"/forgotpassword" ?? ""}>
+            <Link href={"/session/forgotpassword" ?? ""}>
               <a className="underline text-header">Olvidó la contraseña?</a>
             </Link>
           </div>
           <div className="flex items-baseline justify-center mt-2">
-            <Link href={"/signup" ?? ""}>
+            <Link href={"/session/signup" ?? ""}>
               <a className="underline text-header">Registrarse aquí</a>
             </Link>
           </div>

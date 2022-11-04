@@ -1,8 +1,23 @@
 import ContainerForm from "./ContainerForm";
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
+import { petitionForgotPassword } from "../../api/petitionsUser";
 
 const FormForgotPassword = () => {
+  const [email, setEmail] = useState(null);
+  const onChangeEmail = (e) => setEmail(e.target.value);
+
+  const submit = (e) => {
+    e.preventDefault();
+
+    if (email == null) {
+      Swal.fire("Error", "Llena todos los campos", "error");
+      setEmail(null);
+    } else {
+      petitionForgotPassword(email);
+    }
+  };
+
   return (
     <ContainerForm>
       <div className="m-3">
@@ -15,12 +30,13 @@ const FormForgotPassword = () => {
           Para recuperar tu contraseña escribe tu correo electrónico:
         </p>
       </div>
-      <Input type="email" placeholder="Email" />
+      <Input type="email" placeholder="Email" onchange={onChangeEmail} />
       <div className="flex items-baseline justify-center">
         <ButtonClick
           type="submit"
           classN="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600  px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           text="Recuperar"
+          click={submit}
         />
       </div>
     </ContainerForm>
