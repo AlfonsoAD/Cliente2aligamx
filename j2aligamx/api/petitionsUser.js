@@ -85,4 +85,21 @@ const petitionForgotPassword = (email) => {
   }
 };
 
-export { petitionLogin, petitionSignUp, petitionForgotPassword };
+const petitionConfirmation = (token) => {
+  if (token != null) {
+    console.log("entré");
+    try {
+      fetch(`https://j2sligamxapi.herokuapp.com/confirmation/${token}`);
+    } catch {
+      console.log("error");
+    }
+  } else {
+    console.log("no entré");
+  }
+};
+export {
+  petitionLogin,
+  petitionSignUp,
+  petitionForgotPassword,
+  petitionConfirmation,
+};
