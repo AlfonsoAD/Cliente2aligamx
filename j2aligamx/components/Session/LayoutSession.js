@@ -1,6 +1,5 @@
 import Header from "../Header";
 import FooterSession from "../Session/FooterSession";
-import Head from "next/head";
 import React from "react";
 
 const LayoutSession = ({ children }) => {
