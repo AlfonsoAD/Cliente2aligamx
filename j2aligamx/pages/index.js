@@ -7,7 +7,7 @@ export default function Home() {
   }, []);
 
   const validando = () => {
-    if (window.localStorage.getItem("token").length > 0) {
+    if (window.localStorage.length > 0) {
       setTimeout(location.assign("/home"), 4000);
     } else {
       setTimeout(location.assign("/login"), 4000);
