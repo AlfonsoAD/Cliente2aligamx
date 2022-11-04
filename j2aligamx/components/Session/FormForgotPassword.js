@@ -2,6 +2,8 @@ import ContainerForm from "./ContainerForm";
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import { petitionForgotPassword } from "../../api/petitionsUser";
+import { useState } from "react";
+import Swal from "sweetalert2";
 
 const FormForgotPassword = () => {
   const [email, setEmail] = useState(null);
