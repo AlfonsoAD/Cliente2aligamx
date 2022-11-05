@@ -9,14 +9,18 @@ const FormForgotPassword = () => {
   const [email, setEmail] = useState(null);
   const onChangeEmail = (e) => setEmail(e.target.value);
 
-  const submit = (e) => {
-    e.preventDefault();
+  const submit = async (e) => {
+    try {
+      e.preventDefault();
 
-    if (email == null) {
-      Swal.fire("Error", "Llena todos los campos", "error");
-      setEmail(null);
-    } else {
-      petitionForgotPassword(email);
+      if (email == null) {
+        Swal.fire("Error", "Llena todos los campos", "error");
+        setEmail(null);
+      } else {
+        await petitionForgotPassword(email);
+      }
+    } catch (err) {
+      Swal.fire("Error", `${err}`, "error");
     }
   };
 

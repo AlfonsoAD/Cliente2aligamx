@@ -1,13 +1,12 @@
 import Link from "next/link";
 import ContainerForm from "./ContainerForm";
-import ButtonClick from "../ButtonClick";
 
 const FormConfirm = () => {
   return (
     <ContainerForm>
       <div className="m-3">
         <h1 className="mb-6 text-center text-3xl font-bold tracking-tight text-emerald-900">
-          Felicidades
+          J2A LIGA MX
         </h1>
       </div>
       <div className="m-3">

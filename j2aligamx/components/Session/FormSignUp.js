@@ -14,21 +14,25 @@ const FormSignUp = () => {
   const [password, setPassword] = useState(null);
   const [passwordConfirm, setPasswordConfirm] = useState(null);
 
-  const submit = (e) => {
-    e.preventDefault();
-    if (
-      email == null ||
-      password == null ||
-      userName == null ||
-      passwordConfirm == null
-    ) {
-      Swal.fire("Error", "Llena todos los campos", "error");
-      setEmail(null);
-      setPassword(null);
-      setUserName(null);
-      setPasswordConfirm(null);
-    } else {
-      petitionSignUp(email, password, userName);
+  const submit = async (e) => {
+    try {
+      e.preventDefault();
+      if (
+        email == null ||
+        password == null ||
+        userName == null ||
+        passwordConfirm == null
+      ) {
+        Swal.fire("Error", "Llena todos los campos", "error");
+        setEmail(null);
+        setPassword(null);
+        setUserName(null);
+        setPasswordConfirm(null);
+      } else {
+        await petitionSignUp(email, password, userName);
+      }
+    } catch (err) {
+      Swal.fire("Error", `${err}`, "error");
     }
   };
 

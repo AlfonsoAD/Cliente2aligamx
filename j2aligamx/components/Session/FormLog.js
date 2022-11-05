@@ -1,29 +1,35 @@
-import Swal from "sweetalert2";
 import { useState } from "react";
+import { useRouter } from "next/router";
 import Link from "next/link";
-
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-
 import { petitionLogin } from "../../api/petitionsUser";
+import Swal from "sweetalert2";
 
 const FormLog = () => {
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
+  const router = useRouter();
 
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
-  const submit = (e) => {
-    e.preventDefault();
+  const submit = async (e) => {
+    try {
+      e.preventDefault();
 
-    if (email == null || password == null) {
-      Swal.fire("Error", "Llena todos los campos", "error");
-      setEmail(null);
-      setPassword(null);
-    } else {
-      petitionLogin(email, password);
+      if (email == null || password == null) {
+        Swal.fire("Error", "Llena todos los campos", "error");
+        setEmail(null);
+        setPassword(null);
+      } else {
+        const res = await petitionLogin(email, password);
+        window.localStorage.setItem("token", res.token);
+        router.push("/home");
+      }
+    } catch (err) {
+      Swal.fire("Error", `${err}`, "error");
     }
   };
 
