@@ -10,6 +10,7 @@ module.exports = {
         header: "#264C4B",
         button: "#3452eb",
         button2: "#0a22d1",
+        danger: "#f20f0f",
       },
       container: {
         center: true,

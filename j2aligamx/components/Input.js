@@ -1,5 +1,5 @@
 const Input = (props) => {
-  let { typeInput, placeholder, onchange } = props;
+  let { typeInput, placeholder, pattern, title, onchange } = props;
 
   return (
     <input
