@@ -56,7 +56,6 @@ const petitionForgotPassword = async (email) => {
 const petitionConfirmation = async (token) => {
   if (token != null) {
     const res = await fetch(`${urlConfirmationEmail}${token}`);
-
     if (res.status != 200) {
       throw new Error("Algo ha salido mal");
     }

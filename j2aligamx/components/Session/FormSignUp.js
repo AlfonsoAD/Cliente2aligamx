@@ -1,41 +1,65 @@
 import { useState } from "react";
+//Peticiones api
 import { petitionSignUp } from "../../api/petitionsUser";
 import {
   validationEmail,
   validationUserName,
   validationPassword,
-} from "../../utilities/inputValidations";
+} from "../../utilities/validations";
+//Hooks
 import { dataValidations } from "../../hooks/dataValidations";
-
+//Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-
+//Herramientas
 import Swal from "sweetalert2";
 
 const FormSignUp = () => {
-  const [email, setEmail] = useState(null);
-  const [userName, setUserName] = useState(null);
-  const [password, setPassword] = useState(null);
-  const [passwordConfirm, setPasswordConfirm] = useState(null);
+  const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const [vUserName, vEmail, vPassword, vPasswordConfirm] = dataValidations();
+  const errorUserName = vUserName(validationUserName(userName));
+  const errorEmail = vEmail(validationEmail(email));
+  const errorPassword = vPassword(validationPassword(password));
+  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
 
   const submit = async (e) => {
-    // try {
-    e.preventDefault();
-    console.log(userName);
-
-    //     await petitionSignUp(email, password, userName);
+    if (
+      userName != "" ||
+      email != "" ||
+      password != "" ||
+      passwordConfirm != ""
+    ) {
+      try {
+        e.preventDefault();
+        await petitionSignUp(email, password, userName);
+        limpiar();
+        Swal.fire(
+          "Registrado",
+          "Verifica tu correo para confirmar tu cuenta",
+          "success"
+        );
+      } catch (err) {
+        Swal.fire("Error", `${err}`, "error");
+      }
+    } else {
+      Swal.fire("Error", "Llena todos los campos", "error");
+    }
   };
 
   const onChangeUserName = (e) => setUserName(e.target.value);
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
   const onChangePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
-  const errorEmail = vEmail(validationEmail(email));
-  const errorUserName = vUserName(validationUserName(userName));
-  const errorPassword = vPassword(validationPassword(password));
-  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
+  const limpiar = () => {
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setPasswordConfirm("");
+  };
 
   return (
     <ContainerForm>
@@ -44,19 +68,31 @@ const FormSignUp = () => {
           Registro de usuarios
         </h1>
       </div>
-      <Input type="text" placeholder="Username" onchange={onChangeUserName} />
+      <Input
+        type="text"
+        placeholder="Username"
+        value={userName}
+        onchange={onChangeUserName}
+      />
       <small className="text-danger">{errorUserName}</small>
-      <Input type="email" placeholder="Email" onchange={onChangeEmail} />
+      <Input
+        type="email"
+        placeholder="Email"
+        value={email}
+        onchange={onChangeEmail}
+      />
       <small className="text-danger">{errorEmail}</small>
       <Input
         typeInput="password"
         placeholder="Password"
+        value={password}
         onchange={onChangePassword}
       />
       <small className="text-danger">{errorPassword}</small>
       <Input
         typeInput="password"
         placeholder="Confirm password"
+        value={passwordConfirm}
         onchange={onChangePasswordConfirm}
       />
       <small className="text-danger">{errorPasswordConfirm}</small>
@@ -66,7 +102,6 @@ const FormSignUp = () => {
           classN="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600  px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
           text="Registrar"
           click={submit}
-          disabled={errorEmail}
         />
       </div>
       <div className="flex items-baseline justify-center mt-2">

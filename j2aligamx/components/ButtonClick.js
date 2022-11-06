@@ -1,17 +1,12 @@
 const ButtonClick = (props) => {
-  let { type, classN, text, click, disabled } = props;
+  let { type, classN, text, click } = props;
 
   const ClickAction = (e) => {
     if (click) click(e);
   };
 
   return (
-    <button
-      type={type}
-      className={classN}
-      onClick={ClickAction}
-      disabled={disabled}
-    >
+    <button type={type} className={classN} onClick={ClickAction}>
       {text}
     </button>
   );
