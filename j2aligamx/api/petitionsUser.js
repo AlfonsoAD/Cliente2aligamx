@@ -25,8 +25,7 @@ const petitionSignUp = async (email, password, userName) => {
 //Confirmation email
 const petitionConfirmation = async (token) => {
   if (token != null) {
-    const res = await fetch(`${urlConfirmationEmail}${token}`);
-
+    const res = await fetch("https://j2sligamxapi.herokuapp.com/confirmation/"+token);
     if (res.status != 200) {
       throw new Error("Algo ha salido mal");
     }
