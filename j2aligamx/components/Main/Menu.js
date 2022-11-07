@@ -1,7 +1,7 @@
 const Menu = () => {
   return (
     <div>
-      <nav className="bg-blueMenu px-2 sm:px-4 py-2.5  fixed w-full z-20 top-25 left-0 border-b">
+      <nav className="bg-blueMenu px-2 sm:px-4 py-2.5 w-full z-20 top-25 left-0 border-b">
         <div className="container flex flex-wrap justify-start items-center mx-auto">
           <a href="" className="flex items-center">
             <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">

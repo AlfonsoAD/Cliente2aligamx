@@ -4,11 +4,13 @@ import ContainerForm from "./ContainerForm";
 import { petitionRecoverNewPassword } from "../../api/petitionsUser";
 import { useEffect, useState } from "react";
 import { validationPassword } from "../../utilities/validations";
-import { dataValidations } from "../../hooks/dataValidations";
+import dataValidations from "../../hooks/dataValidations";
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
-  var tokenV;
+  let tokenV;
+  let errorPassword;
+  let errorPasswordConfirm;
   useEffect(() => {
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
@@ -20,11 +22,15 @@ const FormNewPassword = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [vPassword, vPasswordConfirm] = dataValidations();
-  const errorPassword = vPassword(validationPassword(password));
-  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
 
-  const onChangePassword = (e) => setPassword(e.target.value);
-  const onChangePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
+  const onChangePassword = (e) => {
+    errorPassword = vPassword(validationPassword(password));
+    setPassword(e.target.value);
+  };
+  const onChangePasswordConfirm = (e) => {
+    errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
+    setPasswordConfirm(e.target.value);
+  };
 
   const submit = (e) => {
     e.preventDefault();

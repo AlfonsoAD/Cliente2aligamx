@@ -26,4 +26,4 @@ const dataValidations = () => {
   return [vUserName, vEmail, vPassword, vPasswordConfirm];
 };
 
-export { dataValidations };
+export default dataValidations;
