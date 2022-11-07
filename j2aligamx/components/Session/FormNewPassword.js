@@ -3,6 +3,8 @@ import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
 import { petitionRecoverNewPassword } from "../../api/petitionsUser";
 import { useEffect, useState } from "react";
+import { validationPassword } from "../../utilities/validations";
+import { dataValidations } from "../../hooks/dataValidations";
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
@@ -16,10 +18,16 @@ const FormNewPassword = () => {
   }, []);
 
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [vPassword, vPasswordConfirm] = dataValidations();
+  const errorPassword = vPassword(validationPassword(password));
+  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
+
+  const onChangePassword = (e) => setPassword(e.target.value);
+  const onChangePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
 
   const submit = (e) => {
     e.preventDefault();
-    console.log(password);
     recoverNewPassword();
   };
 
@@ -30,8 +38,6 @@ const FormNewPassword = () => {
       Swal.fire("Error", `${err}`, "error");
     }
   };
-
-  const onChangePassword = (e) => setPassword(e.target.value);
 
   return (
     <ContainerForm>
@@ -46,8 +52,16 @@ const FormNewPassword = () => {
         value={password}
         onchange={onChangePassword}
       />
+      <small className="text-danger">{errorPassword}</small>
 
-      <Input typeInput="password" placeholder="confirm password" />
+      <Input
+        typeInput="password"
+        placeholder="confirm password"
+        value={passwordConfirm}
+        onchange={onChangePasswordConfirm}
+      />
+      <small className="text-danger">{errorPasswordConfirm}</small>
+
       <div className="flex items-baseline justify-center">
         <ButtonClick
           type="submit"

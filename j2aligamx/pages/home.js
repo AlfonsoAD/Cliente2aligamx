@@ -1,11 +1,11 @@
-import LayoutSession from "../components/Session/LayoutSession";
+import LayoutMain from "../components/Main/LayoutMain";
 
 export default function Home() {
   return (
-    <LayoutSession>
+    <LayoutMain>
       <div>
-        <h1>BIENVENIDO</h1>
+        <h1>Hola</h1>
       </div>
-    </LayoutSession>
+    </LayoutMain>
   );
 }

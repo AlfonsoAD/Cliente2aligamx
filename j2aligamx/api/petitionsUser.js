@@ -26,7 +26,10 @@ const petitionSignUp = async (email, password, userName) => {
 //Confirmation email
 const petitionConfirmation = async (token) => {
   if (token != null) {
-    const res = await fetch(`${urlConfirmationEmail}${token}`);
+    const res = await fetch(`${urlConfirmationEmail}${token}`, {
+      method: "POST",
+      headers: { "content-Type": "application/JSON" },
+    });
 
     if (res.status != 200) {
       throw new Error("Algo ha salido mal");
