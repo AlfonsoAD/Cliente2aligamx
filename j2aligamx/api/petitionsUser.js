@@ -2,6 +2,7 @@ const urlUsersSignUp = "https://j2sligamxapi.herokuapp.com/users/signup";
 const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/login";
 const urlUserForgotPassword = "https://j2sligamxapi.herokuapp.com/user/";
 const urlConfirmationEmail = "https://j2sligamxapi.herokuapp.com/confirmation/";
+const urlRecoverNewPassword = "https://j2sligamxapi.herokuapp.com/changePass/";
 
 //User register
 const petitionSignUp = async (email, password, userName) => {
@@ -66,9 +67,26 @@ const petitionForgotPassword = async (email) => {
   return resJson;
 };
 
+const petitionRecoverNewPassword = async (token, password) => {
+  const res = await fetch(`${urlRecoverNewPassword}${token}`, {
+    method: "POST",
+    body: JSON.stringify({
+      password: password,
+    }),
+    headers: { "content-Type": "application/JSON" },
+  });
+  if (res.status != 200) {
+    throw new Error("Algo ha salido mal");
+  }
+
+  const resJson = await res.json();
+  return resJson;
+};
+
 export {
   petitionLogin,
   petitionSignUp,
   petitionForgotPassword,
   petitionConfirmation,
+  petitionRecoverNewPassword,
 };
