@@ -1,7 +1,7 @@
 const urlUsersSignUp = "https://j2sligamxapi.herokuapp.com/users/signup";
 const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/login";
 const urlUserForgotPassword = "https://j2sligamxapi.herokuapp.com/user/";
-const urlConfirmationEmail = "https://j2sligamxapi.herokuapp.com/confirmation/";
+const urlConfirmationEmail = "http://localhost:3000/confirmation/";
 
 //User register
 const petitionSignUp = async (email, password, userName) => {
@@ -20,6 +20,16 @@ const petitionSignUp = async (email, password, userName) => {
 
   const resJson = await res.json();
   return resJson;
+};
+
+//Confirmation email
+const petitionConfirmation = (token) => {
+  if (token != null) {
+    fetch(`${urlConfirmationEmail}${token}`);
+    // if (res.status != 200) {
+    //   throw new Error("Algo ha salido mal");
+    // }
+  }
 };
 
 //Login
@@ -50,19 +60,6 @@ const petitionForgotPassword = async (email) => {
 
   const resJson = await res.json();
   return resJson;
-};
-
-//Confirmation email
-const petitionConfirmation = async (token) => {
-  if (token != null) {
-    const res = await fetch(`${urlConfirmationEmail}${token}`);
-    if (res.status != 200) {
-      throw new Error("Algo ha salido mal");
-    }
-
-    const resJson = await res.json();
-    return resJson;
-  }
 };
 
 export {
