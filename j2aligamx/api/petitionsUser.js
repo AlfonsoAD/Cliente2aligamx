@@ -3,6 +3,7 @@ const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/login";
 const urlUserForgotPassword = "https://j2sligamxapi.herokuapp.com/user/";
 const urlConfirmationEmail = "https://j2sligamxapi.herokuapp.com/confirmation/";
 const urlRecoverNewPassword = "https://j2sligamxapi.herokuapp.com/changePass/";
+import {unregister} from './Interceptor'
 
 //User register
 const petitionSignUp = async (email, password, userName) => {

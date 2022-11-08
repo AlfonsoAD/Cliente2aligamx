@@ -7,7 +7,7 @@ import {
   validationPassword,
 } from "../../utilities/validations";
 //Hooks
-import { dataValidations } from "../../hooks/dataValidations";
+import dataValidations from "../../hooks/dataValidations";
 //Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";

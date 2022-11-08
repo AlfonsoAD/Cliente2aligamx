@@ -797,6 +797,11 @@
   dependencies:
     "reusify" "^1.0.4"
 
+"fetch-intercept@^2.4.0":
+  "integrity" "sha512-BPZ2LM9Dh1ua2ovQf03N6rhWg1qxdVD5qK/G4llvcemt6M+jjxCuIDxJ+6IiG+uz//3UQmgfKEv0gOGvYIxZ7g=="
+  "resolved" "https://registry.npmjs.org/fetch-intercept/-/fetch-intercept-2.4.0.tgz"
+  "version" "2.4.0"
+
 "file-entry-cache@^6.0.1":
   "integrity" "sha512-7Gps/XWymbLk2QLYK4NzpMOrYjMhdIxXuIvy2QBsLE6ljuodKvdkWs/cpyJJ3CVIVpH0Oi1Hvg1ovbMzLdFBBg=="
   "resolved" "https://registry.npmjs.org/file-entry-cache/-/file-entry-cache-6.0.1.tgz"
