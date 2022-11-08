@@ -1,8 +1,9 @@
 const urlUsersSignUp = "https://j2sligamxapi.herokuapp.com/users/signup";
-const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/login";
+const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/refresh-login";
 const urlUserForgotPassword = "https://j2sligamxapi.herokuapp.com/user/";
 const urlConfirmationEmail = "https://j2sligamxapi.herokuapp.com/confirmation/";
 const urlRecoverNewPassword = "https://j2sligamxapi.herokuapp.com/changePass/";
+const urlRefreshToken = "https://j2sligamxapi.herokuapp.com/refresh/";
 import {unregister} from './Interceptor'
 
 //User register
@@ -23,6 +24,26 @@ const petitionSignUp = async (email, password, userName) => {
   const resJson = await res.json();
   return resJson;
 };
+
+const refreshToken = async() => {
+  const refreTok = window.localStorage.getItem("token-refresh");
+  const res = await fetch(urlRefreshToken,{
+    method: "POST",
+    body: JSON.stringify({
+      refreshToken: refreTok
+    }),
+    headers: {"content-type": "application/JSON"},
+  });
+  if (res.status == 200) {
+    const resJson = await res.json();
+    window.localStorage.setItem("access-token",resJson.accessToken)
+    window.localStorage.setItem("refresh-token",resJson.refreshToken)
+  }else{
+    window.localStorage.removeItem("access-token");
+    window.localStorage.removeItem("refresh-token");
+    location.reload();
+  }
+}
 
 //Confirmation email
 const petitionConfirmation = async (token) => {
@@ -93,4 +114,5 @@ export {
   petitionForgotPassword,
   petitionConfirmation,
   petitionRecoverNewPassword,
+  refreshToken
 };
