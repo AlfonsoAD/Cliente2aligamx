@@ -1,5 +1,5 @@
 const urlUsersSignUp = "https://j2sligamxapi.herokuapp.com/users/signup";
-const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/login";
+const urlUsersLogIn = "https://j2sligamxapi.herokuapp.com/users/refresh-login";
 const urlUserForgotPassword = "https://j2sligamxapi.herokuapp.com/user/";
 const urlConfirmationEmail = "https://j2sligamxapi.herokuapp.com/confirmation/";
 const urlRecoverNewPassword = "https://j2sligamxapi.herokuapp.com/changePass/";
@@ -50,11 +50,17 @@ const petitionLogin = async (email, password) => {
     }),
     headers: { "content-Type": "application/JSON" },
   });
-  if (res.status != 200) {
+
+  const resJson = await res.json();
+
+  if (res.status == 200) {
+    console.log(resJson);
+    window.localStorage.setItem("accessToken", resJson.accessToken);
+    window.localStorage.setItem("userProfileToken", resJson.userProfile);
+  } else {
     throw new Error("Algo ha salido mal");
   }
 
-  const resJson = await res.json();
   return resJson;
 };
 

@@ -7,7 +7,7 @@ const Header = () => {
             width="90"
             height="90"
             src={
-              "https://user-images.githubusercontent.com/90345024/197927557-deb847bc-1cf7-47d8-8f9d-4d11b925734b.png"
+              "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png"
             }
           />
         </div>
