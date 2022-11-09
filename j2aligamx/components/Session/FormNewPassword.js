@@ -3,14 +3,12 @@ import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
 import { petitionRecoverNewPassword } from "../../api/petitionsUser";
 import { useEffect, useState } from "react";
-import { validationPassword } from "../../utilities/validations";
+import validation from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
   let tokenV;
-  let errorPassword;
-  let errorPasswordConfirm;
   useEffect(() => {
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
@@ -21,14 +19,16 @@ const FormNewPassword = () => {
 
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [vPassword, vPasswordConfirm] = dataValidations();
+  const [vUserName, vEmail, vPassword, vPasswordConfirm] = dataValidations();
+  const [validationUserName, validationEmail, validationPassword] =
+    validation();
+  const errorPassword = vPassword(validationPassword(password));
+  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
 
   const onChangePassword = (e) => {
-    errorPassword = vPassword(validationPassword(password));
     setPassword(e.target.value);
   };
   const onChangePasswordConfirm = (e) => {
-    errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
     setPasswordConfirm(e.target.value);
   };
 
@@ -39,7 +39,7 @@ const FormNewPassword = () => {
 
   const recoverNewPassword = async () => {
     try {
-      await petitionRecoverNewPassword(tokenV, password);
+      await petitionRecoverNewPassword(tokenV, passwordConfirm);
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");
     }
@@ -69,12 +69,7 @@ const FormNewPassword = () => {
       <small className="text-danger">{errorPasswordConfirm}</small>
 
       <div className="flex items-baseline justify-center">
-        <ButtonClick
-          type="submit"
-          classN="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600  px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          text="Cambiar/recuperar"
-          click={submit}
-        />
+        <ButtonClick type="submit" text="Cambiar/recuperar" click={submit} />
       </div>
     </ContainerForm>
   );

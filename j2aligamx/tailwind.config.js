@@ -12,6 +12,8 @@ module.exports = {
         button2: "#0a22d1",
         danger: "#f20f0f",
         blueMenu: "#010d5e",
+        blueButton: "#0821a1",
+        blueButton2: "#0c2ccc",
       },
       container: {
         center: true,

@@ -1,4 +1,4 @@
-import Header from "../Header";
+import Header from "../Session/HeaderSession";
 import FooterSession from "../Session/FooterSession";
 import React from "react";
 

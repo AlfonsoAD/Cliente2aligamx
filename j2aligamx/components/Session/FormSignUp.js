@@ -1,14 +1,10 @@
 import { useState } from "react";
 //Peticiones api
 import { petitionSignUp } from "../../api/petitionsUser";
-import {
-  validationEmail,
-  validationUserName,
-  validationPassword,
-} from "../../utilities/validations";
 //Hooks
+import validations from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
-//Componentes
+//Componentes externos
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
@@ -21,10 +17,8 @@ const FormSignUp = () => {
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const [vUserName, vEmail, vPassword, vPasswordConfirm] = dataValidations();
-  const errorUserName = vUserName(validationUserName(userName));
-  const errorEmail = vEmail(validationEmail(email));
-  const errorPassword = vPassword(validationPassword(password));
-  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
+  const [validationUserName, validationEmail, validationPassword] =
+    validations();
 
   const submit = async (e) => {
     if (
@@ -49,11 +43,24 @@ const FormSignUp = () => {
       Swal.fire("Error", "Llena todos los campos", "error");
     }
   };
+  const errorUserName = vUserName(validationUserName(userName));
+  const errorEmail = vEmail(validationEmail(email));
+  const errorPassword = vPassword(validationPassword(password));
+  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
 
-  const onChangeUserName = (e) => setUserName(e.target.value);
-  const onChangeEmail = (e) => setEmail(e.target.value);
-  const onChangePassword = (e) => setPassword(e.target.value);
-  const onChangePasswordConfirm = (e) => setPasswordConfirm(e.target.value);
+  const onChangeUserName = (e) => {
+    setUserName(e.target.value);
+  };
+  const onChangeEmail = (e) => {
+    setEmail(e.target.value);
+  };
+  const onChangePassword = (e) => {
+    setPassword(e.target.value);
+  };
+  const onChangePasswordConfirm = (e) => {
+    setPasswordConfirm(e.target.value);
+  };
+
   const limpiar = () => {
     setUserName("");
     setEmail("");
@@ -97,12 +104,7 @@ const FormSignUp = () => {
       />
       <small className="text-danger">{errorPasswordConfirm}</small>
       <div className="mt-6">
-        <ButtonClick
-          type="submit"
-          classN="group relative flex w-full justify-center rounded-md border border-transparent bg-indigo-600  px-3 py-2 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
-          text="Registrar"
-          click={submit}
-        />
+        <ButtonClick type="submit" text="Registrar" click={submit} />
       </div>
       <div className="flex items-baseline justify-center mt-2">
         <a href="#" className="text-sm text-blue-600 hover:underline">
