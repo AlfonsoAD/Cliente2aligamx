@@ -57,12 +57,7 @@ const FormLog = () => {
             />
           </div>
           <div className="flex items-baseline justify-center">
-            <ButtonClick
-              type="submit"
-              classN="group relative flex w-full justify-center rounded-md border border-transparent bg-button  px-3 py-2 text-sm font-medium text-white hover:bg-button2 focus:outline-none focus:ring-2 focus:ring-button2 focus:ring-offset-2"
-              text="Iniciar sesión"
-              click={submit}
-            />
+            <ButtonClick type="submit" text="Iniciar sesión" click={submit} />
           </div>
           <div className="flex items-baseline justify-center mt-2">
             <Link href={"/session/forgotpassword" ?? ""}>

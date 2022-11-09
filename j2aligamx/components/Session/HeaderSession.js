@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <div>
-      <nav className="flex items-center justify-center flex-wrap bg-header h-25">
+      <nav className="flex items-center justify-center flex-wrap h-25 bg-gradient-to-r from-header to-blueMenu ...">
         <div className="flex flex-nowrap p-2 shadow md:px-2 md:py-2 justify-center">
           <img
             width="90"
