@@ -73,11 +73,11 @@ const petitionForgotPassword = async (email) => {
 };
 
 //Contraseña nueva
-const petitionRecoverNewPassword = async (token, password) => {
+const petitionRecoverNewPassword = async (token, passwordConfirm) => {
   const res = await fetch(`${urlApi}changePass/${token}`, {
     method: "POST",
     body: JSON.stringify({
-      password: password,
+      password: passwordConfirm,
     }),
     headers: { "content-Type": "application/JSON" },
   });

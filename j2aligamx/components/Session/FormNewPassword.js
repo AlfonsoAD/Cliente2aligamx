@@ -39,7 +39,7 @@ const FormNewPassword = () => {
 
   const recoverNewPassword = async () => {
     try {
-      await petitionRecoverNewPassword(tokenV, password);
+      await petitionRecoverNewPassword(tokenV, passwordConfirm);
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");
     }
