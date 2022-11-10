@@ -13,7 +13,7 @@ export const unregister = FetchInterceptor.register({
     },
   
     response: function (response) {
-      console.log("Hola response"+response.status);
+      console.log("Hola response: "+response.status);
       console.log(response.json)
       return response;
     },
