@@ -1,4 +1,6 @@
+import { unregister } from "./Interceptor";
 const urlApi = "https://j2sligamxapi.herokuapp.com/";
+
 
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
@@ -50,7 +52,6 @@ const petitionLogin = async (email, password) => {
   const resJson = await res.json();
 
   if (res.status == 200) {
-    console.log(resJson);
     window.localStorage.setItem("accessToken", resJson.accessToken);
     window.localStorage.setItem("refreshToken", resJson.refreshToken);
   } else {
@@ -105,12 +106,13 @@ const refreshToken = async (refreTok) => {
     const resJson = await res.json();
     console.log("Pasa verdad");
     window.localStorage.setItem("accessToken", resJson.accessToken);
-    window.localStorage.setItem("refreshToken", resJson.refreshToken);
+    //window.localStorage.setItem("refreshToken", resJson.refreshToken);
   } else {
-    //window.localStorage.removeItem("accessToken");
-    //window.localStorage.removeItem("refreshToken");
-    throw new Error("Algo ha salido mal");
+    console.log("Hay un error");
+    window.localStorage.removeItem("accessToken");
+    window.localStorage.removeItem("refreshToken");
     //location.reload();
+    throw new Error("Algo ha salido mal");
   }
 };
 
