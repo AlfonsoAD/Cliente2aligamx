@@ -10,14 +10,18 @@ export default function Home() {
   }, []);
 
   const validando = () => {
-    // if (window.localStorage.getItem("token") === "undefined") {
-    setTimeout(() => {
-      router.push("/session/login");
-    }, 4000);
-    // } else {
-    //   setTimeout(router.push("/home"), 4000);
-    // }
-    // location.assign("/session/login");
+    if (
+      localStorage.getItem("accessToken") === null &&
+      localStorage.getItem("refreshToken") === null
+    ) {
+      setTimeout(() => {
+        router.push("/session/login");
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        router.push("/home");
+      }, 2000);
+    }
   };
   return <SpinnerSplash />;
 }

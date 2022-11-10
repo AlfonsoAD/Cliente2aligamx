@@ -1,5 +1,4 @@
 const urlApi = "https://j2sligamxapi.herokuapp.com/";
-import { unregister } from "./Interceptor";
 
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
@@ -84,8 +83,8 @@ const petitionRecoverNewPassword = async (token, passwordConfirm) => {
   });
   if (res.status != 200) {
     throw new Error("Algo ha salido mal");
-  }else if (res.status == 400){
-    console.log(res.json())
+  } else if (res.status == 400) {
+    console.log(res.json());
   }
 
   const resJson = await res.json();
@@ -104,13 +103,13 @@ const refreshToken = async (refreTok) => {
   });
   if (res.status == 200) {
     const resJson = await res.json();
-    console.log("Pasa verdad")
+    console.log("Pasa verdad");
     window.localStorage.setItem("accessToken", resJson.accessToken);
     window.localStorage.setItem("refreshToken", resJson.refreshToken);
   } else {
     //window.localStorage.removeItem("accessToken");
     //window.localStorage.removeItem("refreshToken");
-    console.log("Pasa error");
+    throw new Error("Algo ha salido mal");
     //location.reload();
   }
 };
