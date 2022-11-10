@@ -8,14 +8,15 @@ import dataValidations from "../../hooks/dataValidations";
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
-  let tokenV;
-  useEffect(() => {
+  //var tokenV;
+  /*useEffect(() => {
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
     let auxSplit = auxUrl.split("=");
     let token = auxSplit[1];
     tokenV = token;
-  }, []);
+    console.log(tokenV);
+  }, []);*/
 
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -34,12 +35,17 @@ const FormNewPassword = () => {
 
   const submit = (e) => {
     e.preventDefault();
-    recoverNewPassword();
+    let url = window.location.search;
+    let auxUrl = url.substring(1, url.length);
+    let auxSplit = auxUrl.split("=");
+    let token = auxSplit[1];
+    console.log("token es: "+token)
+    recoverNewPassword(token);
   };
 
-  const recoverNewPassword = async () => {
+  const recoverNewPassword = async (token) => {
     try {
-      await petitionRecoverNewPassword(tokenV, passwordConfirm);
+      await petitionRecoverNewPassword(token, passwordConfirm);
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");
     }
