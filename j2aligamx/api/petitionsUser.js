@@ -74,8 +74,8 @@ const petitionForgotPassword = async (email) => {
 };
 
 //Contraseña nueva
-const petitionRecoverNewPassword = async (token, passwordConfirm) => {
-  const res = await fetch(`${urlApi}changePass/${token}`, {
+const petitionRecoverNewPassword = async (tokenV, passwordConfirm) => {
+  const res = await fetch(`${urlApi}changePass/${tokenV}`, {
     method: "POST",
     body: JSON.stringify({
       password: passwordConfirm,
@@ -83,8 +83,10 @@ const petitionRecoverNewPassword = async (token, passwordConfirm) => {
     headers: { "content-Type": "application/JSON" },
   });
   if (res.status != 200) {
-    throw new Error("Algo ha salido mal");
+    console.log("token es: ")
+    throw new Error("Algo ha salido mal"+tokenV);
   } else if (res.status == 400) {
+    console.log("token es: ")
     console.log(res.json());
   }
 
