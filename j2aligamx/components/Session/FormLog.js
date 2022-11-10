@@ -25,8 +25,6 @@ const FormLog = () => {
         setPassword(null);
       } else {
         const res = await petitionLogin(email, password);
-        window.localStorage.setItem("access-token", res.accessToken);
-        window.localStorage.setItem("refresh-token", res.refreshToken);
         router.push("/home");
       }
     } catch (err) {

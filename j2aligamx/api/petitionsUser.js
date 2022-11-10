@@ -1,4 +1,5 @@
 const urlApi = "https://j2sligamxapi.herokuapp.com/";
+import { unregister } from "./Interceptor";
 
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
@@ -52,7 +53,7 @@ const petitionLogin = async (email, password) => {
   if (res.status == 200) {
     console.log(resJson);
     window.localStorage.setItem("accessToken", resJson.accessToken);
-    window.localStorage.setItem("userProfileToken", resJson.userProfile);
+    window.localStorage.setItem("refreshToken", resJson.refreshToken);
   } else {
     throw new Error("Algo ha salido mal");
   }
@@ -83,6 +84,8 @@ const petitionRecoverNewPassword = async (token, passwordConfirm) => {
   });
   if (res.status != 200) {
     throw new Error("Algo ha salido mal");
+  }else if (res.status == 400){
+    console.log(res.json())
   }
 
   const resJson = await res.json();
@@ -90,8 +93,8 @@ const petitionRecoverNewPassword = async (token, passwordConfirm) => {
 };
 
 //Refresh token
-const refreshToken = async () => {
-  const refreTok = window.localStorage.getItem("token-refresh");
+const refreshToken = async (refreTok) => {
+  //const refreTok = window.localStorage.getItem("refreshToken");
   const res = await fetch(`${urlApi}refresh`, {
     method: "POST",
     body: JSON.stringify({
@@ -101,12 +104,14 @@ const refreshToken = async () => {
   });
   if (res.status == 200) {
     const resJson = await res.json();
-    window.localStorage.setItem("access-token", resJson.accessToken);
-    window.localStorage.setItem("refresh-token", resJson.refreshToken);
+    console.log("Pasa verdad")
+    window.localStorage.setItem("accessToken", resJson.accessToken);
+    window.localStorage.setItem("refreshToken", resJson.refreshToken);
   } else {
-    window.localStorage.removeItem("access-token");
-    window.localStorage.removeItem("refresh-token");
-    location.reload();
+    //window.localStorage.removeItem("accessToken");
+    //window.localStorage.removeItem("refreshToken");
+    console.log("Pasa error");
+    //location.reload();
   }
 };
 
