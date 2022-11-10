@@ -2,24 +2,16 @@ import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
 import { petitionRecoverNewPassword } from "../../api/petitionsUser";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 import validation from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
-  //var tokenV;
-  /*useEffect(() => {
-    let url = window.location.search;
-    let auxUrl = url.substring(1, url.length);
-    let auxSplit = auxUrl.split("=");
-    let token = auxSplit[1];
-    tokenV = token;
-    console.log(tokenV);
-  }, []);*/
-
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const router = useRouter();
   const [vUserName, vEmail, vPassword, vPasswordConfirm] = dataValidations();
   const [validationUserName, validationEmail, validationPassword] =
     validation();
@@ -39,13 +31,16 @@ const FormNewPassword = () => {
     let auxUrl = url.substring(1, url.length);
     let auxSplit = auxUrl.split("=");
     let token = auxSplit[1];
-    console.log("token es: "+token)
     recoverNewPassword(token);
   };
 
   const recoverNewPassword = async (token) => {
     try {
       await petitionRecoverNewPassword(token, passwordConfirm);
+      Swal.fire("Éxito", "Contraseña cambiada", "success");
+      setTimeout(() => {
+        router.push("/session/login");
+      }, 2000);
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");
     }
