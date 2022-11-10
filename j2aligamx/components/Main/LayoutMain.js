@@ -1,8 +1,9 @@
-import Menu from "./Menu";
-import React from "react";
-import { refreshToken } from "../../api/petitionsUser";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import { petitionRefreshToken } from "../../api/petitionsUser";
+import Menu from "./Menu";
+import React from "react";
+import Swal from "sweetalert2";
 
 const LayoutMain = ({ children }) => {
   const router = useRouter();
@@ -15,9 +16,9 @@ const LayoutMain = ({ children }) => {
   const refresh = async () => {
     try {
       const refreTok = window.localStorage.getItem("refreshToken");
-      await refreshToken(refreTok);
+      await petitionRefreshToken(refreTok);
     } catch (err) {
-      console.log(err);
+      Swal.fire("Error", `${err}`, "error");
     }
   };
 

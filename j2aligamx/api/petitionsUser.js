@@ -1,7 +1,6 @@
 import { unregister } from "./Interceptor";
 const urlApi = "https://j2sligamxapi.herokuapp.com/";
 
-
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
   const res = await fetch(`${urlApi}users/signup`, {
@@ -83,11 +82,7 @@ const petitionRecoverNewPassword = async (tokenV, passwordConfirm) => {
     headers: { "content-Type": "application/JSON" },
   });
   if (res.status != 200) {
-    console.log("token es: ")
-    throw new Error("Algo ha salido mal"+tokenV);
-  } else if (res.status == 400) {
-    console.log("token es: ")
-    console.log(res.json());
+    throw new Error("Algo ha salido mal");
   }
 
   const resJson = await res.json();
@@ -95,8 +90,7 @@ const petitionRecoverNewPassword = async (tokenV, passwordConfirm) => {
 };
 
 //Refresh token
-const refreshToken = async (refreTok) => {
-  //const refreTok = window.localStorage.getItem("refreshToken");
+const petitionRefreshToken = async (refreTok) => {
   const res = await fetch(`${urlApi}refresh`, {
     method: "POST",
     body: JSON.stringify({
@@ -105,17 +99,15 @@ const refreshToken = async (refreTok) => {
     headers: { "content-type": "application/JSON" },
   });
   if (res.status == 200) {
-    const resJson = await res.json();
-    console.log("Pasa verdad");
+    const res = await res.json();
     window.localStorage.setItem("accessToken", resJson.accessToken);
-    //window.localStorage.setItem("refreshToken", resJson.refreshToken);
   } else {
-    console.log("Hay un error");
     window.localStorage.removeItem("accessToken");
-    window.localStorage.removeItem("refreshToken");
-    //location.reload();
+    window.localStorage.removeItem("accessToken");
     throw new Error("Algo ha salido mal");
   }
+
+  return resJson;
 };
 
 export {
@@ -124,5 +116,5 @@ export {
   petitionForgotPassword,
   petitionConfirmation,
   petitionRecoverNewPassword,
-  refreshToken,
+  petitionRefreshToken,
 };

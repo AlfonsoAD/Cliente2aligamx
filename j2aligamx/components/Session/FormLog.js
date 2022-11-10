@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { petitionLogin } from "../../api/petitionsUser";
 import Link from "next/link";
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-import { petitionLogin } from "../../api/petitionsUser";
 import Swal from "sweetalert2";
 
 const FormLog = () => {
@@ -24,7 +24,7 @@ const FormLog = () => {
         setEmail(null);
         setPassword(null);
       } else {
-        const res = await petitionLogin(email, password);
+        await petitionLogin(email, password);
         router.push("/home");
       }
     } catch (err) {

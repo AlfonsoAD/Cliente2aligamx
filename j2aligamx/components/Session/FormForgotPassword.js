@@ -18,6 +18,11 @@ const FormForgotPassword = () => {
         setEmail(null);
       } else {
         await petitionForgotPassword(email);
+        Swal.fire(
+          "Continua para seguir con el proceso",
+          "Verifica tu correo para confirmar tu cuenta",
+          "success"
+        );
       }
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");
