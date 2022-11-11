@@ -20,15 +20,16 @@ const FormSignUp = () => {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  //Uso de hooks
+  const { vUserName, vEmail, vPassword, vPasswordConfirm } = dataValidations();
+  const { validationUserName, validationEmail, validationPassword } =
+    validations();
   //Variables aux
   const errorUserName = vUserName(validationUserName(userName));
   const errorEmail = vEmail(validationEmail(email));
   const errorPassword = vPassword(validationPassword(password));
   const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
-  //Uso de hooks
-  const { vUserName, vEmail, vPassword, vPasswordConfirm } = dataValidations();
-  const { validationUserName, validationEmail, validationPassword } =
-    validations();
+
   //Funciones
   const submit = async (e) => {
     if (
