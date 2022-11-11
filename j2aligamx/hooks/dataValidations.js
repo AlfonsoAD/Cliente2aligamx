@@ -15,6 +15,7 @@ const dataValidations = () => {
     if (validationPassword == false) {
       return "* Debe tener minimo una letra minúscula, una letra mayúscula, un número, un carácter especial y mayor a 8 caracteres.";
     }
+    return "";
   };
 
   const vPasswordConfirm = (password, passwordConfirm) => {
@@ -23,7 +24,7 @@ const dataValidations = () => {
     }
   };
 
-  return [vUserName, vEmail, vPassword, vPasswordConfirm];
+  return { vUserName, vEmail, vPassword, vPasswordConfirm };
 };
 
 export default dataValidations;
