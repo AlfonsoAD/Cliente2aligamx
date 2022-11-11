@@ -1,7 +1,9 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+//Peticiones api
+import { petitionRefreshToken } from "../api/petitionsUser";
+//Componente
 import SpinnerSplash from "../components/SpinnerSplash";
-import { refreshToken } from "../api/petitionsUser";
 
 export default function Home() {
   const router = useRouter();
@@ -14,7 +16,7 @@ export default function Home() {
   const refresh = async () => {
     try {
       const refreTok = window.localStorage.getItem("refreshToken");
-      await refreshToken(refreTok);
+      await petitionRefreshToken(refreTok);
     } catch (err) {
       console.log(err);
     }

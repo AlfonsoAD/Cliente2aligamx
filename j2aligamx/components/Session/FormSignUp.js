@@ -12,14 +12,20 @@ import ContainerForm from "./ContainerForm";
 import Swal from "sweetalert2";
 
 const FormSignUp = () => {
+  //Estados
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorUserName, setErrorUserName] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
+  //Uso de hooks
   const [vUserName, vEmail, vPassword, vPasswordConfirm] = dataValidations();
   const [validationUserName, validationEmail, validationPassword] =
     validations();
-
+  //Funciones
   const submit = async (e) => {
     if (
       userName != "" ||
@@ -43,21 +49,21 @@ const FormSignUp = () => {
       Swal.fire("Error", "Llena todos los campos", "error");
     }
   };
-  const errorUserName = vUserName(validationUserName(userName));
-  const errorEmail = vEmail(validationEmail(email));
-  const errorPassword = vPassword(validationPassword(password));
-  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
 
   const onChangeUserName = (e) => {
+    setErrorUserName(vUserName(validationUserName(userName)));
     setUserName(e.target.value);
   };
   const onChangeEmail = (e) => {
+    setErrorEmail(vEmail(validationEmail(email)));
     setEmail(e.target.value);
   };
   const onChangePassword = (e) => {
+    setErrorPassword(vPassword(validationPassword(password)));
     setPassword(e.target.value);
   };
   const onChangePasswordConfirm = (e) => {
+    setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
     setPasswordConfirm(e.target.value);
   };
 
@@ -68,6 +74,7 @@ const FormSignUp = () => {
     setPasswordConfirm("");
   };
 
+  //Regreso de componente
   return (
     <ContainerForm>
       <div className="m-3">

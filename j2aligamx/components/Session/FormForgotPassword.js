@@ -1,13 +1,25 @@
+import { useState } from "react";
+//Peticiones api
+import { petitionForgotPassword } from "../../api/petitionsUser";
+//Componentes
 import ContainerForm from "./ContainerForm";
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
-import { petitionForgotPassword } from "../../api/petitionsUser";
-import { useState } from "react";
+//Hooks
+import validations from "../../hooks/validations";
+import dataValidations from "../../hooks/dataValidations";
+//Herramientas
 import Swal from "sweetalert2";
 
 const FormForgotPassword = () => {
+  //Estados
   const [email, setEmail] = useState(null);
-  const onChangeEmail = (e) => setEmail(e.target.value);
+  const [errorEmail, setErrorEmail] = useState("");
+
+  const onChangeEmail = (e) => {
+    setErrorEmail(vEmail(validationEmail(email)));
+    setEmail(e.target.value);
+  };
 
   const submit = async (e) => {
     try {
@@ -29,6 +41,7 @@ const FormForgotPassword = () => {
     }
   };
 
+  //Regreso de componente
   return (
     <ContainerForm>
       <div className="m-3">
@@ -42,6 +55,7 @@ const FormForgotPassword = () => {
         </p>
       </div>
       <Input type="email" placeholder="Email" onchange={onChangeEmail} />
+      <small className="text-danger">{errorEmail}</small>
       <div className="flex items-baseline justify-center">
         <ButtonClick type="submit" text="Recuperar" click={submit} />
       </div>
