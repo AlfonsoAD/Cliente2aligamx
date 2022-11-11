@@ -3,7 +3,7 @@ import { unregister } from "./Interceptor";
 
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
-  const res = await fetch(`${process.env.API_URL}/users/signup`, {
+  const res = await fetch(`${process.env.API_URL_LOCAL}/users/signup`, {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -23,10 +23,13 @@ const petitionSignUp = async (email, password, userName) => {
 //Confirmación del correo electrónico
 const petitionConfirmation = async (token) => {
   if (token != null) {
-    const res = await fetch(`${process.env.API_URL}/confirmation/${token}`, {
-      method: "POST",
-      headers: { "content-Type": "application/JSON" },
-    });
+    const res = await fetch(
+      `${process.env.API_URL_LOCAL}/confirmation/${token}`,
+      {
+        method: "POST",
+        headers: { "content-Type": "application/JSON" },
+      }
+    );
 
     if (res.status != 200) {
       throw new Error("Algo ha salido mal");
@@ -39,7 +42,7 @@ const petitionConfirmation = async (token) => {
 
 //Inicio de sesión
 const petitionLogin = async (email, password) => {
-  const res = await fetch(`${process.env.API_URL}/users/refresh-login`, {
+  const res = await fetch(`${process.env.API_URL_LOCAL}/users/refresh-login`, {
     method: "POST",
     body: JSON.stringify({
       email: email,
@@ -62,7 +65,7 @@ const petitionLogin = async (email, password) => {
 
 //Recuperar contraseña
 const petitionForgotPassword = async (email) => {
-  const res = await fetch(`${process.env.API_URL}/user/${email}`);
+  const res = await fetch(`${process.env.API_URL_LOCAL}/user/${email}`);
 
   if (res.status != 200) {
     throw new Error("Algo ha salido mal");
@@ -74,7 +77,7 @@ const petitionForgotPassword = async (email) => {
 
 //Contraseña nueva
 const petitionRecoverNewPassword = async (tokenV, passwordConfirm) => {
-  const res = await fetch(`${process.env.API_URL}/changePass/${tokenV}`, {
+  const res = await fetch(`${process.env.API_URL_LOCAL}/changePass/${tokenV}`, {
     method: "POST",
     body: JSON.stringify({
       password: passwordConfirm,
@@ -91,7 +94,7 @@ const petitionRecoverNewPassword = async (tokenV, passwordConfirm) => {
 
 //Refresh token
 const petitionRefreshToken = async (refreTok) => {
-  const res = await fetch(`${process.env.API_URL}/refresh`, {
+  const res = await fetch(`${process.env.API_URL_LOCAL}/refresh`, {
     method: "POST",
     body: JSON.stringify({
       refreshToken: refreTok,
