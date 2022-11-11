@@ -17,19 +17,17 @@ const FormNewPassword = () => {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
+  const errorPassword = vPassword(validationPassword(password));
+  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
   //Uso de hooks
   const { vPassword, vPasswordConfirm } = dataValidations();
   const { validationPassword } = validation();
 
   //Funciones
   const onChangePassword = (e) => {
-    setErrorPassword(vPassword(validationPassword(password)));
     setPassword(e.target.value);
   };
   const onChangePasswordConfirm = (e) => {
-    setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
     setPasswordConfirm(e.target.value);
   };
 

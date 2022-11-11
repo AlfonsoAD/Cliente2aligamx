@@ -11,7 +11,6 @@ const dataValidations = () => {
     if (validationEmail == false) {
       return "* No tiene formato de correo electrónico.";
     }
-
     return "";
   };
 
@@ -19,7 +18,6 @@ const dataValidations = () => {
     if (validationPassword == false) {
       return "* Debe tener minimo una letra minúscula, una letra mayúscula, un número, un carácter especial y mayor a 8 caracteres.";
     }
-
     return "";
   };
 
@@ -27,7 +25,6 @@ const dataValidations = () => {
     if (password !== passwordConfirm) {
       return "* Las contraseñas no coinciden";
     }
-
     return "";
   };
 
