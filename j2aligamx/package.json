@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "dotenv": "^16.0.3",
     "fetch-intercept": "^2.4.0",
     "jsonwebtoken": "^8.5.1",
     "next": "12.3.1",

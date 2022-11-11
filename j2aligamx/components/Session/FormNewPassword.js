@@ -10,15 +10,18 @@ import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
   const router = useRouter();
-  const [vUserName, vEmail, vPassword, vPasswordConfirm] = dataValidations();
+  const { vPassword, vPasswordConfirm } = dataValidations();
   const [validationUserName, validationEmail, validationPassword] =
     validation();
-  const errorPassword = vPassword(validationPassword(password));
+  // const errorPassword = vPassword(validationPassword(password));
+
   const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
 
   const onChangePassword = (e) => {
+    setPassword2(vPassword(validationPassword(password)));
     setPassword(e.target.value);
   };
   const onChangePasswordConfirm = (e) => {
@@ -59,7 +62,7 @@ const FormNewPassword = () => {
         value={password}
         onchange={onChangePassword}
       />
-      <small className="text-danger">{errorPassword}</small>
+      <small className="text-danger">{password2}</small>
 
       <Input
         typeInput="password"
