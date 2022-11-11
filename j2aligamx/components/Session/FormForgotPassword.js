@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 //Peticiones api
 import { petitionForgotPassword } from "../../api/petitionsUser";
 //Componentes
