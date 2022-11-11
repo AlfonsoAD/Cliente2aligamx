@@ -1,17 +1,21 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { petitionLogin } from "../../api/petitionsUser";
 import Link from "next/link";
+//Peticiones api
+import { petitionLogin } from "../../api/petitionsUser";
+//Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
+//Herramientas
 import Swal from "sweetalert2";
 
 const FormLog = () => {
+  const router = useRouter();
+  //Estados
   const [email, setEmail] = useState(null);
   const [password, setPassword] = useState(null);
-  const router = useRouter();
-
+  //Funciones
   const onChangeEmail = (e) => setEmail(e.target.value);
   const onChangePassword = (e) => setPassword(e.target.value);
 
@@ -32,6 +36,7 @@ const FormLog = () => {
     }
   };
 
+  //Regreso de componente
   return (
     <ContainerForm>
       <div>

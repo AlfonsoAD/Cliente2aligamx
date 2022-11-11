@@ -1,30 +1,35 @@
+import { useState } from "react";
+import { useRouter } from "next/router";
+//Peticion api
+import { petitionRecoverNewPassword } from "../../api/petitionsUser";
+//Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-import { petitionRecoverNewPassword } from "../../api/petitionsUser";
-import { useState } from "react";
-import { useRouter } from "next/router";
+//Hooks
 import validation from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
+//Herramientas
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
-  const [password, setPassword] = useState("");
-  const [password2, setPassword2] = useState("");
-  const [passwordConfirm, setPasswordConfirm] = useState("");
+  //Estados
   const router = useRouter();
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
+  //Uso de hooks
   const { vPassword, vPasswordConfirm } = dataValidations();
-  const [validationUserName, validationEmail, validationPassword] =
-    validation();
-  // const errorPassword = vPassword(validationPassword(password));
+  const { validationPassword } = validation();
 
-  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
-
+  //Funciones
   const onChangePassword = (e) => {
-    setPassword2(vPassword(validationPassword(password)));
+    setErrorPassword(vPassword(validationPassword(password)));
     setPassword(e.target.value);
   };
   const onChangePasswordConfirm = (e) => {
+    setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
     setPasswordConfirm(e.target.value);
   };
 
@@ -49,6 +54,7 @@ const FormNewPassword = () => {
     }
   };
 
+  //Regreso de componente
   return (
     <ContainerForm>
       <div className="m-3">
@@ -62,7 +68,7 @@ const FormNewPassword = () => {
         value={password}
         onchange={onChangePassword}
       />
-      <small className="text-danger">{password2}</small>
+      <small className="text-danger">{errorPassword}</small>
 
       <Input
         typeInput="password"

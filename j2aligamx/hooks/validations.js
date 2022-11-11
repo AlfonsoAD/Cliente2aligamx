@@ -17,7 +17,7 @@ const validation = () => {
     return regexPassword.test(password);
   };
 
-  return [validationUserName, validationEmail, validationPassword];
+  return { validationUserName, validationEmail, validationPassword };
 };
 
 export default validation;
