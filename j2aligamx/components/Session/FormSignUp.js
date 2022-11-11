@@ -51,20 +51,20 @@ const FormSignUp = () => {
   };
 
   const onChangeUserName = (e) => {
-    setErrorUserName(vUserName(validationUserName(userName)));
     setUserName(e.target.value);
+    setErrorUserName(vUserName(validationUserName(userName)));
   };
   const onChangeEmail = (e) => {
-    setErrorEmail(vEmail(validationEmail(email)));
     setEmail(e.target.value);
+    setErrorEmail(vEmail(validationEmail(email)));
   };
   const onChangePassword = (e) => {
-    setErrorPassword(vPassword(validationPassword(password)));
     setPassword(e.target.value);
+    setErrorPassword(vPassword(validationPassword(password)));
   };
   const onChangePasswordConfirm = (e) => {
-    setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
     setPasswordConfirm(e.target.value);
+    setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
   };
 
   const limpiar = () => {

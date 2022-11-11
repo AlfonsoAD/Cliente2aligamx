@@ -15,6 +15,8 @@ const FormForgotPassword = () => {
   //Estados
   const [email, setEmail] = useState(null);
   const [errorEmail, setErrorEmail] = useState("");
+  const { vEmail } = dataValidations();
+  const { validationEmail } = validations();
 
   const onChangeEmail = (e) => {
     setErrorEmail(vEmail(validationEmail(email)));
