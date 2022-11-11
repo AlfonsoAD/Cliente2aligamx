@@ -14,12 +14,10 @@ import Swal from "sweetalert2";
 const FormForgotPassword = () => {
   //Estados
   const [email, setEmail] = useState(null);
-  const [errorEmail, setErrorEmail] = useState("");
   const { vEmail } = dataValidations();
   const { validationEmail } = validations();
-
+  const errorEmail = vEmail(validationEmail(email));
   const onChangeEmail = (e) => {
-    setErrorEmail(vEmail(validationEmail(email)));
     setEmail(e.target.value);
   };
 
@@ -60,6 +58,13 @@ const FormForgotPassword = () => {
       <small className="text-danger">{errorEmail}</small>
       <div className="flex items-baseline justify-center">
         <ButtonClick type="submit" text="Recuperar" click={submit} />
+      </div>
+      <div className="flex items-baseline justify-center mt-2">
+        <Link href={"/session/login" ?? ""}>
+          <a href="" className="text-sm text-blue-600 hover:underline">
+            Regresar
+          </a>
+        </Link>
       </div>
     </ContainerForm>
   );

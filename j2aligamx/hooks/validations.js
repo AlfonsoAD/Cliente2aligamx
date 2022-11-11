@@ -6,15 +6,15 @@ import {
 
 const validation = () => {
   const validationUserName = (userName) => {
-    return regexUserName.test(userName);
+    if (userName != "") return regexUserName.test(userName);
   };
 
   const validationEmail = (email) => {
-    return regexEmail.test(email);
+    if (email != "") return regexEmail.test(email);
   };
 
   const validationPassword = (password) => {
-    return regexPassword.test(password);
+    if (password != "") return regexPassword.test(password);
   };
 
   return { validationUserName, validationEmail, validationPassword };

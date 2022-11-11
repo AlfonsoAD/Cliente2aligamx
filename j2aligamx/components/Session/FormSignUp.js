@@ -1,6 +1,8 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
 //Peticiones api
-import { petitionSignUp } from "../../api/petitionsUser";
+import { petitionSignUp } from "../../api/(petitionsUser";
 //Hooks
 import validations from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
@@ -12,15 +14,17 @@ import ContainerForm from "./ContainerForm";
 import Swal from "sweetalert2";
 
 const FormSignUp = () => {
+  const router = useRouter();
   //Estados
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const [errorEmail, setErrorEmail] = useState("");
-  const [errorUserName, setErrorUserName] = useState("");
-  const [errorPassword, setErrorPassword] = useState("");
-  const [errorPasswordConfirm, setErrorPasswordConfirm] = useState("");
+  //Variables aux
+  const errorUserName = vUserName(validationUserName(userName));
+  const errorEmail = vEmail(validationEmail(email));
+  const errorPassword = vPassword(validationPassword(password));
+  const errorPasswordConfirm = vPasswordConfirm(password, passwordConfirm);
   //Uso de hooks
   const { vUserName, vEmail, vPassword, vPasswordConfirm } = dataValidations();
   const { validationUserName, validationEmail, validationPassword } =
@@ -51,20 +55,20 @@ const FormSignUp = () => {
   };
 
   const onChangeUserName = (e) => {
+    //setErrorUserName(vUserName(validationUserName(userName)));
     setUserName(e.target.value);
-    setErrorUserName(vUserName(validationUserName(userName)));
   };
   const onChangeEmail = (e) => {
+    //setErrorEmail(vEmail(validationEmail(email)));
     setEmail(e.target.value);
-    setErrorEmail(vEmail(validationEmail(email)));
   };
   const onChangePassword = (e) => {
+    //  setErrorPassword(vPassword(validationPassword(password)));
     setPassword(e.target.value);
-    setErrorPassword(vPassword(validationPassword(password)));
   };
   const onChangePasswordConfirm = (e) => {
+    //setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
     setPasswordConfirm(e.target.value);
-    setErrorPasswordConfirm(vPasswordConfirm(password, passwordConfirm));
   };
 
   const limpiar = () => {
@@ -114,9 +118,11 @@ const FormSignUp = () => {
         <ButtonClick type="submit" text="Registrar" click={submit} />
       </div>
       <div className="flex items-baseline justify-center mt-2">
-        <a href="#" className="text-sm text-blue-600 hover:underline">
-          Iniciar sesión
-        </a>
+        <Link href={"/session/login" ?? ""}>
+          <a href="" className="text-sm text-blue-600 hover:underline">
+            Regresar
+          </a>
+        </Link>
       </div>
     </ContainerForm>
   );
