@@ -1,5 +1,5 @@
 import { unregister } from "./Interceptor";
-const urlApi = "https://j2sligamxapi.herokuapp.com";
+//const urlApi = "https://j2sligamxapi.herokuapp.com";
 
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {

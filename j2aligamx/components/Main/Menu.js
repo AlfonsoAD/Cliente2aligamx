@@ -1,13 +1,15 @@
+import Image from "next/image";
+
 const Menu = () => {
+  const IMG_URL =
+    "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png";
+
   return (
     <div>
       <nav className="bg-gradient-to-r from-header to-blueMenu ... px-2 sm:px-4 py-2.5 w-full z-20 top-25 left-0 border-b">
         <div className="container flex flex-wrap justify-center items-center mx-auto">
           <a href="" className="flex items-center">
-            <img
-              src="https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png"
-              className="mr-3 h-6 sm:h-9"
-            />
+            <img src={IMG_URL} className="mr-3 h-6 sm:h-9" />
           </a>
           <a href="" className="flex items-center m-3">
             <span className="self-center text-xl font-semibold whitespace-nowrap">

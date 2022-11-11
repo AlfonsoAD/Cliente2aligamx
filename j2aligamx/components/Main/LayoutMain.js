@@ -1,8 +1,11 @@
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+//Peticiones api
 import { petitionRefreshToken } from "../../api/petitionsUser";
+//Componentes externos
 import Menu from "./Menu";
 import React from "react";
+//Herramientas
 import Swal from "sweetalert2";
 
 const LayoutMain = ({ children }) => {
@@ -13,6 +16,7 @@ const LayoutMain = ({ children }) => {
     validando();
   }, []);
 
+  //Funciones
   const refresh = async () => {
     try {
       const refreTok = window.localStorage.getItem("refreshToken");
@@ -37,6 +41,7 @@ const LayoutMain = ({ children }) => {
     }
   };
 
+  //Regreso de componente
   return (
     <React.Fragment>
       <Menu />

@@ -3,6 +3,9 @@ import FooterSession from "../Session/FooterSession";
 import React from "react";
 
 const LayoutSession = ({ children }) => {
+  const IMG_URL =
+    "url(https://user-images.githubusercontent.com/90345024/198122753-735bf2ed-828c-4cd7-82b3-2daa5fc9c4fd.jpg)";
+
   return (
     <React.Fragment>
       <Header />
@@ -10,8 +13,7 @@ const LayoutSession = ({ children }) => {
         className="bg-no-repeat bg-cover min-h-full"
         style={{
           height: "100vh",
-          backgroundImage:
-            "url(https://user-images.githubusercontent.com/90345024/198122753-735bf2ed-828c-4cd7-82b3-2daa5fc9c4fd.jpg)",
+          backgroundImage: IMG_URL,
         }}
       >
         {children}
