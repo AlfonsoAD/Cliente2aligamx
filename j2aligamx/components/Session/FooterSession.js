@@ -8,10 +8,6 @@ const FooterLogin = () => {
       <div className="sm:flex sm:items-center sm:justify-center">
         <img src={IMG_URL} className="mr-3 h-16" />
       </div>
-      <hr className="my-6 border-gray-200 sm:mx-auto dark:border-emerald-900 lg:my-8" />
-      <span className="block text-sm text-emerald-900 sm:text-center">
-        © 2022 - J2A-LIGA MX.
-      </span>
     </footer>
   );
 };

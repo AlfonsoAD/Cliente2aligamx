@@ -28,7 +28,7 @@ export default function Home() {
           </MatchContainer>
         </div>
         <div className="m-2 w-1/5">
-            <TableResults/>  
+          <TableResults />
         </div>
       </div>
     </LayoutMain>

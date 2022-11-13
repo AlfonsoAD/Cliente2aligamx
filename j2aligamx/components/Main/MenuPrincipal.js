@@ -10,8 +10,8 @@ const MenPrincipal = () => {
     "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png";
 
   const navigation = [
-    { name: "INICIO", href: "#", current: true },
-    { name: "PARTIDOS", href: "#", current: false },
+    { name: "INICIO", href: "/home", current: false },
+    { name: "PARTIDOS", href: "/partidos", current: false },
     { name: "RESULTADOS", href: "#", current: false },
     { name: "CALENDARIO", href: "#", current: false },
     { name: "ESTADÍSTICAS", href: "#", current: false },
@@ -123,7 +123,7 @@ const MenPrincipal = () => {
                   className={classNames(
                     item.current
                       ? "bg-blueMenu text-white"
-                      : "text-gray-300 hover:bg-blueMenu hover:text-white",
+                      : "text-gray-300 hover:bg-transparent hover:text-white",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
