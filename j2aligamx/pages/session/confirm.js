@@ -4,7 +4,7 @@ import FormConfirm from "../../components/Session/FormConfirm";
 import { petitionConfirmation } from "../../pages/api/petitionsUser";
 import Swal from "sweetalert2";
 
-const confirm = () => {
+const Confirm = () => {
   useEffect(() => {
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
@@ -28,4 +28,4 @@ const confirm = () => {
   );
 };
 
-export default confirm;
+export default Confirm;
