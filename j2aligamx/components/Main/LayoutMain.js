@@ -1,23 +1,23 @@
 import React from "react";
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+/*import { useRouter } from "next/router";
+import { useEffect } from "react";*/
 //Peticiones api
-import { petitionRefreshToken } from "../../api/petitionsUser";
+/*import { petitionRefreshToken } from "../../api/petitionsUser";*/
 //Componentes externos
 import MenPrincipal from "./MenuPrincipal";
 //Herramientas
-import Swal from "sweetalert2";
+/*import Swal from "sweetalert2";*/
 
 const LayoutMain = ({ children }) => {
-  const router = useRouter();
+  /*const router = useRouter();
 
   useEffect(() => {
     refresh();
     validando();
-  }, []);
+  }, []);*/
 
   //Funciones
-  const refresh = async () => {
+  /*const refresh = async () => {
     try {
       const refreTok = window.localStorage.getItem("refreshToken");
       await petitionRefreshToken(refreTok);
@@ -39,7 +39,7 @@ const LayoutMain = ({ children }) => {
         router.push("/home");
       }, 2000);
     }
-  };
+  };*/
 
   //Regreso de componente
   return (
