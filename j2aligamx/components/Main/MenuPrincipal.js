@@ -10,13 +10,13 @@ const MenPrincipal = () => {
     "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png";
 
   const navigation = [
-    { name: "INICIO", href: "#", current: true },
-    { name: "PARTIDOS", href: "#", current: false },
-    { name: "RESULTADOS", href: "#", current: false },
-    { name: "CALENDARIO", href: "#", current: false },
-    { name: "ESTADÍSTICAS", href: "#", current: false },
-    { name: "NOTICIAS", href: "#", current: false },
-    { name: "VIDEOS", href: "#", current: false },
+    { name: "INICIO", href: "/main/home", current: false },
+    { name: "PARTIDOS", href: "/main/partidos", current: false },
+    { name: "RESULTADOS", href: "/main/resultados", current: false },
+    { name: "CALENDARIO", href: "/main/calendario", current: false },
+    { name: "ESTADÍSTICAS", href: "/main/estadisticas", current: false },
+    { name: "NOTICIAS", href: "/main/noticias", current: false },
+    { name: "VIDEOS", href: "/main/videos", current: false },
   ];
 
   const logOut = (e) => {
@@ -123,7 +123,7 @@ const MenPrincipal = () => {
                   className={classNames(
                     item.current
                       ? "bg-blueMenu text-white"
-                      : "text-gray-300 hover:bg-blueMenu hover:text-white",
+                      : "text-gray-300 hover:bg-transparent hover:text-white",
                     "block px-3 py-2 rounded-md text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}

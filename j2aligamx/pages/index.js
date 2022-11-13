@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 //Peticiones api
-import { petitionRefreshToken } from "../api/petitionsUser";
+import { petitionRefreshToken } from "../pages/api/petitionsUser";
 //Componente
 import SpinnerSplash from "../components/SpinnerSplash";
 
-export default function Home() {
+const Index = () => {
   const router = useRouter();
 
   useEffect(() => {
@@ -38,4 +38,5 @@ export default function Home() {
   };
 
   return <SpinnerSplash />;
-}
+};
+export default Index;
