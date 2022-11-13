@@ -1,10 +1,10 @@
 import LayoutSession from "../../components/Session/LayoutSession";
 import FormConfirm from "../../components/Session/FormConfirm";
 import { useEffect } from "react";
-import { petitionConfirmation } from "../../api/petitionsUser";
+import { petitionConfirmation } from "../pages/api/petitionsUser";
 import Swal from "sweetalert2";
 
-export default function Home() {
+const confirm = () => {
   useEffect(() => {
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
@@ -29,4 +29,6 @@ export default function Home() {
       <FormConfirm />
     </LayoutSession>
   );
-}
+};
+
+export default confirm;

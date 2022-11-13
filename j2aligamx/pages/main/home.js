@@ -1,10 +1,10 @@
-import LayoutMain from "../components/Main/LayoutMain";
-import TeamsTablePosition from "../components/Main/TeamsTablePosition";
-import MatchContainer from "../components/Main/MatchContainer";
-import SmallContainerBox from "../components/Main/SmallContainerBox";
-import MatchsResults from "../components/Main/MatchsResults";
+import LayoutMain from "../../components/Main/LayoutMain";
+import TeamsTablePosition from "../../components/Main/TeamsTablePosition";
+import MatchContainer from "../../components/Main/MatchContainer";
+import SmallContainerBox from "../../components/Main/SmallContainerBox";
+import MatchsResults from "../../components/Main/MatchsResults";
 
-export default function Home() {
+const Home = () => {
   return (
     <LayoutMain>
       <div className="flex justify-center flex-wrap">
@@ -45,4 +45,6 @@ export default function Home() {
       </div>
     </LayoutMain>
   );
-}
+};
+
+export default Home;

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 //Peticion api
-import { petitionRecoverNewPassword } from "../../api/petitionsUser";
+import { petitionRecoverNewPassword } from "../../pages/api/petitionsUser";
 //Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";

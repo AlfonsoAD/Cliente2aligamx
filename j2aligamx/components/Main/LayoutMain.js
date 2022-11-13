@@ -2,7 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 //Peticiones api
-import { petitionRefreshToken } from "../../api/petitionsUser";
+import { petitionRefreshToken } from "../../pages/api/petitionsUser";
 //Componentes externos
 import MenPrincipal from "./MenuPrincipal";
 //Herramientas

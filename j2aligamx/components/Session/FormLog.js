@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
 //Peticiones api
-import { petitionLogin } from "../../api/petitionsUser";
+import { petitionLogin } from "../../pages/api/petitionsUser";
 //Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
