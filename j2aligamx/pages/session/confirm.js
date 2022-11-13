@@ -1,6 +1,6 @@
+import { useEffect } from "react";
 import LayoutSession from "../../components/Session/LayoutSession";
 import FormConfirm from "../../components/Session/FormConfirm";
-import { useEffect } from "react";
 import { petitionConfirmation } from "../../pages/api/petitionsUser";
 import Swal from "sweetalert2";
 
@@ -8,11 +8,8 @@ const confirm = () => {
   useEffect(() => {
     let url = window.location.search;
     let auxUrl = url.substring(1, url.length);
-    console.log(auxUrl);
     let auxSplit = auxUrl.split("=");
-    console.log(auxSplit);
     let token = auxSplit[1];
-    console.log(token);
     confirmation(token);
   }, []);
 
