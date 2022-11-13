@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Link from "next/link";
 //Peticiones api
-import { petitionForgotPassword } from "../../api/petitionsUser";
+import { petitionForgotPassword } from "../../pages/api/petitionsUser";
 //Componentes
 import ContainerForm from "./ContainerForm";
 import Input from "../Input";
