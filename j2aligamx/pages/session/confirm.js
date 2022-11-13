@@ -1,7 +1,7 @@
 import LayoutSession from "../../components/Session/LayoutSession";
 import FormConfirm from "../../components/Session/FormConfirm";
 import { useEffect } from "react";
-import { petitionConfirmation } from "../pages/api/petitionsUser";
+import { petitionConfirmation } from "../../pages/api/petitionsUser";
 import Swal from "sweetalert2";
 
 const confirm = () => {
