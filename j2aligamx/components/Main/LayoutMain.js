@@ -12,8 +12,8 @@ const LayoutMain = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    refresh();
-    validando();
+    // refresh();
+    // validando();
   }, []);
 
   //Funciones
@@ -45,7 +45,10 @@ const LayoutMain = ({ children }) => {
   return (
     <React.Fragment>
       <Menu />
-      <main className="bg-no-repeat bg-cover min-h-full bg-white">
+      <main
+        style={{ height: "100vh" }}
+        className="bg-no-repeat bg-cover min-h-full bg-white"
+      >
         {children}
       </main>
     </React.Fragment>
