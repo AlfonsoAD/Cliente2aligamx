@@ -2,6 +2,7 @@ import LayoutMain from "../components/Main/LayoutMain";
 import TeamsTablePosition from "../components/Main/TeamsTablePosition";
 import MatchContainer from "../components/Main/MatchContainer";
 import SmallContainerBox from "../components/Main/SmallContainerBox";
+import MatchsResults from "../components/Main/MatchsResults";
 
 export default function Home() {
   return (
@@ -12,15 +13,33 @@ export default function Home() {
         </div>
         <div className="m-4">
           <MatchContainer>
-            <SmallContainerBox>hola</SmallContainerBox>
-            <SmallContainerBox>hola2</SmallContainerBox>
-            <SmallContainerBox>hola3</SmallContainerBox>
-            <SmallContainerBox>hola4</SmallContainerBox>
-            <SmallContainerBox>hola5</SmallContainerBox>
-            <SmallContainerBox>hola6</SmallContainerBox>
-            <SmallContainerBox>hola7</SmallContainerBox>
-            <SmallContainerBox>hola8</SmallContainerBox>
-            <SmallContainerBox>hola9</SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
+            <SmallContainerBox>
+              <MatchsResults />{" "}
+            </SmallContainerBox>
           </MatchContainer>
         </div>
       </div>
