@@ -7,13 +7,14 @@ import { petitionRefreshToken } from "../../api/petitionsUser";
 import MenPrincipal from "./MenuPrincipal";
 //Herramientas
 import Swal from "sweetalert2";
+import FooterMain from "./FooterMain";
 
 const LayoutMain = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    refresh();
-    validando();
+    // refresh();
+    // validando();
   }, []);
 
   //Funciones
@@ -50,6 +51,7 @@ const LayoutMain = ({ children }) => {
         className="bg-no-repeat bg-cover min-h-full bg-white"
       >
         {children}
+        <FooterMain />
       </main>
     </React.Fragment>
   );
