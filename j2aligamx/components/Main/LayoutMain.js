@@ -1,10 +1,10 @@
+import React from "react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 //Peticiones api
 import { petitionRefreshToken } from "../../api/petitionsUser";
 //Componentes externos
-import Menu from "./Menu";
-import React from "react";
+import MenPrincipal from "./MenuPrincipal";
 //Herramientas
 import Swal from "sweetalert2";
 
@@ -12,8 +12,8 @@ const LayoutMain = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // refresh();
-    // validando();
+    refresh();
+    validando();
   }, []);
 
   //Funciones
@@ -44,7 +44,7 @@ const LayoutMain = ({ children }) => {
   //Regreso de componente
   return (
     <React.Fragment>
-      <Menu />
+      <MenPrincipal />
       <main
         style={{ height: "100vh" }}
         className="bg-no-repeat bg-cover min-h-full bg-white"

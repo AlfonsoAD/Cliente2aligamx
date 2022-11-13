@@ -8,10 +8,10 @@ const TeamsTablePosition = () => {
   const logoMonterrey =
     "https://user-images.githubusercontent.com/90345024/201499200-01f8dc09-6c9b-46e6-99ef-c4d2ea911d13.jpg";
   return (
-    <div className="flex m-4 shadow-2xl ... rounded-lg">
-      <div className="overflow-x-auto sm:-mx-6 lg:-mx-8">
+    <div className="m-4 shadow-2xl ... rounded-lg">
+      <div className="overflow-x-auto ... sm:-mx-6 lg:-mx-8">
         <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-          <div className="overflow-hidden">
+          <div>
             <table className="min-w-full">
               <thead className="bg-white border-b">
                 <tr>
