@@ -4,7 +4,7 @@ import MatchContainer from "../../components/Main/MatchContainer";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
 import TableResults from "../../components/Main/TableResults";
 import MatchsResults from "../../components/Main/MatchsResults";
-
+import ModalDetail from "../../components/Main/ModalDetail";
 const Partidos = () => {
   return (
     <LayoutMain>
@@ -13,7 +13,8 @@ const Partidos = () => {
           <SelectJornada />
           <MatchContainer>
             <SmallContainerBox className="m-4 w-1/3">
-                <MatchsResults />{" "}
+                <MatchsResults/>{" "}
+                <ModalDetail/>
             </SmallContainerBox>
             <SmallContainerBox className="m-4 w-1/3">
                 <MatchsResults />{" "}
