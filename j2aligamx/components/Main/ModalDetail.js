@@ -1,4 +1,4 @@
-import CarrouselOptions from "./CarrouselOptions";
+import CarrouselOptions from "./TabOptions";
 
 const ModalDetail = () => {
     const logoAmerica =

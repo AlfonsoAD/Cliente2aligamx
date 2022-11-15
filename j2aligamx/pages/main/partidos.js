@@ -8,6 +8,7 @@ import ModalDetail from "../../components/Main/ModalDetail";
 const Partidos = () => {
   return (
     <LayoutMain>
+      
       <div className="flex justify-center flex-wrap">
         <div className="m-4 w-3/5">
           <SelectJornada />
