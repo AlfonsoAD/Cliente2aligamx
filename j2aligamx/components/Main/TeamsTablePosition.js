@@ -1,127 +1,93 @@
+import clasification22 from "../../utilities/clasification22lmx.json";
+
 const TeamsTablePosition = () => {
-  const logoAmerica =
-    "https://user-images.githubusercontent.com/90345024/201499006-ad675a3a-dfd7-44bb-8092-a06563131922.png";
-  const logoCruzAzul =
-    "https://user-images.githubusercontent.com/90345024/201499029-8de7b773-6efa-4289-9c47-79619bc93fd4.png";
-  const logoPachuca =
-    "https://user-images.githubusercontent.com/90345024/201499147-7ba088f4-c63d-4283-88de-62bd75ca2c37.png";
-  const logoMonterrey =
-    "https://user-images.githubusercontent.com/90345024/201499200-01f8dc09-6c9b-46e6-99ef-c4d2ea911d13.jpg";
   return (
-    <div className="m-4 shadow-2xl ... rounded-lg">
-      <div className="overflow-x-auto ... sm:-mx-6 lg:-mx-8">
-        <div className="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-          <div>
-            <table className="min-w-full">
-              <thead className="bg-white border-b">
-                <tr>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  ></th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Pos
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    Club
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    JJ
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    JG
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    JE
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    JP
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    GF
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    GC
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    DIF
-                  </th>
-                  <th
-                    scope="col"
-                    className="text-sm font-medium text-gray-900 px-6 py-4 text-left"
-                  >
-                    PTS
-                  </th>
+    <div className="overflow-auto rounded-lg m-6 shadow-2xl">
+      <table className="w-full">
+        <thead className="text-white text-sm bg-blueMenu border-b">
+          <tr>
+            <th scope="col" className="px-6 py-4 text-left">
+              Pos
+            </th>
+            <th scope="col" className="px-6 py-4 text-left"></th>
+            <th scope="col" className="px-6 py-4 text-left">
+              Club
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              PTS
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              JJ
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              JG
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              JE
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              JP
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              GF
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              GC
+            </th>
+            <th scope="col" className="px-6 py-4 text-left">
+              DIF
+            </th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100">
+          {clasification22.map((value, index) => {
+            return value.league.standings[index].map((value, index) => {
+              return (
+                <tr key={index}>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.rank}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    <img
+                      src={value.team.logo}
+                      height="32"
+                      width="32"
+                      alt="logo del club"
+                    />
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.team.name}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.points}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.played}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.win}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.draw}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.lose}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.goals.for}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.goals.against}
+                  </td>
+                  <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-6 py-4 text-sm font-small whitespace-nowrap">
+                    {value.all.goals.for - value.all.goals.against}
+                  </td>
                 </tr>
-              </thead>
-              <tbody>
-                <tr className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    <img src={logoAmerica} width="20" height="20" />
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    1
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    América
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    16
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    11
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    2
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    3
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    36
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    16
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    20
-                  </td>
-                  <td className="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                    35
-                  </td>
-                </tr>{" "}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
+              );
+            });
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };

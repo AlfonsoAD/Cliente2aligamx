@@ -2,7 +2,6 @@ import LayoutMain from "../../components/Main/LayoutMain";
 import SelectJornada from "../../components/Main/SelectJornada";
 import MatchContainer from "../../components/Main/MatchContainer";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
-import TableResults from "../../components/Main/TableResults";
 
 const Partidos = () => {
   return (
@@ -26,9 +25,6 @@ const Partidos = () => {
             <SmallContainerBox>hola8</SmallContainerBox>
             <SmallContainerBox>hola9</SmallContainerBox>
           </MatchContainer>
-        </div>
-        <div className="m-2 w-1/5">
-          <TableResults />
         </div>
       </div>
     </LayoutMain>
