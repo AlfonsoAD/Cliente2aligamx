@@ -15,9 +15,8 @@ const Home = () => {
   return (
     <LayoutMain>
       <div className="flex justify-center flex-wrap">
-        <div className="m-4">
-          <TeamsTablePosition />
-        </div>
+        <TeamsTablePosition />
+
         <div className="m-4">
           <MatchContainer>
             <SmallContainerBox>
