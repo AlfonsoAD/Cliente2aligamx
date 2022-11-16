@@ -22,30 +22,6 @@ const Home = () => {
             <SmallContainerBox>
               <MatchsResults />{" "}
             </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
           </MatchContainer>
         </div>
       </div>
