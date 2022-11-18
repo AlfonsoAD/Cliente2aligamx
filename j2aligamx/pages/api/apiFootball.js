@@ -53,12 +53,47 @@ const getOverallTable = async () => {
   }
 };
 
-const getPlayers = () => {};
+const getPlayers = async () => {
+  try {
+    if(window.localStorage.getItem("players")) {
+      return window.localStorage.getItem("players");
+    }
+
+    const res = await fetch(
+      `${API_URL}players?league=${LEAGUE_KEY}&season=2022`,
+      options
+    );
+
+    const resJson = await res.json();
+    window.localStorage.setItem("standings", JSON.stringify(resJson));
+    return resJson;
+  } catch (err) {
+    throw new Error("Algo ha salido mal");
+  }
+};
 
 const getSeasons = () => {};
 const getInformationTeams = () => {};
 const getStatsTeams = () => {};
 const getJourneys = () => {};
-const getMatchs = () => {};
+
+const getMatchs = async (SEASON, ROUND) => {
+  try {
+    if(window.localStorage.getItem("players")) {
+      return window.localStorage.getItem("players");
+    }
+
+    const res = await fetch(
+      `${API_URL}fixtures?league=${LEAGUE_KEY}season=${SEASON}&round=${ROUND}`,
+      options
+    );
+
+    const resJson = await res.json();
+    window.localStorage.setItem("standings", JSON.stringify(resJson));
+    return resJson;
+  } catch (err) {
+    throw new Error("Algo ha salido mal");
+  }
+};
 
 export { getTeamsLeague, getOverallTable };
