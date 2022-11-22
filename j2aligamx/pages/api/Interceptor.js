@@ -7,18 +7,14 @@ export const unregister = FetchInterceptor.register({
   },
 
   requestError: function (error) {
-    console.log(error);
     return Promise.reject(error);
   },
 
   response: function (response) {
-    console.log(response.status);
-    console.log(response.json);
     return response;
   },
 
   responseError: function (error) {
-    console.log(error);
     return Promise.reject(error);
   },
 });
