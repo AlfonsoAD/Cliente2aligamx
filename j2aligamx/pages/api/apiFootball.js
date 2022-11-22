@@ -61,7 +61,7 @@ const getPlayers = async () => {
     }
 
     const res = await fetch(
-      `${API_URL}players?league=${LEAGUE_KEY}&season=2022`,
+      `${API_URL}/players?league=${LEAGUE_KEY}&season=2022`,
       options
     );
 
@@ -73,28 +73,64 @@ const getPlayers = async () => {
   }
 };
 
-const getSeasons = () => {};
+const getSeasons = async () => {
+  try {
+    /*if(window.localStorage.getItem("seasons")) {
+      resSeason = awaitJSON.parse(window.localStorage.getItem("seasons"));
+      return resSeason;
+    }*/
+
+    const res = await fetch(`${API_URL}/leagues/seasons`, options);
+
+    const resJson = await res.json();
+    //window.localStorage.setItem("seasons", JSON.stringify(resJson));
+    return resJson.response;
+  } catch (err) {
+    throw new Error("Algo ha salido mal");
+  }
+};
+
 const getInformationTeams = () => {};
 const getStatsTeams = () => {};
-const getJourneys = () => {};
+
+const getRounds = async (SEASON) => {
+  try {
+    /*if(window.localStorage.getItem("rounds")) {
+      resRounds = JSON.parse(window.localStorage.getItem("rounds"));
+      return resRounds;
+    }*/
+
+    const res = await fetch(
+      `${API_URL}/fixtures/rounds?league=${LEAGUE_KEY}&season=${SEASON}`,
+      options
+    );
+
+    const resJson = await res.json();
+    //window.localStorage.setItem("rounds", JSON.stringify(resJson));
+    return resJson.response;
+  } catch (err) {
+    throw new Error("Algo ha salido mal");
+  }
+};
 
 const getMatchs = async (SEASON, ROUND) => {
   try {
-    if (window.localStorage.getItem("players")) {
-      return window.localStorage.getItem("players");
+    if (window.localStorage.getItem("matchs")) {
+      resRounds = JSON.parse(window.localStorage.getItem("matchs"));
+      return resRounds;
     }
 
     const res = await fetch(
-      `${API_URL}fixtures?league=${LEAGUE_KEY}season=${SEASON}&round=${ROUND}`,
+      `${API_URL}/fixtures?league=${LEAGUE_KEY}&season=${SEASON}&round=${ROUND}`,
       options
     );
 
     const resJson = await res.json();
-    window.localStorage.setItem("standings", JSON.stringify(resJson));
+    window.localStorage.setItem("matchs", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
     throw new Error("Algo ha salido mal");
   }
 };
 
-export { getTeamsLeague, getOverallTable };
+export { getTeamsLeague, getOverallTable, getSeasons, getRounds };
