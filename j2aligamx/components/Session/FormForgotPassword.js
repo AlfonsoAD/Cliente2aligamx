@@ -58,7 +58,12 @@ const FormForgotPassword = () => {
       <Input type="email" placeholder="Email" onchange={onChangeEmail} />
       <small className="text-danger">{errorEmail}</small>
       <div className="flex items-baseline justify-center">
-        <ButtonClick type="submit" text="Recuperar" click={submit} />
+        <ButtonClick
+          type="submit"
+          text="Recuperar"
+          clase="regular"
+          click={submit}
+        />
       </div>
       <div className="flex items-baseline justify-center mt-2">
         <Link href={"/session/login" ?? ""}>

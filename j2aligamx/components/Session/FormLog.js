@@ -60,7 +60,12 @@ const FormLog = () => {
             />
           </div>
           <div className="flex items-baseline justify-center">
-            <ButtonClick type="submit" text="Iniciar sesión" click={submit} />
+            <ButtonClick
+              type="submit"
+              text="Iniciar sesión"
+              clase="regular"
+              click={submit}
+            />
           </div>
           <div className="flex items-baseline justify-center mt-2">
             <Link href={"/session/forgotpassword" ?? ""}>

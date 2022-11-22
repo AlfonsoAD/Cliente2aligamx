@@ -116,7 +116,12 @@ const FormSignUp = () => {
       />
       <small className="text-danger">{errorPasswordConfirm}</small>
       <div className="mt-6">
-        <ButtonClick type="submit" text="Registrar" click={submit} />
+        <ButtonClick
+          type="submit"
+          text="Registrar"
+          clase="regular"
+          click={submit}
+        />
       </div>
       <div className="flex items-baseline justify-center mt-2">
         <Link href={"/session/login" ?? ""}>

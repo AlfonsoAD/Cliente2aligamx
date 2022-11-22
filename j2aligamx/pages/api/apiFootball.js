@@ -37,7 +37,8 @@ const getTeamsLeague = async () => {
 const getOverallTable = async () => {
   try {
     if (window.localStorage.getItem("standings")) {
-      return window.localStorage.getItem("standings");
+      const res = window.localStorage.getItem("standings");
+      return res;
     }
 
     const res = await fetch(
@@ -55,7 +56,7 @@ const getOverallTable = async () => {
 
 const getPlayers = async () => {
   try {
-    if(window.localStorage.getItem("players")) {
+    if (window.localStorage.getItem("players")) {
       return window.localStorage.getItem("players");
     }
 
@@ -79,10 +80,7 @@ const getSeasons = async () => {
       return resSeason;
     }*/
 
-    const res = await fetch(
-      `${API_URL}/leagues/seasons`,
-      options
-    );
+    const res = await fetch(`${API_URL}/leagues/seasons`, options);
 
     const resJson = await res.json();
     //window.localStorage.setItem("seasons", JSON.stringify(resJson));
@@ -117,7 +115,7 @@ const getRounds = async (SEASON) => {
 
 const getMatchs = async (SEASON, ROUND) => {
   try {
-    if(window.localStorage.getItem("matchs")) {
+    if (window.localStorage.getItem("matchs")) {
       resRounds = JSON.parse(window.localStorage.getItem("matchs"));
       return resRounds;
     }
@@ -135,4 +133,4 @@ const getMatchs = async (SEASON, ROUND) => {
   }
 };
 
-export { getTeamsLeague, getOverallTable ,getSeasons, getRounds};
+export { getTeamsLeague, getOverallTable, getSeasons, getRounds };
