@@ -37,7 +37,8 @@ const getTeamsLeague = async () => {
 const getOverallTable = async () => {
   try {
     if (window.localStorage.getItem("standings")) {
-      return window.localStorage.getItem("standings");
+      const res = window.localStorage.getItem("standings");
+      return res;
     }
 
     const res = await fetch(
@@ -55,7 +56,7 @@ const getOverallTable = async () => {
 
 const getPlayers = async () => {
   try {
-    if(window.localStorage.getItem("players")) {
+    if (window.localStorage.getItem("players")) {
       return window.localStorage.getItem("players");
     }
 
@@ -79,7 +80,7 @@ const getJourneys = () => {};
 
 const getMatchs = async (SEASON, ROUND) => {
   try {
-    if(window.localStorage.getItem("players")) {
+    if (window.localStorage.getItem("players")) {
       return window.localStorage.getItem("players");
     }
 

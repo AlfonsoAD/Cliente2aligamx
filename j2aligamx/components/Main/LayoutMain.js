@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { petitionRefreshToken } from "../../pages/api/petitionsUser";
 //Componentes externos
 import MenPrincipal from "./MenuPrincipal";
+import TeamsFooter from "./TeamsFooter";
 //Herramientas
 import Swal from "sweetalert2";
 import FooterMain from "./FooterMain";
@@ -51,6 +52,7 @@ const LayoutMain = ({ children }) => {
         className="bg-no-repeat bg-cover min-h-full bg-white"
       >
         {children}
+        <TeamsFooter />
         <FooterMain />
       </main>
     </React.Fragment>

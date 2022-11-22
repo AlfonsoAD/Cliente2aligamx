@@ -4,26 +4,28 @@ import MatchContainer from "../../components/Main/MatchContainer";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
 import MatchsResults from "../../components/Main/MatchsResults";
 import { getOverallTable } from "../api/apiFootball";
-import { useEffect } from "react";
+import { getNewsSportsMx } from "../api/apiNews";
+import { useEffect, useState } from "react";
+import Modal from "../../components/Modal";
 
 const Home = () => {
+  const [table, setTable] = useState([]);
+  const [news, setNews] = useState([]);
+
   useEffect(() => {
-    const r = getOverallTable();
-    console.log(r);
+    petitions();
   }, []);
+
+  const petitions = () => {
+    getOverallTable().then((res) => setTable(JSON.parse(res)));
+    getNewsSportsMx().then((res) => setNews(res));
+  };
 
   return (
     <LayoutMain>
+      <Modal />;
       <div className="flex justify-center flex-wrap">
-        <TeamsTablePosition />
-
-        <div className="m-4">
-          <MatchContainer>
-            <SmallContainerBox>
-              <MatchsResults />{" "}
-            </SmallContainerBox>
-          </MatchContainer>
-        </div>
+        <TeamsTablePosition data={table} />
       </div>
     </LayoutMain>
   );

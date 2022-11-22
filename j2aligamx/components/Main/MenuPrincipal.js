@@ -12,7 +12,6 @@ const MenPrincipal = () => {
   const navigation = [
     { name: "INICIO", href: "/main/home", current: false },
     { name: "PARTIDOS", href: "/main/partidos", current: false },
-    { name: "RESULTADOS", href: "/main/resultados", current: false },
     { name: "CALENDARIO", href: "/main/calendario", current: false },
     { name: "ESTADÍSTICAS", href: "/main/estadisticas", current: false },
     { name: "NOTICIAS", href: "/main/noticias", current: false },

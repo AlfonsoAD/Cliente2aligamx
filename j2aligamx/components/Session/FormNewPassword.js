@@ -77,7 +77,12 @@ const FormNewPassword = () => {
       <small className="text-danger">{errorPasswordConfirm}</small>
 
       <div className="flex items-baseline justify-center">
-        <ButtonClick type="submit" text="Cambiar/recuperar" click={submit} />
+        <ButtonClick
+          type="submit"
+          text="Cambiar/recuperar"
+          clase="regular"
+          click={submit}
+        />
       </div>
     </ContainerForm>
   );
