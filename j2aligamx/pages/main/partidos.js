@@ -8,7 +8,7 @@ import {getRounds, getMatchs} from "../../pages/api/apiFootball"
 
 const Partidos = () => {
     const[season,setSeason] = useState("2022");
-    const[rounds, setRound] = useState("");
+    const[rounds, setRound] = useState("Apertura - 1");
     const [datarounds, setDataRounds] = useState([]);
     const [datamatchs, setDataMatchs] = useState([]);
     
@@ -16,7 +16,6 @@ const Partidos = () => {
       if(season){
         getRounds(season)
         .then(data => setDataRounds(data))
-        console.log("Hola")
       }
     }
 
@@ -27,9 +26,11 @@ const Partidos = () => {
             console.log(datamatchs)
         }
     }
+
     useEffect(() => {
       gettingRounds();
-    },[/*gettingRounds()*/]);
+      gettinMatches();
+    },[season,rounds]);
 
   return (
     <LayoutMain>
@@ -40,7 +41,7 @@ const Partidos = () => {
             handleChange={(e) => {
                 setSeason(e.target.value)
                 }}
-            onclick = {gettingRounds}
+            
             />
             <SelectList 
             tittle ="jornadas"
@@ -50,34 +51,17 @@ const Partidos = () => {
                 }}
             />
             </div>
-          <MatchContainer>
-            <SmallContainerBox className="m-4 w-1/3">
-                <MatchsResults/>{" "}
-            </SmallContainerBox>
-            <SmallContainerBox className="m-4 w-1/3">
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox className="m-4 w-1/3">
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-                <MatchsResults />{" "}
-            </SmallContainerBox>
-            <SmallContainerBox>
-                <MatchsResults />{" "}
-            </SmallContainerBox>
+          <MatchContainer >
+            {
+              datamatchs.map((item) => (
+                <SmallContainerBox>
+                  <MatchsResults
+                    teamsdata = {item.teams}
+                    goals = {item.goals}
+                    date = {item.fixture.date}/>
+                </SmallContainerBox>
+              ))
+            }
           </MatchContainer>
         </div>
     </LayoutMain>

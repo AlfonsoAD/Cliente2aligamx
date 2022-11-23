@@ -1,4 +1,4 @@
-const SelectList = ({tittle,datos,handleChange,onclick}) => {
+const SelectList = ({tittle,datos,handleChange}) => {
 
     return (
         <div
@@ -20,9 +20,10 @@ const SelectList = ({tittle,datos,handleChange,onclick}) => {
             transition
             ease-in-out
             m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" aria-label=".form-select-lg example"
+            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
+            aria-label=".form-select-lg example"
             onChange={handleChange} 
-            onClick={onclick}>
+            >
                 {tittle == "jornadas" ? 
                   datos.map((item) => (<option key={item} value={item}>{item}</option>))
                 :

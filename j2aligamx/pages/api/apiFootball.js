@@ -115,10 +115,10 @@ const getRounds = async (SEASON) => {
 
 const getMatchs = async (SEASON, ROUND) => {
   try {
-    if (window.localStorage.getItem("matchs")) {
+    /*if (window.localStorage.getItem("matchs")) {
       resRounds = JSON.parse(window.localStorage.getItem("matchs"));
       return resRounds;
-    }
+    }*/
 
     const res = await fetch(
       `${API_URL}/fixtures?league=${LEAGUE_KEY}&season=${SEASON}&round=${ROUND}`,
@@ -126,11 +126,11 @@ const getMatchs = async (SEASON, ROUND) => {
     );
 
     const resJson = await res.json();
-    window.localStorage.setItem("matchs", JSON.stringify(resJson));
-    return resJson;
+    //window.localStorage.setItem("matchs", JSON.stringify(resJson));
+    return resJson.response;
   } catch (err) {
     throw new Error("Algo ha salido mal");
   }
 };
 
-export { getTeamsLeague, getOverallTable, getSeasons, getRounds };
+export { getTeamsLeague, getOverallTable, getSeasons, getRounds, getMatchs };
