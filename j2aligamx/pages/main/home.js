@@ -38,11 +38,13 @@ const Home = () => {
               news.articles.length > 0 &&
               news.articles.map((value, index) => {
                 return (
-                  <SmallContainerBox id={index}>
-                    <h1 className="text-md font-bold text-black text-center m-2">
-                      {value.title}
-                    </h1>
-                    <img src={value.urlToImage} />
+                  <SmallContainerBox>
+                    <div key={index}>
+                      <h1 className="text-md font-bold text-black text-center m-2">
+                        {value.title}
+                      </h1>
+                      <img src={value.urlToImage} />
+                    </div>
                   </SmallContainerBox>
                 );
               })}

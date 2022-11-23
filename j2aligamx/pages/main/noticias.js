@@ -26,13 +26,15 @@ const Noticias = () => {
             {news == null ? console.log("hola") : null}
             {news &&
               news.articles.length > 0 &&
-              news.articles.map((value) => {
+              news.articles.map((value, index) => {
                 return (
                   <SmallContainerBox>
-                    <h1 className="text-md font-bold text-black text-center m-2">
-                      {value.title}
-                    </h1>
-                    <img src={value.urlToImage} />
+                    <div key={index}>
+                      <h1 className="text-md font-bold text-black text-center m-2">
+                        {value.title}
+                      </h1>
+                      <img src={value.urlToImage} />
+                    </div>
                   </SmallContainerBox>
                 );
               })}
