@@ -9,23 +9,45 @@ import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
 
 const Home = () => {
-  const [table, setTable] = useState([]);
-  const [news, setNews] = useState([]);
+  const [table, setTable] = useState(null);
+  const [news, setNews] = useState(null);
 
   useEffect(() => {
     petitions();
   }, []);
 
   const petitions = () => {
-    getOverallTable().then((res) => setTable(JSON.parse(res)));
+    setTimeout(() => {
+      getOverallTable().then((res) => setTable(JSON.parse(res)));
+    }, 3000);
     getNewsSportsMx().then((res) => setNews(res));
   };
 
   return (
     <LayoutMain>
-      <Modal />;
+      <Modal />
       <div className="flex justify-center flex-wrap">
         <TeamsTablePosition data={table} />
+        <div className="m-1">
+          <h1 className="text-2xl font-bold text-blueMenu text-start ml-8">
+            NOTICIAS
+          </h1>
+          <MatchContainer>
+            {news == null ? console.log("hola") : null}
+            {news &&
+              news.articles.length > 0 &&
+              news.articles.map((value) => {
+                return (
+                  <SmallContainerBox>
+                    <h1 className="text-md font-bold text-black text-center m-2">
+                      {value.title}
+                    </h1>
+                    <img src={value.urlToImage} />
+                  </SmallContainerBox>
+                );
+              })}
+          </MatchContainer>
+        </div>
       </div>
     </LayoutMain>
   );

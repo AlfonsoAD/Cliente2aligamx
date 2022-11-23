@@ -8,7 +8,12 @@ const TeamsFooter = () => {
         return (
           <div key={index} className="inline-block m-2 pb-2">
             <a href={value.page}>
-              <img src={value.logo} height="38" width="38" />
+              <img
+                src={value.logo}
+                className="hover:animate-bounce"
+                height="38"
+                width="38"
+              />
             </a>
           </div>
         );
