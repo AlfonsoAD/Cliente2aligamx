@@ -38,7 +38,7 @@ const Home = () => {
               news.articles.length > 0 &&
               news.articles.map((value, index) => {
                 return (
-                  <SmallContainerBox id={index}>
+                  <SmallContainerBox id={`1.${index}`}>
                     <h1
                       key={`_${index}`}
                       className="text-md font-bold text-black text-center m-2"
