@@ -39,10 +39,13 @@ const Home = () => {
               news.articles.map((value, index) => {
                 return (
                   <SmallContainerBox id={index}>
-                    <h1 className="text-md font-bold text-black text-center m-2">
+                    <h1
+                      key={index}
+                      className="text-md font-bold text-black text-center m-2"
+                    >
                       {value.title}
                     </h1>
-                    <img src={value.urlToImage} />
+                    <img key={index} src={value.urlToImage} />
                   </SmallContainerBox>
                 );
               })}
