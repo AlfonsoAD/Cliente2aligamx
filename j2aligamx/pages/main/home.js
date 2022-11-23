@@ -40,12 +40,12 @@ const Home = () => {
                 return (
                   <SmallContainerBox id={index}>
                     <h1
-                      key={index}
+                      key={`_${index}`}
                       className="text-md font-bold text-black text-center m-2"
                     >
                       {value.title}
                     </h1>
-                    <img key={index} src={value.urlToImage} />
+                    <img key={`0${index}`} src={value.urlToImage} />
                   </SmallContainerBox>
                 );
               })}
