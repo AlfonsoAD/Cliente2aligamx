@@ -38,7 +38,6 @@ const Partidos = () => {
             />
               <SelectList 
               tittle ="jornadas"
-              datos = {datarounds}
               handleChange={(e) => {
                   setRound(e.target.value)
                   }}
