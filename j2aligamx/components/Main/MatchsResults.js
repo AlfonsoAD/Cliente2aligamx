@@ -39,13 +39,13 @@ const MatchsResults = (teamsdata) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="mr-8 ml-4 w-12 h-14 text-black">
+        <div className="mr-8 ml-4 w-12 h-10 text-black">
           <h3>{objgoals.home}</h3>
         </div>
-        <div className="mr-4 ml-4 w-12 h-14 text-black">
+        <div className="mr-4 ml-4 w-12 h-10 text-black">
           <h3> - </h3>
         </div>
-        <div className="mr-4 ml-8 w-12 h-14 text-black">
+        <div className="mr-4 ml-8 w-12 h-10 text-black">
           <h3>{objgoals.away}</h3>
         </div>
       </div>
