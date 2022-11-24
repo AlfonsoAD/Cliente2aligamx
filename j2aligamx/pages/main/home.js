@@ -20,7 +20,7 @@ const Home = () => {
     setTimeout(() => {
       getOverallTable().then((res) => setTable(res));
     }, 3000);
-    getNewsSportsMx().then((res) => setNews(res));
+    // getNewsSportsMx().then((res) => setNews(res));
   };
 
   return (
