@@ -10,6 +10,7 @@ const getNewsSportsMx = () => {
     const resJson = res.json();
     return resJson;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
