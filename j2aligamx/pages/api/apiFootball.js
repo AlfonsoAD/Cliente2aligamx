@@ -31,6 +31,7 @@ const getTeamsLeague = async () => {
     window.localStorage.setItem("teams", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
@@ -51,6 +52,7 @@ const getOverallTable = async () => {
     window.localStorage.setItem("standings", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
@@ -70,6 +72,7 @@ const getPlayers = async () => {
     window.localStorage.setItem("standings", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
@@ -87,6 +90,7 @@ const getSeasons = async () => {
     window.localStorage.setItem("seasons", JSON.stringify(resJson));
     return resJson.response;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
@@ -110,6 +114,7 @@ const getRounds = async (SEASON) => {
     /*window.localStorage.setItem("rounds", JSON.stringify(resJson));*/
     return resJson.response;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
@@ -124,6 +129,7 @@ const getMatchs = async (SEASON, ROUND) => {
     const resJson = await res.json();
     return resJson.response;
   } catch (err) {
+    console.log(err);
     throw new Error("Algo ha salido mal");
   }
 };
