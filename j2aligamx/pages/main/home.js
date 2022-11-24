@@ -7,7 +7,6 @@ import { getOverallTable } from "../api/apiFootball";
 import { getNewsSportsMx } from "../api/apiNews";
 import { useEffect, useState } from "react";
 import Modal from "../../components/Modal";
-import Image from "next/image";
 
 const Home = () => {
   const [table, setTable] = useState(null);
