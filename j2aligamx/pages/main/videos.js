@@ -1,6 +1,5 @@
 import LayoutMain from "../../components/Main/LayoutMain";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
-import Elegirequipo from "../../components/Main/datosvideo/ElegirEquipo";
 import MatchContainer from "../../components/Main/MatchContainer";
 const logoAmerica =
   "https://user-images.githubusercontent.com/90345024/201499006-ad675a3a-dfd7-44bb-8092-a06563131922.png";
