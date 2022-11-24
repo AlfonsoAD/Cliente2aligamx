@@ -11,13 +11,6 @@ const Partidos = () => {
     const[rounds, setRound] = useState("Apertura - 1");
     const [datarounds, setDataRounds] = useState([]);
     const [datamatchs, setDataMatchs] = useState([]);
-    
-    const gettingRounds = () => {
-      if(season){
-        getRounds(season)
-        .then(data => setDataRounds(data))
-      }
-    }
 
     const gettinMatches = () => {
         if(season && rounds){
@@ -28,10 +21,10 @@ const Partidos = () => {
     }
 
     useEffect(() => {
-      gettingRounds();
       gettinMatches();
     },[season,rounds]);
 
+    var k = 0;
   return (
     <LayoutMain>
         <div className="m-4">
@@ -43,19 +36,20 @@ const Partidos = () => {
                 }}
             
             />
-            <SelectList 
-            tittle ="jornadas"
-            datos = {datarounds}
-            handleChange={(e) => {
-                setRound(e.target.value)
-                }}
-            />
+              <SelectList 
+              tittle ="jornadas"
+              datos = {datarounds}
+              handleChange={(e) => {
+                  setRound(e.target.value)
+                  }}
+              />
             </div>
           <MatchContainer >
             {
               datamatchs.map((item) => (
-                <SmallContainerBox>
+                <SmallContainerBox key={`smallcontainer-${k++}`}>
                   <MatchsResults
+                    key={`matchsresults-${k++}`}
                     teamsdata = {item.teams}
                     goals = {item.goals}
                     date = {item.fixture.date}/>

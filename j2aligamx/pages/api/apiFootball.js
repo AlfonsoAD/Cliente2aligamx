@@ -1,4 +1,5 @@
-const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+//const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
 const LEAGUE_KEY = "262";
@@ -75,15 +76,15 @@ const getPlayers = async () => {
 
 const getSeasons = async () => {
   try {
-    /*if(window.localStorage.getItem("seasons")) {
+    if(window.localStorage.getItem("seasons")) {
       resSeason = awaitJSON.parse(window.localStorage.getItem("seasons"));
       return resSeason;
-    }*/
+    }
 
     const res = await fetch(`${API_URL}/leagues/seasons`, options);
 
     const resJson = await res.json();
-    //window.localStorage.setItem("seasons", JSON.stringify(resJson));
+    window.localStorage.setItem("seasons", JSON.stringify(resJson));
     return resJson.response;
   } catch (err) {
     throw new Error("Algo ha salido mal");
@@ -106,7 +107,7 @@ const getRounds = async (SEASON) => {
     );
 
     const resJson = await res.json();
-    //window.localStorage.setItem("rounds", JSON.stringify(resJson));
+    /*window.localStorage.setItem("rounds", JSON.stringify(resJson));*/
     return resJson.response;
   } catch (err) {
     throw new Error("Algo ha salido mal");
@@ -115,18 +116,12 @@ const getRounds = async (SEASON) => {
 
 const getMatchs = async (SEASON, ROUND) => {
   try {
-    /*if (window.localStorage.getItem("matchs")) {
-      resRounds = JSON.parse(window.localStorage.getItem("matchs"));
-      return resRounds;
-    }*/
-
     const res = await fetch(
-      `${API_URL}/fixtures?league=${LEAGUE_KEY}&season=${SEASON}&round=${ROUND}`,
+      `${API_URL}/fixtures?league=${LEAGUE_KEY}&season=${SEASON}&round=${ROUND}&timezone=America/Mexico_City`,
       options
     );
 
     const resJson = await res.json();
-    //window.localStorage.setItem("matchs", JSON.stringify(resJson));
     return resJson.response;
   } catch (err) {
     throw new Error("Algo ha salido mal");
