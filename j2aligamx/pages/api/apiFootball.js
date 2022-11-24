@@ -38,7 +38,7 @@ const getTeamsLeague = async () => {
 const getOverallTable = async () => {
   try {
     if (window.localStorage.getItem("standings")) {
-      const res = window.localStorage.getItem("standings");
+      const res = JSON.parse(window.localStorage.getItem("standings"));
       return res;
     }
 
@@ -76,7 +76,7 @@ const getPlayers = async () => {
 
 const getSeasons = async () => {
   try {
-    if(window.localStorage.getItem("seasons")) {
+    if (window.localStorage.getItem("seasons")) {
       resSeason = awaitJSON.parse(window.localStorage.getItem("seasons"));
       return resSeason;
     }

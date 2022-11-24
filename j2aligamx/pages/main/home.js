@@ -19,7 +19,7 @@ const Home = () => {
 
   const petitions = () => {
     setTimeout(() => {
-      getOverallTable().then((res) => setTable(JSON.parse(res)));
+      getOverallTable().then((res) => setTable(res));
     }, 3000);
     getNewsSportsMx().then((res) => setNews(res));
   };
