@@ -9,13 +9,6 @@ const Videos = () => {
     <LayoutMain>
       <div className="flex justify-center flex-wrap position-center">
         <div className="m-6">
-          <Elegirequipo />
-        </div>
-        <div className="m-6">
-          <ElegirJornada />
-        </div>
-
-        <div className="m-6">
           <MatchContainer>
             <SmallContainerBox>
               <a href="https://www.youtube.com/watch?v=Mo0BvcnRcBQ">
