@@ -2,12 +2,17 @@ import React from "react";
 import { useState } from "react";
 import ButtonClick from "./ButtonClick";
 import { teamsLogo } from "../utilities/teamsInfo";
+import Image from "next/image";
 
 const Modal = () => {
   const [showModal, setShowModal] = useState(true);
   const [team, setTeam] = useState("");
+  const [nameTeam, setNameTeam] = useState("");
 
-  const selectTeam = (e) => setTeam(e.target.id);
+  const selectTeam = (e) => {
+    setTeam(e.target.id);
+    setNameTeam(e.target.name);
+  };
   const submit = () => {
     setShowModal(false);
   };
@@ -25,17 +30,27 @@ const Modal = () => {
                   <h3 className="text-3xl font-semibold">
                     Escoge tu equipo favorito
                   </h3>
+                  <div className="ml-6 text-2xl font-semibold">
+                    {nameTeam != "" ? (
+                      <h4>Equipo favorito: {nameTeam} </h4>
+                    ) : (
+                      ""
+                    )}
+                  </div>
                 </div>
                 {/*body*/}
                 <div className="flex flex-wrap 100wv justify-center">
                   {teamsLogo.map((value, index) => {
                     return (
                       <div key={index} className="inline-block m-2 pb-2">
-                        <img
+                        <Image
                           src={value.logo}
                           height="38"
                           width="38"
+                          alt={`Logo de ${value.name}`}
                           id={value.id}
+                          name={value.name}
+                          className="hover:animate-ping h-24 w-24"
                           onClick={selectTeam}
                         />
                       </div>

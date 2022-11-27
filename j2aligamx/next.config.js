@@ -2,6 +2,8 @@
 // const nextConfig = {
 //   reactStrictMode: true,
 //   swcMinify: true,
+//   images:{
+//   }
 // };
 
 const withPWA = require("next-pwa")({
@@ -10,6 +12,13 @@ const withPWA = require("next-pwa")({
 
 module.exports = withPWA({
   reactStrictMode: true,
+  images: {
+    domains: [
+      "user-images.githubusercontent.com",
+      "media.api-sports.io",
+      "images.unsplash.com",
+    ],
+  },
 });
 
 // module.exports = nextConfig;

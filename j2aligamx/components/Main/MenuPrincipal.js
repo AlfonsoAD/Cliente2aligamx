@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import ButtonClick from "../ButtonClick";
+import Image from "next/image";
 
 const MenPrincipal = () => {
   const router = useRouter();
@@ -49,8 +50,12 @@ const MenPrincipal = () => {
               </div>
               <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-center">
                 <div className="flex flex-shrink-0 items-center">
-                  <img className="block h-8 w-auto lg:hidden" src={IMG_URL} />
-                  <img className="hidden h-8 w-auto lg:block" src={IMG_URL} />
+                  <Image
+                    className="block lg:hidden"
+                    src={IMG_URL}
+                    height="34"
+                    width="34"
+                  />
                 </div>
                 <div className="hidden sm:ml-6 sm:block">
                   <div className="flex space-x-4">
@@ -78,9 +83,11 @@ const MenPrincipal = () => {
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Open user menu</span>
-                      <img
-                        className="animate-bounce h-8 w-8 rounded-full"
+                      <Image
+                        className="animate-bounce rounded-full"
                         src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                        height="26"
+                        width="26"
                       />
                     </Menu.Button>
                   </div>

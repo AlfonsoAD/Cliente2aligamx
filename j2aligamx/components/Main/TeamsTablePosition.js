@@ -1,4 +1,5 @@
-import clasification22 from "../../utilities/clasification22lmx.json";
+import Image from "next/image";
+
 const template = () => (
   <tr>
     <td
@@ -65,10 +66,12 @@ const TeamsTablePosition = ({ data }) => {
                       {value.rank}
                     </td>
                     <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-2 py-1 text-sm font-small whitespace-nowrap">
-                      <img
+                      <Image
                         src={value.team.logo}
                         className="sm:h-8 sm:w-8"
-                        alt="logo del club"
+                        height="20"
+                        width="20"
+                        alt={`Logo de ${value.team.name}`}
                       />
                     </td>
                     <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
