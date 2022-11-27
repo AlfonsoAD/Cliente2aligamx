@@ -8,7 +8,7 @@ const Header = () => {
     <div>
       <nav className="flex items-center justify-center flex-wrap h-18 bg-gradient-to-r from-header to-blueMenu ...">
         <div className="flex flex-nowrap p-2 shadow md:px-2 md:py-2 justify-center">
-          <img width="60" height="60" src={IMG_URL} />
+          <Image src={IMG_URL} width="60" height="60" alt="Logo de J2A" />
         </div>
       </nav>
     </div>

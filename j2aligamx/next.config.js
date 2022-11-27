@@ -1,7 +1,24 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-  swcMinify: true,
-};
+// const nextConfig = {
+//   reactStrictMode: true,
+//   swcMinify: true,
+//   images:{
+//   }
+// };
 
-module.exports = nextConfig;
+const withPWA = require("next-pwa")({
+  dest: "public",
+});
+
+module.exports = withPWA({
+  reactStrictMode: true,
+  images: {
+    domains: [
+      "user-images.githubusercontent.com",
+      "media.api-sports.io",
+      "images.unsplash.com",
+    ],
+  },
+});
+
+// module.exports = nextConfig;

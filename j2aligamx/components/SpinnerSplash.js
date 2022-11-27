@@ -6,7 +6,7 @@ const SpinnerSplash = () => {
 
   return (
     <div className="flex h-screen min-h-full items-center justify-center bg-cover bg-gradient-to-r from-header to-blueMenu ...">
-      <img
+      <Image
         className="animate-spin-slow"
         width="150"
         height="150"
