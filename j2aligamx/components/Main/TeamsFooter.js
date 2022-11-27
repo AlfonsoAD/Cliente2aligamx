@@ -1,5 +1,6 @@
 import React from "react";
 import { teamsLogo } from "../../utilities/teamsInfo";
+import Image from "next/image";
 
 const TeamsFooter = () => {
   return (
@@ -8,11 +9,12 @@ const TeamsFooter = () => {
         return (
           <div key={index} className="inline-block m-2 pb-2">
             <a href={value.page}>
-              <img
+              <Image
                 src={value.logo}
                 className="hover:animate-bounce"
                 height="38"
                 width="38"
+                alt={`Logo de ${value.name}`}
               />
             </a>
           </div>
