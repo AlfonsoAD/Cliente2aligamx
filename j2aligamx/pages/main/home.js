@@ -6,7 +6,8 @@ import MatchsResults from "../../components/Main/MatchsResults";
 import { getOverallTable } from "../api/apiFootball";
 import { getNewsSportsMx } from "../api/apiNews";
 import { useEffect, useState } from "react";
-import Modal from "../../components/Modal";
+import ModalEquipos from "../../components/Main/ModalEquipos";
+import ModalRedirection from "../../components/Main/ModalRedirection";
 
 const Home = () => {
   const [table, setTable] = useState(null);
@@ -19,13 +20,17 @@ const Home = () => {
   const petitions = () => {
     setTimeout(() => {
       getOverallTable().then((res) => setTable(res));
+      getNewsSportsMx().then((res) => setNews(res));
     }, 3000);
-    // getNewsSportsMx().then((res) => setNews(res));
+  };
+
+  const ModalRedToNote = (url) => {
+    <ModalRedirection link={url} />;
   };
 
   return (
     <LayoutMain>
-      <Modal />
+      <ModalEquipos />
       <div className="flex justify-center flex-wrap">
         <TeamsTablePosition data={table} />
         <div className="m-1">
@@ -35,19 +40,43 @@ const Home = () => {
           <MatchContainer>
             {news == null ? console.log("hola") : null}
             {news &&
-              news.articles.length > 0 &&
-              news.articles.map((value, index) => {
-                return (
-                  <SmallContainerBox key={`1.${index}`} id={`2.${index}`}>
-                    <h1
-                      key={`_${index}`}
-                      className="text-md font-bold text-black text-center m-2"
-                    >
-                      {value.title}
-                    </h1>
-                    <img key={`0${index}`} src={value.urlToImage} />
-                  </SmallContainerBox>
-                );
+              news.length > 0 &&
+              news.map((value, index) => {
+                try {
+                  return (
+                    <SmallContainerBox key={`1.${index}`} id={`2.${index}`}>
+                      <h1
+                        key={`_${index}`}
+                        className="text-md font-bold text-black text-center m-2"
+                        onClick={() => {
+                          ModalRedToNote(value.url);
+                        }}
+                      >
+                        {value.description}
+                      </h1>
+                      <img
+                        key={`0${index}`}
+                        src={
+                          value.image.contentUrl ? value.image.contentUrl : ""
+                        }
+                        alt="Imagen de la noticia"
+                        onClick={() => ModalRedToNote(value.url)}
+                      />
+                    </SmallContainerBox>
+                  );
+                } catch (err) {
+                  return (
+                    <SmallContainerBox key={`1.${index}`} id={`2.${index}`}>
+                      <h1
+                        key={`_${index}`}
+                        className="text-md font-bold text-black text-center m-2"
+                        onClick={() => ModalRedToNote(value.url)}
+                      >
+                        {value.description}
+                      </h1>
+                    </SmallContainerBox>
+                  );
+                }
               })}
           </MatchContainer>
         </div>
