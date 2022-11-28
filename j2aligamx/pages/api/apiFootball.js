@@ -32,7 +32,7 @@ const getTeamsLeague = async () => {
     return resJson;
   } catch (err) {
     console.log(err);
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
@@ -53,7 +53,7 @@ const getOverallTable = async () => {
     return resJson;
   } catch (err) {
     console.log(err);
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
@@ -73,7 +73,7 @@ const getPlayers = async () => {
     return resJson;
   } catch (err) {
     console.log(err);
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
@@ -91,12 +91,9 @@ const getSeasons = async () => {
     return resJson.response;
   } catch (err) {
     console.log(err);
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
-
-const getInformationTeams = () => {};
-const getStatsTeams = () => {};
 
 const getRounds = async (SEASON) => {
   try {
@@ -115,7 +112,7 @@ const getRounds = async (SEASON) => {
     return resJson.response;
   } catch (err) {
     console.log(err);
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
@@ -130,8 +127,27 @@ const getMatchs = async (SEASON, ROUND) => {
     return resJson.response;
   } catch (err) {
     console.log(err);
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
-export { getTeamsLeague, getOverallTable, getSeasons, getRounds, getMatchs };
+const getTransfers = async (idTeam) => {
+  try {
+    const res = await fetch(`${API_URL}/transfers?team=${idTeam}`, options);
+
+    const resJson = await res.json();
+    return resJson.response;
+  } catch (err) {
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
+  }
+};
+
+export {
+  getTeamsLeague,
+  getOverallTable,
+  getSeasons,
+  getRounds,
+  getMatchs,
+  getTransfers,
+};
