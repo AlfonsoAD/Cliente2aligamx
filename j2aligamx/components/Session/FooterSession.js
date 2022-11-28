@@ -8,7 +8,8 @@ const FooterLogin = () => {
       <div className="sm:flex sm:items-center sm:justify-center">
         <Image
           src={IMG_URL}
-          height="16"
+          height="120"
+          width="180"
           alt="Logo de la Liga BBVA MX"
           className="mr-3"
         />

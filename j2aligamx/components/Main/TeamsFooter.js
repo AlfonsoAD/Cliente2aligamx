@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const TeamsFooter = () => {
   return (
-    <div className="flex flex-nowrap 100wv justify-center">
+    <div className="flex flex-nowrap 100wv justify-center mt-6">
       {teamsLogo.map((value, index) => {
         return (
           <div key={index} className="inline-block m-2 pb-2">

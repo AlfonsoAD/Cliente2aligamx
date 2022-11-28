@@ -16,8 +16,8 @@ const FooterMain = () => {
             <div className="flex items-center border rounded-lg px-4 py-2 w-52 mx-2">
               <Image
                 src={IMG_URL_FB}
-                height="10"
-                width="14"
+                height="38"
+                width="38"
                 alt="Imagen de FB"
               />
               <div className="text-left ml-3">
@@ -28,8 +28,8 @@ const FooterMain = () => {
             <div className="flex items-center border rounded-lg px-4 py-2 w-44 mx-2">
               <Image
                 src={IMG_URL_TW}
-                height="8"
-                width="10"
+                height="22"
+                width="24"
                 alt="Imagen de TW"
               />
               <div className="text-left ml-3">
