@@ -1,5 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
+import ButtonClick from "../ButtonClick";
 
 const ModalRedirection = (link) => {
   const [showModal, setShowModal] = useState(true);
