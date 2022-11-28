@@ -1,13 +1,12 @@
 import { useMemo } from "react"
-import { Line } from 'react-chartjs-2';
-
+import { Bar, Pie } from 'react-chartjs-2';
 
 import {
     Chart as ChartJS,
     CategoryScale,
     LinearScale,
     PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend,
@@ -16,7 +15,7 @@ ChartJS.register(
     CategoryScale,
     LinearScale,
     PointElement,
-    LineElement,
+    BarElement,
     Title,
     Tooltip,
     Legend
@@ -45,8 +44,6 @@ const options = {
         },
     },
 }
-
-
 export default function() {
     const data = useMemo(function () {
        
@@ -59,16 +56,18 @@ export default function() {
                     data: Partidosganados,
                     tension: 0.3,
                     borderColor: 'green',
-                    pointRadius: 5,
-                    pointBackgroundColor: 'Black'
+                    // pointRadius: 5,
+                    // pointBackgroundColor: 'Black'
+                    backgroundColor: 'green',
                 },
                 {
                     label: 'Partidos perdidos',
                     data: PartidosPerdidos,
                     tension: 0.3,
                     borderColor: 'red',
+                    backgroundColor: 'red',
                     pointRadius: 5,
-                    pointBackgroundColor: 'Black'
+                    
                 },
                 {
                     label: 'Partidos empatados',
@@ -76,7 +75,8 @@ export default function() {
                     tension: 0.3,
                     borderColor: 'blue',
                     pointRadius: 5,
-                    pointBackgroundColor: 'Black'
+                    backgroundColor: 'Black',
+                    backgroundColor: 'blue',
                 },
 
 
@@ -87,5 +87,5 @@ export default function() {
 
     },[]);
 
-    return <Line data={data} options={options}/>;
+    return <Bar data={data} options={options}/>;
 }

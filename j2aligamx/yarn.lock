@@ -3484,19 +3484,17 @@
   "resolved" "https://registry.npmjs.org/quick-lru/-/quick-lru-5.1.1.tgz"
   "version" "5.1.1"
 
-<<<<<<< HEAD
-"react-chartjs-2@^5.0.1":
-  "integrity" "sha512-u38C9OxynlNCBp+79grgXRs7DSJ9w8FuQ5/HO5FbYBbri8HSZW+9SWgjVshLkbXBfXnMGWakbHEtvN0nL2UG7Q=="
-  "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.0.1.tgz"
-  "version" "5.0.1"
-=======
 "randombytes@^2.1.0":
   "integrity" "sha512-vYl3iOX+4CKUWuxGi9Ukhie6fsqXqS9FE2Zaic4tNFD2N2QQaXOMFbuKK4QmDHC0JO6B1Zp41J0LpT0oR68amQ=="
   "resolved" "https://registry.npmjs.org/randombytes/-/randombytes-2.1.0.tgz"
   "version" "2.1.0"
   dependencies:
     "safe-buffer" "^5.1.0"
->>>>>>> 64fddb62b4156a217ac48af90fa1f44747c307c3
+
+"react-chartjs-2@^5.0.1":
+  "integrity" "sha512-u38C9OxynlNCBp+79grgXRs7DSJ9w8FuQ5/HO5FbYBbri8HSZW+9SWgjVshLkbXBfXnMGWakbHEtvN0nL2UG7Q=="
+  "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.0.1.tgz"
+  "version" "5.0.1"
 
 "react-dom@^16 || ^17 || ^18", "react-dom@^17.0.2 || ^18.0.0-0", "react-dom@^18.0.0", "react-dom@18.2.0":
   "integrity" "sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g=="
