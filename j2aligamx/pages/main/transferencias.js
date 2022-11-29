@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
