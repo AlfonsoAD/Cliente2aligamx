@@ -1,7 +1,7 @@
 const teamsLogo = [
   {
     id: "2283",
-    name: "Altas",
+    name: "Atlas",
     logo: "https://media.api-sports.io/football/teams/2283.png",
     page: "https://atlasfcshop.mx/",
   },

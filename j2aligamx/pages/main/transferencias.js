@@ -1,7 +1,7 @@
 import { useState } from "react";
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
-import SmallContainerBox from "../../components/Main/SmallContainerBox";
+import LargeContainerBox from "../../components/Main/LargeContainerBox";
 import CardTransfer from "../../components/Main/CardTransfer";
 import { teamsLogo } from "../../utilities/teamsInfo";
 import Image from "next/image";
@@ -43,6 +43,22 @@ const Transferencias = () => {
       <div className="flex justify-center items-center m-2">
         <h2 className="text-xl font-semibold">{`Equipo elegido: ${teamName}`}</h2>
       </div>
+      <MatchContainer>
+        {response == null ? console.log("Hola") : null}
+        {response &&
+          response.length > 0 &&
+          response.map((value, index) => {
+            return (
+              <LargeContainerBox key={`0.${index}`}>
+                <CardTransfer
+                  key={`1.${index}`}
+                  id={`22.${index}`}
+                  data={value}
+                />
+              </LargeContainerBox>
+            );
+          })}
+      </MatchContainer>
     </LayoutMain>
   );
 };
