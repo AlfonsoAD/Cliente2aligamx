@@ -141,6 +141,19 @@ const getTransfers = async (idTeam) => {
   }
 };
 
+const getTopScorers = async () => {
+  try {
+    const res = await fetch(
+      `${API_URL}/players/topscorers?league=${LEAGUE_KEY}&season=2022`,
+      options
+    );
+    const resJson = await res.json();
+    return resJson.response;
+  } catch (err) {
+    throw new Error(`Algo ha salido mal ${err}`);
+  }
+};
+
 export {
   getTeamsLeague,
   getOverallTable,
@@ -148,4 +161,5 @@ export {
   getRounds,
   getMatchs,
   getTransfers,
+  getTopScorers,
 };
