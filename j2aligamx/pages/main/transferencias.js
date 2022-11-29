@@ -14,7 +14,6 @@ const Transferencias = () => {
   const clickLogo = (e) => {
     setTeamName(e.target.name);
     getTransfers(e.target.id).then((res) => setResponse(res));
-    console.log(response);
   };
 
   return (
