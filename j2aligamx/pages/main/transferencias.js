@@ -7,7 +7,7 @@ import { teamsLogo } from "../../utilities/teamsInfo";
 import Image from "next/image";
 import { getTransfers } from "../api/apiFootball";
 
-const transferencias = () => {
+const Transferencias = () => {
   const [response, setResponse] = useState(null);
   const [teamName, setTeamName] = useState("");
 
@@ -48,4 +48,4 @@ const transferencias = () => {
   );
 };
 
-export default transferencias;
+export default Transferencias;
