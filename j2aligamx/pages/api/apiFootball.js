@@ -134,11 +134,9 @@ const getMatchs = async (SEASON, ROUND) => {
 const getTransfers = async (idTeam) => {
   try {
     const res = await fetch(`${API_URL}/transfers?team=${idTeam}`, options);
-
     const resJson = await res.json();
     return resJson.response;
   } catch (err) {
-    console.log(err);
     throw new Error(`Algo ha salido mal ${err}`);
   }
 };

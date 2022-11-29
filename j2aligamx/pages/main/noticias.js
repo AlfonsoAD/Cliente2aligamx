@@ -1,11 +1,13 @@
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
+import ModalRedirection from "../../components/Main/ModalRedirection";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
 import { getNewsSportsMx, getNewsSportsMx2 } from "../api/apiNews";
 import { useEffect, useState } from "react";
 
 const Noticias = () => {
   const [news2, setNews2] = useState([]);
+  const [showModal, setShowModal] = useState({ show: false, url: "" });
 
   useEffect(() => {
     petitions();
@@ -17,8 +19,21 @@ const Noticias = () => {
     }, 3000);
   };
 
+  const ModalRedToNote = (url) => {
+    setShowModal({ show: true, url: url });
+  };
+
   return (
     <LayoutMain>
+      {showModal.show ? (
+        <ModalRedirection
+          link={showModal.url}
+          closeAction={() => {
+            setShowModal({ show: false, url: "" });
+          }}
+        />
+      ) : null}
+
       <div className="flex justify-center flex-wrap">
         <div className="m-2">
           <h1 className="text-2xl font-bold text-blueMenu text-start ml-8">
@@ -36,6 +51,7 @@ const Noticias = () => {
                         <h1
                           key={`_${index}`}
                           className="text-md font-bold text-black text-center m-2"
+                          onClick={() => ModalRedToNote(value.url)}
                         >
                           {value.name}
                         </h1>
@@ -43,8 +59,12 @@ const Noticias = () => {
                           key={`0${index}`}
                           src={value.image.thumbnail.contentUrl}
                           alt="Imagen de la noticia"
+                          onClick={() => ModalRedToNote(value.url)}
                         />
-                        <p className="text-sm font-semibold m-1">
+                        <p
+                          className="text-sm font-semibold m-1"
+                          onClick={() => ModalRedToNote(value.url)}
+                        >
                           {value.description}
                         </p>
                         <p className="text-sm font-bold">{`Fuente: ${value.provider[0].name}`}</p>
@@ -58,6 +78,7 @@ const Noticias = () => {
                         <h1
                           key={`_${index}`}
                           className="text-md font-bold text-black text-center m-2"
+                          onClick={() => ModalRedToNote(value.url)}
                         >
                           {value.name}
                         </h1>
