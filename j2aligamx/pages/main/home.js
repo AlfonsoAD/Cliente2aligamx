@@ -12,6 +12,7 @@ import ModalRedirection from "../../components/Main/ModalRedirection";
 const Home = () => {
   const [table, setTable] = useState(null);
   const [news, setNews] = useState(null);
+  const [showModal, setShowModal] = useState({ show: false, url: "" });
 
   useEffect(() => {
     petitions();
@@ -25,12 +26,21 @@ const Home = () => {
   };
 
   const ModalRedToNote = (url) => {
-    <ModalRedirection link={url} />;
+    setShowModal({ show: true, url: url });
   };
 
   return (
     <LayoutMain>
       <ModalEquipos />
+      {showModal.show ? (
+        <ModalRedirection
+          link={showModal.url}
+          closeAction={() => {
+            setShowModal({ show: false, url: "" });
+          }}
+        />
+      ) : null}
+
       <div className="flex justify-center flex-wrap">
         <TeamsTablePosition data={table} />
         <div className="m-1">
