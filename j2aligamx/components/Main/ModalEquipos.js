@@ -1,10 +1,10 @@
 import React from "react";
 import { useState } from "react";
-import ButtonClick from "./ButtonClick";
-import { teamsLogo } from "../utilities/teamsInfo";
+import ButtonClick from "../ButtonClick";
+import { teamsLogo } from "../../utilities/teamsInfo";
 import Image from "next/image";
 
-const Modal = () => {
+const ModalEquipos = () => {
   const [showModal, setShowModal] = useState(true);
   const [team, setTeam] = useState("");
   const [nameTeam, setNameTeam] = useState("");
@@ -82,4 +82,4 @@ const Modal = () => {
   );
 };
 
-export default Modal;
+export default ModalEquipos;
