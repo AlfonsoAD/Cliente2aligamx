@@ -1,5 +1,6 @@
 import { useMemo } from "react"
 import { Line } from 'react-chartjs-2';
+import Image from "next/image";
 
 
 import {
@@ -21,6 +22,7 @@ ChartJS.register(
     Tooltip,
     Legend
 );
+
 const Partidosganados = [12,10,10,9,9,7,7,4,5,6,4,5,4,3,4,2,3,1];
 const PartidosPerdidos = [3,2,4,3,5,4,7,3,5,7,6,8,7,6,8,7,10,10];
 const PartidosEmpatados = [2,5,3,5,3,6,3,10,7,4,7,4,6,8,5,8,4,6];
@@ -28,6 +30,9 @@ const PartidosEmpatados = [2,5,3,5,3,6,3,10,7,4,7,4,6,8,5,8,4,6];
 const equipos = ["America","Monterrey","Santos","Pachuca","Tigres",
 "Toluca","Cruz Azul","Puebla","Chivas","Leon","Juarez","Necaxa","San Luis",
 "Mazatlan","Tijuana","Pumas","Atlas","Queretaro"];
+
+
+
 
 
 
