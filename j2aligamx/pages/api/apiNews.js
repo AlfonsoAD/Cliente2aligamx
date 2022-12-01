@@ -1,17 +1,37 @@
-const API_URL = "https://newsapi.org/v2/";
-const API_KEY = "7e9ce368d89441b687f20dabf9783fe1";
+const fetch = require("node-fetch");
+const url =
+  "https://bing-news-search1.p.rapidapi.com/news/search?q=liga%20mx&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off";
+const url_2 =
+  "https://bing-news-search1.p.rapidapi.com/news?originalImg=true&category=sports&cc=mx&setLang=es&safeSearch=Off&textFormat=Raw";
 
-const API_REQ = `${API_URL}top-headlines?country=mx&apiKey=${API_KEY}`;
-var req = new Request(API_REQ);
+const options = {
+  method: "GET",
+  headers: {
+    "X-BingApis-SDK": "true",
+    "X-RapidAPI-Key": "2addb52312msh4fd9ba75a2fe5bdp16dc95jsn84280bccf9fd",
+    "X-RapidAPI-Host": "bing-news-search1.p.rapidapi.com",
+  },
+};
 
 const getNewsSportsMx = async () => {
   try {
-    const res = await fetch(req);
-    const resJson = res.json();
-    return resJson;
+    const res = await fetch(url, options);
+    const resJson = await res.json();
+    return resJson.value;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    throw new Error(`Algo ha salido mal, ${err}`);
   }
 };
 
-export { getNewsSportsMx };
+const getNewsSportsMx2 = async () => {
+  try {
+    const res = await fetch(url_2, options);
+    const resJson = await res.json();
+    console.log(resJson);
+    return resJson.value;
+  } catch (err) {
+    throw new Error(`Algo ha salido mal, ${err}`);
+  }
+};
+
+export { getNewsSportsMx, getNewsSportsMx2 };

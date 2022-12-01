@@ -6,7 +6,13 @@ const FooterLogin = () => {
   return (
     <footer className="p-4 bg-white shadow md:px-6 md:py-8">
       <div className="sm:flex sm:items-center sm:justify-center">
-        <img src={IMG_URL} className="mr-3 h-16" />
+        <Image
+          src={IMG_URL}
+          height="120"
+          width="180"
+          alt="Logo de la Liga BBVA MX"
+          className="mr-3"
+        />
       </div>
     </footer>
   );

@@ -1,14 +1,21 @@
 import React from "react";
 import { teamsLogo } from "../../utilities/teamsInfo";
+import Image from "next/image";
 
 const TeamsFooter = () => {
   return (
-    <div className="flex flex-nowrap 100wv justify-center">
+    <div className="flex flex-nowrap 100wv justify-center mt-6">
       {teamsLogo.map((value, index) => {
         return (
           <div key={index} className="inline-block m-2 pb-2">
             <a href={value.page}>
-              <img src={value.logo} height="38" width="38" />
+              <Image
+                src={value.logo}
+                className="hover:animate-bounce"
+                height="38"
+                width="38"
+                alt={`Logo de ${value.name}`}
+              />
             </a>
           </div>
         );

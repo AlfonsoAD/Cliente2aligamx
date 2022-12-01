@@ -1,5 +1,5 @@
-const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
-//const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
 const LEAGUE_KEY = "262";
@@ -31,14 +31,15 @@ const getTeamsLeague = async () => {
     window.localStorage.setItem("teams", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
 const getOverallTable = async () => {
   try {
     if (window.localStorage.getItem("standings")) {
-      const res = window.localStorage.getItem("standings");
+      const res = JSON.parse(window.localStorage.getItem("standings"));
       return res;
     }
 
@@ -51,7 +52,8 @@ const getOverallTable = async () => {
     window.localStorage.setItem("standings", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
@@ -70,13 +72,14 @@ const getPlayers = async () => {
     window.localStorage.setItem("standings", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
 const getSeasons = async () => {
   try {
-    if(window.localStorage.getItem("seasons")) {
+    if (window.localStorage.getItem("seasons")) {
       resSeason = awaitJSON.parse(window.localStorage.getItem("seasons"));
       return resSeason;
     }
@@ -87,12 +90,10 @@ const getSeasons = async () => {
     window.localStorage.setItem("seasons", JSON.stringify(resJson));
     return resJson.response;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
-
-const getInformationTeams = () => {};
-const getStatsTeams = () => {};
 
 const getRounds = async (SEASON) => {
   try {
@@ -110,7 +111,8 @@ const getRounds = async (SEASON) => {
     /*window.localStorage.setItem("rounds", JSON.stringify(resJson));*/
     return resJson.response;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
@@ -124,8 +126,40 @@ const getMatchs = async (SEASON, ROUND) => {
     const resJson = await res.json();
     return resJson.response;
   } catch (err) {
-    throw new Error("Algo ha salido mal");
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
-export { getTeamsLeague, getOverallTable, getSeasons, getRounds, getMatchs };
+const getTransfers = async (idTeam) => {
+  try {
+    const res = await fetch(`${API_URL}/transfers?team=${idTeam}`, options);
+    const resJson = await res.json();
+    return resJson.response;
+  } catch (err) {
+    throw new Error(`Algo ha salido mal ${err}`);
+  }
+};
+
+const getTopScorers = async () => {
+  try {
+    const res = await fetch(
+      `${API_URL}/players/topscorers?league=${LEAGUE_KEY}&season=2022`,
+      options
+    );
+    const resJson = await res.json();
+    return resJson.response;
+  } catch (err) {
+    throw new Error(`Algo ha salido mal ${err}`);
+  }
+};
+
+export {
+  getTeamsLeague,
+  getOverallTable,
+  getSeasons,
+  getRounds,
+  getMatchs,
+  getTransfers,
+  getTopScorers,
+};

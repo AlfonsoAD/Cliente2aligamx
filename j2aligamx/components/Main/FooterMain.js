@@ -1,4 +1,11 @@
+import Image from "next/image";
+
 const FooterMain = () => {
+  const IMG_URL_FB =
+    "https://user-images.githubusercontent.com/90345024/201531111-cfc7e1a9-a4c3-4250-b2cf-d4f3752a348c.png";
+  const IMG_URL_TW =
+    "https://user-images.githubusercontent.com/90345024/201531355-c7207a2d-a368-400f-9b40-3077c7d9fb47.png";
+
   return (
     <div className=" bg-blueMenu">
       <div className="max-w-2xl mx-auto text-white py-10">
@@ -6,20 +13,24 @@ const FooterMain = () => {
           <h3 className="text-3xl mb-3"> J2A LIGA MX </h3>
           <p>Todo sobre la Liga BBVA MX</p>
           <div className="flex justify-center my-10">
-            <div className="flex items-center border w-auto rounded-lg px-4 py-2 w-52 mx-2">
-              <img
-                src="https://user-images.githubusercontent.com/90345024/201531111-cfc7e1a9-a4c3-4250-b2cf-d4f3752a348c.png"
-                className="w-14 h-10"
+            <div className="flex items-center border rounded-lg px-4 py-2 w-52 mx-2">
+              <Image
+                src={IMG_URL_FB}
+                height="38"
+                width="38"
+                alt="Imagen de FB"
               />
               <div className="text-left ml-3">
                 <p className="text-xs text-gray-200">Visita</p>
                 <p className="text-sm md:text-base"> J2A LIGA MX</p>
               </div>
             </div>
-            <div className="flex items-center border w-auto rounded-lg px-4 py-2 w-44 mx-2">
-              <img
-                src="https://user-images.githubusercontent.com/90345024/201531355-c7207a2d-a368-400f-9b40-3077c7d9fb47.png"
-                className="w-10 h-8"
+            <div className="flex items-center border rounded-lg px-4 py-2 w-44 mx-2">
+              <Image
+                src={IMG_URL_TW}
+                height="22"
+                width="24"
+                alt="Imagen de TW"
               />
               <div className="text-left ml-3">
                 <p className="text-xs text-gray-200">Siguenos</p>
