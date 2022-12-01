@@ -23,3 +23,5 @@ const searchVideos = async (QUERY) => {
         throw new Error("Algo ha salido mal");
       }
 };
+
+export {searchVideos}
