@@ -6,6 +6,7 @@ import CardTransfer from "../../components/Main/CardTransfer";
 import { teamsLogo } from "../../utilities/teamsInfo";
 import Image from "next/image";
 import { getTransfers } from "../api/apiFootball";
+import SelectList from "../../components/Main/SelectList"
 
 const Transferencias = () => {
   const [response, setResponse] = useState(null);

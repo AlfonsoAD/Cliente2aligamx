@@ -1,7 +1,7 @@
 import { useMemo } from "react"
 import { Line } from 'react-chartjs-2';
 import Image from "next/image";
-
+import { teamsLogo } from "../../../utilities/teamsInfo";
 
 import {
     Chart as ChartJS,
@@ -12,7 +12,9 @@ import {
     Title,
     Tooltip,
     Legend,
+    Filler
 } from 'chart.js'
+import { BackspaceIcon } from "@heroicons/react/24/outline";
 ChartJS.register(
     CategoryScale,
     LinearScale,
@@ -20,24 +22,13 @@ ChartJS.register(
     LineElement,
     Title,
     Tooltip,
-    Legend
+    Legend,
+    Filler
 );
-
-const Partidosganados = [12,10,10,9,9,7,7,4,5,6,4,5,4,3,4,2,3,1];
-const PartidosPerdidos = [3,2,4,3,5,4,7,3,5,7,6,8,7,6,8,7,10,10];
-const PartidosEmpatados = [2,5,3,5,3,6,3,10,7,4,7,4,6,8,5,8,4,6];
-
-const equipos = ["America","Monterrey","Santos","Pachuca","Tigres",
-"Toluca","Cruz Azul","Puebla","Chivas","Leon","Juarez","Necaxa","San Luis",
-"Mazatlan","Tijuana","Pumas","Atlas","Queretaro"];
-
-
-
-
-
 
 const options = {
     resposive: false,
+    fill: true,
     scales: {
         y: {
             min: 0,
@@ -51,8 +42,27 @@ const options = {
     },
 }
 
+export default function({datos}) {
+    let Partidosganados = [];
+    let PartidosPerdidos = [];
+    let PartidosEmpatados = [];
+    let equipos = [];
 
-export default function() {
+    console.log(datos);
+
+    const arrayMatchsxTeam = () => {
+        datos.league.standings.map((value)=>{
+            value.map((value2)=>{
+                equipos.push(value2.team.name)
+                Partidosganados.push(value2.all.win)
+                PartidosPerdidos.push(value2.all.lose)
+                PartidosEmpatados.push(value2.all.draw)
+            })
+        })
+    }
+    
+    arrayMatchsxTeam()
+
     const data = useMemo(function () {
        
         return {
@@ -62,26 +72,31 @@ export default function() {
                 {
                     label: 'Partidos ganados',
                     data: Partidosganados,
-                    tension: 0.3,
+                    tension: 0.5,
                     borderColor: 'green',
-                    pointRadius: 5,
-                    pointBackgroundColor: 'Black'
+                    pointRadius: 10,
+                    pointBackgroundColor: 'Black',
+                    
+                   
+                    
                 },
                 {
                     label: 'Partidos perdidos',
                     data: PartidosPerdidos,
-                    tension: 0.3,
+                    tension: 0.5,
                     borderColor: 'red',
-                    pointRadius: 5,
-                    pointBackgroundColor: 'Black'
+                    pointRadius: 10,
+                    pointBackgroundColor: 'Black',
+                    
                 },
                 {
                     label: 'Partidos empatados',
                     data: PartidosEmpatados,
-                    tension: 0.3,
+                    tension: 0.5,
                     borderColor: 'blue',
-                    pointRadius: 5,
-                    pointBackgroundColor: 'Black'
+                    pointRadius: 10,
+                    pointBackgroundColor: 'Black',
+                    
                 },
 
 
