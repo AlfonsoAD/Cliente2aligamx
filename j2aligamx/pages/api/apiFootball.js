@@ -1,5 +1,11 @@
+<<<<<<< HEAD
 const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
 //const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+=======
+import { unregister } from "./Interceptor";
+//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+>>>>>>> bbacc97cbc38b3cee93475b9cf16ad0c52b34a2c
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
 const LEAGUE_KEY = "262";

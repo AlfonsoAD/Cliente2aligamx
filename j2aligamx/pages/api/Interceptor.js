@@ -1,5 +1,5 @@
 import FetchInterceptor from "fetch-intercept";
-
+import { petitionRefreshToken } from "./petitionsUser";
 //Interceptor
 export const unregister = FetchInterceptor.register({
   request: function (url, config) {
@@ -11,6 +11,13 @@ export const unregister = FetchInterceptor.register({
   },
 
   response: function (response) {
+    const refreshTk = localStorage.getItem("refreshToken");
+    if (refreshTk) {
+      response.status == 401
+        ? petitionRefreshToken(refreshTk)
+        : console.log("ok");
+    }
+    console.log(response.request.url);
     return response;
   },
 

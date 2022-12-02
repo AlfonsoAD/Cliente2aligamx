@@ -14,8 +14,8 @@ const LayoutMain = ({ children }) => {
   const router = useRouter();
 
   useEffect(() => {
-    // refresh();
-    // validando();
+    refresh();
+    validando();
   }, []);
 
   //Funciones
@@ -38,7 +38,7 @@ const LayoutMain = ({ children }) => {
       }, 2000);
     } else {
       setTimeout(() => {
-        router.push("/home");
+        router.push("/main/home");
       }, 2000);
     }
   };
