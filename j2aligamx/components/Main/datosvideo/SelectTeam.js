@@ -1,6 +1,6 @@
-const Elegirequipo = ({handleChange}) => {
-    const teams = ["Atlas","Tigres","Xolos","Mazatlan FC", "Toluca", "Rayados", "Santos Laguna", "Pumas", 
-    "America", "Cruz Azul", "Chivas", "Necaxa", "Leon FC", "Queretaro", "Puebla", "Pachuca", "Bravos", "Atletico de San Luis"];
+const SelectTeam = ({handleChange}) => {
+    const teams = ["Atlas","Tigres","Xolos","Mazatlan+FC", "Toluca", "Rayados", "Santos+Laguna", "Pumas", 
+    "America", "Cruz+Azul", "Chivas", "Necaxa", "Leon+FC", "Queretaro", "Puebla", "Pachuca", "Bravos", "Atletico+de+San+Luis"];
 
     return (
         <div
@@ -26,9 +26,9 @@ const Elegirequipo = ({handleChange}) => {
             aria-label=".form-select-lg example"
             onChange={handleChange} 
             >
-                <option key="default" value="Futbol Liga MX">Elige un equipo</option>
+                <option key="default" value="Futbol+Liga+MX">Elige un equipo</option>
                 {
-                  teams.map((item) => (<option key={item} value={`Futbol ${item}`}>{item}</option>))
+                  teams.map((item) => (<option key={item} value={`Futbol+${item}`}>{item}</option>))
                 }
             </select>
         </div>
@@ -37,4 +37,4 @@ const Elegirequipo = ({handleChange}) => {
 
 
 
-export default Elegirequipo;
+export default SelectTeam;

@@ -1,7 +1,14 @@
-const VideoContainer = () => {
+
+const VideoContainer = ({info}) => {
+    info = info.replace('watch?v=','embed/')
+    console.log(info);
+
     return (
         <div>
-            <iframe class="w-full aspect-video hover:aspect-square" src="https://www.youtube.com/..."></iframe>
+            <iframe 
+            className="w-full aspect-video hover:aspect-square" 
+            controls
+            src={info}></iframe>
         </div>
     )
 }
