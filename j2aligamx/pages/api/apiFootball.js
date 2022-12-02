@@ -1,3 +1,4 @@
+import { unregister } from "./Interceptor";
 //const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
 const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
 const API_HOST = "api-football-v1.p.rapidapi.com";
