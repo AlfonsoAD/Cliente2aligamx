@@ -1,6 +1,6 @@
 import { unregister } from "./Interceptor";
-const urlApi = "https://api-ligamx.onrender.com";
-
+//const urlApi = "https://api-ligamx.onrender.com";
+const urlApi = "http://localhost:4000";
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
   const res = await fetch(`${urlApi}/users/signup`, {
@@ -98,18 +98,43 @@ const petitionRefreshToken = async (refreTok) => {
     }),
     headers: { "content-type": "application/JSON" },
   });
+
   if (res.status == 200) {
     const res = await res.json();
     window.localStorage.setItem("accessToken", resJson.accessToken);
   } else {
-    window.localStorage.removeItem("accessToken");
-    window.localStorage.removeItem("accessToken");
     throw new Error("Sesión caducada");
   }
 
   return resJson;
 };
 
+const petitionPostPreferences = async (idUser, idTeam, nameTeam, logoTeam) => {
+  const res = await fetch(`${urlApi}/preferencias-usuarios`, {
+    method: "POST",
+    body: JSON.stringify({
+      idEquipoFavorito: idTeam,
+      NombreEquipo: nameTeam,
+      LogoEquipo: logoTeam,
+      idUser: idUser,
+    }),
+    headers: { "content-Type": "application/JSON" },
+  });
+  if (res.status != 200) {
+    throw new Error("Algo ha salido mal");
+  }
+
+  const resJson = await res.json();
+  return resJson;
+};
+
+const petitionPreferences = async (id) => {
+  const res = await fetch(
+    `${urlApi}/preferencias-usuarios?filter[where][idUser]=${id}`
+  );
+  const resJson = await res.json();
+  return resJson;
+};
 export {
   petitionLogin,
   petitionSignUp,
@@ -117,4 +142,6 @@ export {
   petitionConfirmation,
   petitionRecoverNewPassword,
   petitionRefreshToken,
+  petitionPreferences,
+  petitionPostPreferences,
 };

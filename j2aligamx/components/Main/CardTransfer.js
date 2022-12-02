@@ -16,7 +16,8 @@ const CardTransfer = ({ id, data }) => {
       <div className="flex flex-wrap justify-center items-center m-2 bg-transparent">
         <div className="m-1">
           <h1 className="text-xl font-bold text-blueMenu">
-            Jugador: {data.player.name != null ? data.player.name : ""}
+            Jugador:{" "}
+            {data.player.name != null ? data.player.name : "Desconocido"}
           </h1>
         </div>
       </div>
@@ -30,29 +31,29 @@ const CardTransfer = ({ id, data }) => {
               className="flex flex-wrap justify-between m-2"
               key={`12-${index}`}
             >
-              <h2 className="text-md font-semibold">{`Fecha de la transacción: ${value.date}`}</h2>
-              <h2 className="text-md font-semibold">{`Tipo de transfereencia: ${value.type}`}</h2>
               <h2 className="text-md font-semibold">
-                {value.teams.in.name != null ? value.teams.in.name : ""}
+                {value.date ? value.date : "Desconocida"}
               </h2>
               <h2 className="text-md font-semibold">
-                {value.teams.out.name != null ? value.teams.out.name : ""}
+                {value.type ? value.type : "Sin dato"}
+              </h2>
+              <h2 className="text-md font-semibold">
+                {value.teams.out.name ? value.teams.out.name : "Desconocido"}
+              </h2>
+              <h2 className="text-md font-semibold">
+                {value.teams.in.name ? value.teams.in.name : "Desconocido"}
               </h2>
             </div>
             <div key={index} className="flex flex-nowrap justify-between m-2">
               <Image
-                src={
-                  value.teams.in.logo != null ? value.teams.out.logo : urlPred
-                }
+                src={value.teams.out.logo ? value.teams.out.logo : urlPred}
                 height="52"
                 width="52"
                 alt="Logo "
               />
               <Image src={urlFlecha} height="30" width="46" alt="Flecha" />
               <Image
-                src={
-                  value.teams.out.logo != null ? value.teams.in.logo : urlPred
-                }
+                src={value.teams.in.logo ? value.teams.in.logo : urlPred}
                 height="52"
                 width="52"
                 alt="Logo"
