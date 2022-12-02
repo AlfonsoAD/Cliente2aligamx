@@ -50,7 +50,7 @@ const MatchsResults = (teamsdata) => {
         </div>
       </div>
       <div className="flex justify-center">
-        <div className="mr-4 ml-8 text-black">
+        <div className="mr-4 ml-8 text-black-500">
           <p>{hourMatch}</p>
           <p>{dateMatch}</p>
         </div>
