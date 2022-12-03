@@ -19,6 +19,7 @@ const teamsLogo = [
   },
   {
     id: "14002",
+    name: "Mazatlán",
     logo: "https://media.api-sports.io/football/teams/14002.png",
     page: "https://tienda.mazatlanfc.com/",
   },

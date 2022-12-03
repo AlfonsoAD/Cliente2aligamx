@@ -1,6 +1,6 @@
-const SelectTeam = ({handleChange}) => {
-    const teams = ["Atlas","Tigres","Xolos","Mazatlan+FC", "Toluca", "Rayados", "Santos+Laguna", "Pumas", 
-    "America", "Cruz+Azul", "Chivas", "Necaxa", "Leon+FC", "Queretaro", "Puebla", "Pachuca", "Bravos", "Atletico+de+San+Luis"];
+import { teamsLogo } from "../../../utilities/teamsInfo";
+
+const SelectTeam = ({handleChange, title}) => {
 
     return (
         <div
@@ -27,8 +27,9 @@ const SelectTeam = ({handleChange}) => {
             onChange={handleChange} 
             >
                 <option key="default" value="Futbol+Liga+MX">Elige un equipo</option>
-                {
-                  teams.map((item) => (<option key={item} value={`Futbol+${item}`}>{item}</option>))
+                {title == "Jugadores" ?
+                  teamsLogo.map((item) => (<option key={item.name} value={item.id}>{item.name}</option>)):
+                  teamsLogo.map((item) => (<option key={item.name} value={`Futbol+${item.name}`}>{item.name}</option>))
                 }
             </select>
         </div>

@@ -6,7 +6,7 @@ import { searchVideos } from "../api/apiYoutube";
 import LargeContainerBox from "../../components/Main/LargeContainerBox"
 import VideoContainer from "../../components/Main/datosvideo/VideoContainer";
 const Videos = () => {
-  const [query, setQuery] = useState("Futbol+Liga+MX");
+  const [query, setQuery] = useState("Futbol Liga MX");
   const [dataVideos, setInfoVideos] = useState([]);
 
   const gettingVideos = () =>{
@@ -35,7 +35,7 @@ const Videos = () => {
               info={item.url}/>
               <h1>{item.title || "Titulo no disponible"}</h1>
               <p>Autor:</p>
-              <a href={item.author.url}>`👉${item.author.name || "Desconocido"}`</a></LargeContainerBox> 
+              <a href={item.author.url}>{`👉${item.author.name || "Desconocido"}`}</a></LargeContainerBox> 
             : console.log("No lo necesito")))}
           </MatchContainer>
         </div>
