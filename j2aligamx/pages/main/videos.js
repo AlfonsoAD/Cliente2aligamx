@@ -35,7 +35,7 @@ const Videos = () => {
               info={item.url}/>
               <h1>{item.title || "Titulo no disponible"}</h1>
               <p>Autor:</p>
-              <a href={item.author.url}>{item.author.name || "Desconocido"}</a></LargeContainerBox> 
+              <a href={item.author.url}>`👉${item.author.name || "Desconocido"}`</a></LargeContainerBox> 
             : console.log("No lo necesito")))}
           </MatchContainer>
         </div>

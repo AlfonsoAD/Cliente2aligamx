@@ -14,6 +14,7 @@ const MenPrincipal = () => {
     { name: "INICIO", href: "/main/home", current: false },
     { name: "PARTIDOS", href: "/main/partidos", current: false },
     { name: "ESTADÍSTICAS", href: "/main/estadisticas", current: false },
+    { name: "JUGADORES", href: "/main/jugadores", current: false},
     { name: "TRANSFERENCIAS", href: "/main/transferencias", current: false },
     { name: "NOTICIAS", href: "/main/noticias", current: false },
     { name: "VIDEOS", href: "/main/videos", current: false },
