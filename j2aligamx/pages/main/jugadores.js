@@ -8,8 +8,8 @@ import { useState, useEffect } from "react";
 const Jugadores = () => {
     
     const [team, setTeam] = useState("2287");
-    const [idplayer, setIdPlayer] = useState(null);
-    const [singleplayerinfo, setSinglePlayerInfo] = useState([]);
+    var idplayer;
+    var [singleplayerinfo, setSinglePlayerInfo] = useState([]);
     const [playersInfo, setPlayersInfo] = useState([]);
 
     const gettingPlayers = () => {
@@ -20,7 +20,7 @@ const Jugadores = () => {
         gettingPlayers();
     },[team])
 
-    useEffect(() => {
+    /*useEffect(() => {
         console.log(idplayer)
         if(idplayer == null){
             console.log("falso")
@@ -29,7 +29,7 @@ const Jugadores = () => {
             getPlayerById(idplayer).then(data => setSinglePlayerInfo(data));
         }
         console.log(singleplayerinfo);
-    },[idplayer])
+    },[idplayer])*/
 
     return(
         <LayoutMain>
@@ -42,10 +42,17 @@ const Jugadores = () => {
                 <TablePlayers
                 data = {playersInfo}
                 handleChange={(e) => {
-                    setIdPlayer(e.target.value);
+                    idplayer = e.target.value;
+                    console.log(idplayer)
+                    getPlayerById(idplayer).then(data => setSinglePlayerInfo(data));
+                    console.log(singleplayerinfo);
                 }}
                 />
-                
+                {singleplayerinfo.length > 0 ? 
+                <CardInfoPlayer
+                data = {singleplayerinfo}
+                />
+                : null}
             </div>
         </LayoutMain>
     )

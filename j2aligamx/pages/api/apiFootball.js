@@ -81,7 +81,6 @@ const getPlayerById = async (ID_PLAYER) => {
     );
 
     const resJson = await res.json();
-    console.log(resJson);
     return resJson.response;
   } catch (err) {
     console.log(err);
