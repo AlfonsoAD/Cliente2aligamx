@@ -11,13 +11,29 @@ export const unregister = FetchInterceptor.register({
   },
 
   response: function (response) {
-    const refreshTk = localStorage.getItem("refreshToken");
-    if (refreshTk) {
-      response.status == 401
-        ? petitionRefreshToken(refreshTk)
-        : console.log("ok");
+    if (response.status == 401) {
+      try {
+        const refreshTk = localStorage.getItem("refreshToken");
+        const res = petitionRefreshToken(refreshTk).catch((err) =>
+          console.log(err)
+        );
+
+        // if (
+        //   response.request.url != "https://api-ligamx.onrender.com/refresh" &&
+        //   response.request.url != "http://localhost:4000/refresh"
+        // ) {
+        //   fetch(response.request.url, {
+        //     method: response.request.headers.method,
+        //     headers: {
+        //       Authorization: `Bearer ${res}`,
+        //       "content-type": "application/JSON",
+        //     },
+        //   }).catch((err) => console.log(err));
+        // }
+      } catch (err) {
+        console.log(err);
+      }
     }
-    console.log(response.request.url);
     return response;
   },
 

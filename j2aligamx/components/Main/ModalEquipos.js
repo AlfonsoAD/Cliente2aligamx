@@ -1,24 +1,45 @@
-import React from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ButtonClick from "../ButtonClick";
 import { teamsLogo } from "../../utilities/teamsInfo";
 import Image from "next/image";
+import { petitionPostPreferences } from "../../pages/api/petitionsUser";
+import { useUserContext } from "../Context/UserProvider";
+import { useUserPreferencesContext } from "../Context/UserPreferencesProvider";
+import Swal from "sweetalert2";
 
 const ModalEquipos = () => {
-  const [showModal, setShowModal] = useState(true);
-  const [team, setTeam] = useState("");
+  // const { user } = useUserContext();
+  // const { userId, userName } = user;
+  const { userPreferences } = useUserPreferencesContext();
+  const { idFavTeam } = userPreferences;
+  const [showModal, setShowModal] = useState(false);
+  const [idTeam, setIdTeam] = useState("");
   const [nameTeam, setNameTeam] = useState("");
+  const [logoTeam, setLogoTeam] = useState("");
+  const [idUserNav, setIdUserNav] = useState("");
 
-  const selectTeam = (e) => {
-    setTeam(e.target.id);
+  const fshowModal = () => setShowModal(false);
+  const tshowModal = () => setShowModal(true);
+
+  const chooseTeam = (e) => {
+    setIdTeam(e.target.id);
     setNameTeam(e.target.name);
+    setLogoTeam(e.target.src);
+    setIdUserNav(window.localStorage.getItem("id"));
   };
+
   const submit = () => {
     setShowModal(false);
+    petitionPostPreferences(idUserNav, idTeam, nameTeam, logoTeam).catch(
+      (err) => {
+        Swal.fire("Error", `Algo no ha sucedido bien ${err}`, "error");
+      }
+    );
   };
 
   return (
     <>
+      {idFavTeam == "" ? tshowModal : fshowModal}
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -28,14 +49,10 @@ const ModalEquipos = () => {
                 {/*header*/}
                 <div className="flex items-center justify-center p-5 border-b border-solid border-slate-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
-                    Escoge tu equipo favorito
+                    Escoge tu equipo favorito:
                   </h3>
                   <div className="ml-6 text-2xl font-semibold">
-                    {nameTeam != "" ? (
-                      <h4>Equipo favorito: {nameTeam} </h4>
-                    ) : (
-                      ""
-                    )}
+                    <h4 className="text-3xl font-bold">{nameTeam}</h4>
                   </div>
                 </div>
                 {/*body*/}
@@ -51,7 +68,7 @@ const ModalEquipos = () => {
                           id={value.id}
                           name={value.name}
                           className="hover:animate-ping h-24 w-24"
-                          onClick={selectTeam}
+                          onClick={chooseTeam}
                         />
                       </div>
                     );
