@@ -10,6 +10,8 @@ import ContainerForm from "./ContainerForm";
 //Herramientas
 import Swal from "sweetalert2";
 
+const jwt = require("jsonwebtoken");
+
 const FormLog = () => {
   const router = useRouter();
   //Estados
@@ -29,7 +31,7 @@ const FormLog = () => {
         setPassword(null);
       } else {
         await petitionLogin(email, password);
-        router.push("/home");
+        router.push("/main/home");
       }
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");

@@ -3,21 +3,31 @@ import { useRouter } from "next/router";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import ButtonClick from "../ButtonClick";
+import { useUserContext } from "../Context/UserProvider";
+import { useUserPreferencesContext } from "../Context/UserPreferencesProvider";
 import Image from "next/image";
 
 const MenPrincipal = () => {
   const router = useRouter();
+
+  // const { user } = useUserContext();
+  // const { userName } = user;
+  const { userPreferences } = useUserPreferencesContext();
+  const { logo } = userPreferences;
   const IMG_URL =
     "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png";
 
+  const IMG_USER_URL =
+    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
+
   const navigation = [
-    { name: "INICIO", href: "/main/home", current: false },
-    { name: "PARTIDOS", href: "/main/partidos", current: false },
-    { name: "ESTADÍSTICAS", href: "/main/estadisticas", current: false },
-    { name: "JUGADORES", href: "/main/jugadores", current: false},
-    { name: "TRANSFERENCIAS", href: "/main/transferencias", current: false },
-    { name: "NOTICIAS", href: "/main/noticias", current: false },
-    { name: "VIDEOS", href: "/main/videos", current: false },
+    { name: "Inicio", href: "/main/home", current: false },
+    { name: "Partidos", href: "/main/partidos", current: false },
+    { name: "Estadísticas", href: "/main/estadisticas", current: false },
+    { name: "Transferencias", href: "/main/transferencias", current: false },
+    { name: "Jugadores", href: "/main/jugadores", current: false },
+    { name: "Noticias", href: "/main/noticias", current: false },
+    { name: "Videos", href: "/main/videos", current: false },
   ];
 
   const logOut = (e) => {
@@ -59,7 +69,7 @@ const MenPrincipal = () => {
                     width="34"
                   />
                 </div>
-                <div className="hidden sm:ml-6 sm:block">
+                <div className="hidden sm:ml-4 sm:block">
                   <div className="flex space-x-4">
                     {navigation.map((item) => (
                       <a
@@ -76,20 +86,24 @@ const MenPrincipal = () => {
                         {item.name}
                       </a>
                     ))}
+                    {/* <h4
+                      className="text-gray-300 hover:bg-blueMenu hover:text-white
+                          px-2 py-2 rounded-md text-sm font-medium ml-3"
+                    >{`${userName}`}</h4> */}
                   </div>
                 </div>
               </div>
               <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-3">
+                <Menu as="div" className="relative ml-2">
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="animate-bounce rounded-full"
-                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                        height="26"
-                        width="26"
+                        src={logo != "" ? logo : IMG_USER_URL}
+                        height="34"
+                        width="34"
                       />
                     </Menu.Button>
                   </div>
@@ -104,12 +118,17 @@ const MenPrincipal = () => {
                   >
                     <Menu.Items className="absolute right-0 z-10 mt-2 w-52 origin-top-right rounded-md bg-transparent">
                       <Menu.Item>
-                        <ButtonClick type="submit" text="Configuración" />
+                        <ButtonClick
+                          type="submit"
+                          text="Configuración"
+                          clase="config"
+                        />
                       </Menu.Item>
                       <Menu.Item>
                         <ButtonClick
                           type="sumbit"
                           text="Cerrar Sesión"
+                          clase="danger"
                           click={logOut}
                         />
                       </Menu.Item>

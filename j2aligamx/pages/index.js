@@ -1,26 +1,28 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 //Peticiones api
-import { petitionRefreshToken } from "../pages/api/petitionsUser";
+import { petitionRefreshToken, init } from "../pages/api/petitionsUser";
 //Componente
 import SpinnerSplash from "../components/SpinnerSplash";
+// import { captureToken } from "../components/Context/UserProvider";
+import { captureId } from "../components/Context/UserPreferencesProvider";
 
 const Index = () => {
   const router = useRouter();
+  var accessTk = "",
+    refreshTk = "",
+    id = "";
 
   useEffect(() => {
+    accessTk = window.localStorage.getItem("accessToken");
+    refreshTk = window.localStorage.getItem("refreshToken");
+    id = window.localStorage.getItem("id");
     validando();
-    refresh();
+    //refresh();
+    // captureToken(accessTk);
+    captureId(id);
+    init(accessTk);
   }, []);
-
-  const refresh = async () => {
-    try {
-      const refreTok = window.localStorage.getItem("refreshToken");
-      await petitionRefreshToken(refreTok);
-    } catch (err) {
-      console.log(err);
-    }
-  };
 
   const validando = () => {
     if (
@@ -32,10 +34,14 @@ const Index = () => {
       }, 2000);
     } else {
       setTimeout(() => {
-        router.push("/home");
+        router.push("/main/home");
       }, 2000);
     }
   };
+
+  // const refresh = () => {
+  //   petitionRefreshToken(refreshTk).catch((err) => console.log(err));
+  // };
 
   return <SpinnerSplash />;
 };

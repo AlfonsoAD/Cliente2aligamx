@@ -7,7 +7,7 @@ const teamsLogo = [
   },
   {
     id: "2279",
-    name: "Tigres",
+    name: "Tigres UANL",
     logo: "https://media.api-sports.io/football/teams/2279.png",
     page: "https://www.tigretienda.com/",
   },
@@ -31,7 +31,7 @@ const teamsLogo = [
   },
   {
     id: "2282",
-    name: "Rayados",
+    name: "Monterrey",
     logo: "https://media.api-sports.io/football/teams/2282.png",
     page: "https://www.tiendarayados.mx/",
   },
@@ -43,13 +43,13 @@ const teamsLogo = [
   },
   {
     id: "2286",
-    name: "Pumas",
+    name: "Pumas UNAM",
     logo: "https://media.api-sports.io/football/teams/2286.png",
     page: "https://tiendapumas.com/",
   },
   {
     id: "2287",
-    name: "América",
+    name: "Club América",
     logo: "https://media.api-sports.io/football/teams/2287.png",
     page: "https://www.ameshop.com.mx/",
   },
@@ -61,7 +61,7 @@ const teamsLogo = [
   },
   {
     id: "2278",
-    name: "Chivas",
+    name: "Guadalajara",
     logo: "https://media.api-sports.io/football/teams/2278.png",
     page: "https://tiendachivas.com.mx/",
   },
@@ -97,7 +97,7 @@ const teamsLogo = [
   },
   {
     id: "2298",
-    name: "Bravos",
+    name: "FC Juarez",
     logo: "https://media.api-sports.io/football/teams/2298.png",
     page: "https://bravotienda.com/",
   },

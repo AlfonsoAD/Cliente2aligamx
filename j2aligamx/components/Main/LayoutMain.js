@@ -1,32 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
-//Peticiones api
-import { petitionRefreshToken } from "../../pages/api/petitionsUser";
 //Componentes externos
 import MenPrincipal from "./MenuPrincipal";
 import TeamsFooter from "./TeamsFooter";
 //Herramientas
-import Swal from "sweetalert2";
 import FooterMain from "./FooterMain";
+import UserPreferencesProvider from "../Context/UserPreferencesProvider";
+import { captureId } from "../Context/UserPreferencesProvider";
+import { init } from "../../pages/api/petitionsUser";
 
 const LayoutMain = ({ children }) => {
   const router = useRouter();
+  var id = "",
+    accessTk = "";
 
   useEffect(() => {
-    // refresh();
-    // validando();
+    accessTk = window.localStorage.getItem("accessToken");
+    id = window.localStorage.getItem("id");
+    validando();
+    captureId(id);
+    init(accessTk);
   }, []);
-
-  //Funciones
-  const refresh = async () => {
-    try {
-      const refreTok = window.localStorage.getItem("refreshToken");
-      await petitionRefreshToken(refreTok);
-    } catch (err) {
-      Swal.fire("Error", `${err}`, "error");
-    }
-  };
 
   const validando = () => {
     if (
@@ -36,25 +30,23 @@ const LayoutMain = ({ children }) => {
       setTimeout(() => {
         router.push("/session/login");
       }, 2000);
-    } else {
-      setTimeout(() => {
-        router.push("/home");
-      }, 2000);
     }
   };
 
   //Regreso de componente
   return (
     <React.Fragment>
-      <MenPrincipal />
-      <main
-        style={{ height: "100vh" }}
-        className="bg-no-repeat bg-cover min-h-full bg-white"
-      >
-        {children}
-        <TeamsFooter />
-        <FooterMain />
-      </main>
+      <UserPreferencesProvider>
+        <MenPrincipal />
+        <main
+          style={{ height: "100vh" }}
+          className="bg-no-repeat bg-cover min-h-full bg-white"
+        >
+          {children}
+          <TeamsFooter />
+          <FooterMain />
+        </main>
+      </UserPreferencesProvider>
     </React.Fragment>
   );
 };
