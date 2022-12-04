@@ -14,8 +14,7 @@ const template = () => (
 
 const desconocido = "desconocido";
 
-const TablePlayers = ({ data }) => {
-    console.log(data);
+const TablePlayers = ({ data, handleChange }) => {
   return (
     <div className="overflow-auto rounded-lg m-6 shadow-2xl">
       <table className="w-full">
@@ -35,11 +34,15 @@ const TablePlayers = ({ data }) => {
               POSICION
             </th>
             <th scope="col" className="px-2 py-1 text-left">
+              NUMERO
+            </th>
+            <th scope="col" className="px-2 py-1 text-left">
               PESO
             </th>
             <th scope="col" className="px-2 py-1 text-left">
               ALTURA
             </th>
+            <th scope="col" className="px-2 py-1 text-left"></th>
           </tr>
         </thead>
         <tbody className="divide-y divide-gray-100">
@@ -70,10 +73,22 @@ const TablePlayers = ({ data }) => {
                       {item.statistics[0].games.position == null ? desconocido : item.statistics[0].games.position}
                     </td>
                     <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
+                      {item.statistics[0].games.number == null ? desconocido : item.statistics[0].games.number}
+                    </td>
+                    <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
                       {item.player.weight == null ? desconocido : item.player.weight}
                     </td>
                     <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
                       {item.player.height == null ? desconocido : item.player.height}
+                    </td>
+                    <td>
+                    <button 
+                    type="button" 
+                    value={item.player.id}
+                    className="inline-block px-2 py-1 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+                    onClick={handleChange}>
+                      Mas...
+                    </button>
                     </td>
                   </tr>
             ))}
