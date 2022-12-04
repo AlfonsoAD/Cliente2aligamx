@@ -1,7 +1,7 @@
 import LayoutMain from "../../components/Main/LayoutMain"
 import MatchContainer from "../../components/Main/MatchContainer";
 import { useState, useEffect } from "react";
-import SelectTeam from "../../components/Main/datosvideo/SelectTeam";
+import SelectTeam from "../../components/Main/SelectTeam";
 import { searchVideos } from "../api/apiYoutube";
 import LargeContainerBox from "../../components/Main/LargeContainerBox"
 import VideoContainer from "../../components/Main/datosvideo/VideoContainer";
@@ -12,6 +12,7 @@ const Videos = () => {
   const gettingVideos = () =>{
     console.log(query);
     searchVideos(query).then(data => setInfoVideos(data));
+    console.log(dataVideos);
   }
 
   useEffect(()=>{
@@ -36,7 +37,7 @@ const Videos = () => {
               <h1>{item.title || "Titulo no disponible"}</h1>
               <p>Autor:</p>
               <a href={item.author.url}>{`👉${item.author.name || "Desconocido"}`}</a></LargeContainerBox> 
-            : console.log("No lo necesito")))}
+            : null ))}
           </MatchContainer>
         </div>
     </LayoutMain>

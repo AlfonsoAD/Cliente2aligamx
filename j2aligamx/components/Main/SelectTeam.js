@@ -1,4 +1,4 @@
-import { teamsLogo } from "../../../utilities/teamsInfo";
+import { teamsLogo } from "../../utilities/teamsInfo";
 
 const SelectTeam = ({handleChange, title}) => {
 
