@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
 //const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+=======
+//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+>>>>>>> d01192bbb566192ab92b649f676af921d58c8f9d
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
 const LEAGUE_KEY = "262";
@@ -112,11 +117,6 @@ const getSeasons = async () => {
 
 const getRounds = async (SEASON) => {
   try {
-    /*if(window.localStorage.getItem("rounds")) {
-      resRounds = JSON.parse(window.localStorage.getItem("rounds"));
-      return resRounds;
-    }*/
-
     const res = await fetch(
       `${API_URL}/fixtures/rounds?league=${LEAGUE_KEY}&season=${SEASON}`,
       options

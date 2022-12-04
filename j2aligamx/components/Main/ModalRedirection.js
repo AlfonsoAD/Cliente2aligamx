@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import ButtonClick from "../ButtonClick";
 
 const ModalRedirection = ({ link, closeAction }) => {
-  const [showModal, setShowModal] = useState(true);
   const router = useRouter();
 
   const submit = () => {
@@ -11,6 +10,9 @@ const ModalRedirection = ({ link, closeAction }) => {
     router.push(link);
   };
 
+  const cerrar = () => {
+    closeAction();
+  };
   return (
     <>
       <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
@@ -34,7 +36,7 @@ const ModalRedirection = ({ link, closeAction }) => {
                 type="submit"
                 text="No"
                 clase="danger"
-                click={() => setShowModal(false)}
+                click={cerrar}
               />
               <ButtonClick
                 type="submit"

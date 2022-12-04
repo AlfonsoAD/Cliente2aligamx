@@ -1,6 +1,22 @@
 import { unregister } from "./Interceptor";
+import jwt_decode from "jwt-decode";
+
 //const urlApi = "https://api-ligamx.onrender.com";
 const urlApi = "http://localhost:4000";
+
+var tokenAuth = "";
+
+const init = (token) => {
+  tokenAuth = token;
+};
+
+const options = {
+  headers: {
+    Authorization: `Bearer ${tokenAuth}`,
+    "content-Type": "application/JSON",
+  },
+};
+
 //Registro de usuario
 const petitionSignUp = async (email, password, userName) => {
   const res = await fetch(`${urlApi}/users/signup`, {
@@ -51,8 +67,10 @@ const petitionLogin = async (email, password) => {
   const resJson = await res.json();
 
   if (res.status == 200) {
+    let decode = jwt_decode(resJson.accessToken);
     window.localStorage.setItem("accessToken", resJson.accessToken);
     window.localStorage.setItem("refreshToken", resJson.refreshToken);
+    window.localStorage.setItem("id", decode.id);
   } else {
     throw new Error("Algo ha salido mal");
   }
@@ -100,15 +118,18 @@ const petitionRefreshToken = async (refreTok) => {
   });
 
   if (res.status == 200) {
-    const res = await res.json();
+    const resJson = await res.json();
+    let decode = jwt_decode(resJson.accessToken);
     window.localStorage.setItem("accessToken", resJson.accessToken);
+    window.localStorage.setItem("id", decode.id);
+    init(resJson.accessToken);
+    return resJson.accessToken;
   } else {
     throw new Error("Sesión caducada");
   }
-
-  return resJson;
 };
 
+//PREFERENCIAS DE USUARIO --------------------------------------------------------------------------------------------------------------------------------
 const petitionPostPreferences = async (idUser, idTeam, nameTeam, logoTeam) => {
   const res = await fetch(`${urlApi}/preferencias-usuarios`, {
     method: "POST",
@@ -118,7 +139,10 @@ const petitionPostPreferences = async (idUser, idTeam, nameTeam, logoTeam) => {
       LogoEquipo: logoTeam,
       idUser: idUser,
     }),
-    headers: { "content-Type": "application/JSON" },
+    headers: {
+      Authorization: `Bearer ${tokenAuth}`,
+      "content-Type": "application/JSON",
+    },
   });
   if (res.status != 200) {
     throw new Error("Algo ha salido mal");
@@ -129,12 +153,21 @@ const petitionPostPreferences = async (idUser, idTeam, nameTeam, logoTeam) => {
 };
 
 const petitionPreferences = async (id) => {
-  const res = await fetch(
-    `${urlApi}/preferencias-usuarios?filter[where][idUser]=${id}`
-  );
-  const resJson = await res.json();
-  return resJson;
+  try {
+    const res = await fetch(`${urlApi}/preferencias-usuarios/${id}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${tokenAuth}`,
+        "content-Type": "application/JSON",
+      },
+    });
+    const resJson = await res.json();
+    return resJson;
+  } catch (err) {
+    throw new Error(`Algo ha salido mal ${err}`);
+  }
 };
+
 export {
   petitionLogin,
   petitionSignUp,
@@ -144,4 +177,5 @@ export {
   petitionRefreshToken,
   petitionPreferences,
   petitionPostPreferences,
+  init,
 };

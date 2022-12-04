@@ -1,4 +1,3 @@
-import { unregister } from "./Interceptor";
 const fetch = require("node-fetch");
 const url =
   "https://bing-news-search1.p.rapidapi.com/news/search?q=liga%20mx&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off";
