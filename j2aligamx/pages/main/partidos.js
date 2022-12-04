@@ -4,12 +4,11 @@ import SmallContainerBox from "../../components/Main/SmallContainerBox";
 import MatchsResults from "../../components/Main/MatchsResults";
 import SelectList from "../../components/Main/SelectList";
 import { useState, useEffect } from "react";
-import {getRounds, getMatchs} from "../../pages/api/apiFootball"
+import { getMatchs} from "../../pages/api/apiFootball"
 
 const Partidos = () => {
     const[season,setSeason] = useState("2022");
     const[rounds, setRound] = useState("Apertura - 1");
-    const [datarounds, setDataRounds] = useState([]);
     const [datamatchs, setDataMatchs] = useState([]);
 
     const gettinMatches = () => {

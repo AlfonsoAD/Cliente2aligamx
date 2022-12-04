@@ -1,7 +1,7 @@
 import LayoutMain from "../../components/Main/LayoutMain"
 import MatchContainer from "../../components/Main/MatchContainer";
 import { useState, useEffect } from "react";
-import SelectTeam from "../../components/Main/datosvideo/SelectTeam";
+import SelectTeam from "../../components/Main/SelectTeam";
 import { searchVideos } from "../api/apiYoutube";
 import LargeContainerBox from "../../components/Main/LargeContainerBox"
 import VideoContainer from "../../components/Main/datosvideo/VideoContainer";
@@ -12,6 +12,7 @@ const Videos = () => {
   const gettingVideos = () =>{
     console.log(query);
     searchVideos(query).then(data => setInfoVideos(data));
+    console.log(dataVideos);
   }
 
   useEffect(()=>{
@@ -28,15 +29,15 @@ const Videos = () => {
       </div>
         <div className="m-4">
           <MatchContainer>
-            {dataVideos.map((item, index) => (index < 5 ? 
+            {dataVideos.map((item, index) => (index < 6 ? 
             <LargeContainerBox
             key={index}>
               <VideoContainer
               info={item.url}/>
-              <h1>{item.title}</h1>
+              <h1>{item.title || "Titulo no disponible"}</h1>
               <p>Autor:</p>
-              <a href={item.author.url}>{item.author.name}</a></LargeContainerBox> 
-            : console.log("No lo necesito")))}
+              <a href={item.author.url}>{`👉${item.author.name || "Desconocido"}`}</a></LargeContainerBox> 
+            : null ))}
           </MatchContainer>
         </div>
     </LayoutMain>
