@@ -34,9 +34,6 @@ const TablePlayers = ({ data, handleChange }) => {
               POSICION
             </th>
             <th scope="col" className="px-2 py-1 text-left">
-              NUMERO
-            </th>
-            <th scope="col" className="px-2 py-1 text-left">
               PESO
             </th>
             <th scope="col" className="px-2 py-1 text-left">
@@ -71,9 +68,6 @@ const TablePlayers = ({ data, handleChange }) => {
                     </td>
                     <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
                       {item.statistics[0].games.position == null ? desconocido : item.statistics[0].games.position}
-                    </td>
-                    <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
-                      {item.statistics[0].games.number == null ? desconocido : item.statistics[0].games.number}
                     </td>
                     <td className="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100 px-3 py-1 text-sm font-small whitespace-nowrap">
                       {item.player.weight == null ? desconocido : item.player.weight}
