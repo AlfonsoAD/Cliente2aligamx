@@ -1,38 +1,28 @@
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 //Peticiones api
-import {
-  petitionRefreshToken,
-  petitionPreferences,
-} from "../pages/api/petitionsUser";
+import { petitionRefreshToken, init } from "../pages/api/petitionsUser";
 //Componente
 import SpinnerSplash from "../components/SpinnerSplash";
-import jwt_decode from "jwt-decode";
+// import { captureToken } from "../components/Context/UserProvider";
+import { captureId } from "../components/Context/UserPreferencesProvider";
 
 const Index = () => {
   const router = useRouter();
+  var accessTk = "",
+    refreshTk = "",
+    id = "";
 
   useEffect(() => {
-    let tk = localStorage.getItem("accessToken");
-    let decode = jwt_decode(tk);
-    console.log(decode);
+    accessTk = window.localStorage.getItem("accessToken");
+    refreshTk = window.localStorage.getItem("refreshToken");
+    id = window.localStorage.getItem("id");
     validando();
-    getUserPreferences(decode.id);
     //refresh();
+    // captureToken(accessTk);
+    captureId(id);
+    init(accessTk);
   }, []);
-
-  // const refresh = async () => {
-  //   try {
-  //     const refreTok = window.localStorage.getItem("refreshToken");
-  //     await petitionRefreshToken(refreTok);
-  //   } catch (err) {
-  //     Swal.fire("Error", `${err}`, "error");
-  //   }
-  // };
-
-  const getUserPreferences = (id) => {
-    petitionPreferences(id).then((res) => console.log(res));
-  };
 
   const validando = () => {
     if (
@@ -48,6 +38,10 @@ const Index = () => {
       }, 2000);
     }
   };
+
+  // const refresh = () => {
+  //   petitionRefreshToken(refreshTk).catch((err) => console.log(err));
+  // };
 
   return <SpinnerSplash />;
 };

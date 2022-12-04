@@ -2,7 +2,6 @@ import LayoutMain from "../../components/Main/LayoutMain";
 import TeamsTablePosition from "../../components/Main/TeamsTablePosition";
 import MatchContainer from "../../components/Main/MatchContainer";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
-import MatchsResults from "../../components/Main/MatchsResults";
 import { getOverallTable, getTopScorers } from "../api/apiFootball";
 import { getNewsSportsMx } from "../api/apiNews";
 import { useEffect, useState } from "react";
@@ -17,17 +16,22 @@ const Home = () => {
   const [showModal, setShowModal] = useState({ show: false, url: "" });
 
   useEffect(() => {
-    petitions();
+    //petitions();
   }, []);
 
   const petitions = () => {
     setTimeout(() => {
-      getOverallTable().then((res) => setTable(res));
-      getNewsSportsMx().then((res) => setNews(res));
-      getTopScorers().then((res) => setScorers(res));
+      getOverallTable()
+        .then((res) => setTable(res))
+        .catch((err) => console.log(err));
+      getNewsSportsMx()
+        .then((res) => setNews(res))
+        .catch((err) => console.log(err));
+      getTopScorers()
+        .then((res) => setScorers(res))
+        .catch((err) => console.log(err));
     }, 3000);
   };
-
   const topScorers = scorers.filter(
     (value) => value.statistics[0].goals.total > 7
   );
