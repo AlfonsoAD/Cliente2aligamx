@@ -15,11 +15,16 @@ const LayoutMain = ({ children }) => {
     accessTk = "";
 
   useEffect(() => {
-    accessTk = window.localStorage.getItem("accessToken");
-    id = window.localStorage.getItem("id");
-    validando();
-    captureId(id);
-    init(accessTk);
+    //validando();
+    // if (
+    //   window.localStorage.getItem("accessToken") &&
+    //   window.localStorage.getItem("id")
+    // ) {
+    //   accessTk = window.localStorage.getItem("accessToken");
+    //   id = window.localStorage.getItem("id");
+    //   captureId(id);
+    //   init(accessTk);
+    // }
   }, []);
 
   const validando = () => {

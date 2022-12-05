@@ -14,14 +14,17 @@ const Index = () => {
     id = "";
 
   useEffect(() => {
-    accessTk = window.localStorage.getItem("accessToken");
-    refreshTk = window.localStorage.getItem("refreshToken");
-    id = window.localStorage.getItem("id");
-    validando();
-    //refresh();
+    //validando();
+    // if (
+    //   window.localStorage.getItem("accessToken") &&
+    //   window.localStorage.getItem("id")
+    // ) {
+    //   accessTk = window.localStorage.getItem("accessToken");
+    //   id = swindow.localStorage.getItem("id");
+    //   captureId(id);
+    //   init(accessTk);
+    // }
     // captureToken(accessTk);
-    captureId(id);
-    init(accessTk);
   }, []);
 
   const validando = () => {
@@ -39,10 +42,7 @@ const Index = () => {
     }
   };
 
-  // const refresh = () => {
-  //   petitionRefreshToken(refreshTk).catch((err) => console.log(err));
-  // };
-
   return <SpinnerSplash />;
 };
+
 export default Index;
