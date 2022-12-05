@@ -1,7 +1,7 @@
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
 import { useState, useEffect } from "react";
-import SelectTeam from "../../components/Main/datosvideo/SelectTeam";
+import SelectTeam from "../../components/Main/SelectTeam";
 import { searchVideos } from "../api/apiYoutube";
 import LargeContainerBox from "../../components/Main/LargeContainerBox";
 import VideoContainer from "../../components/Main/datosvideo/VideoContainer";
