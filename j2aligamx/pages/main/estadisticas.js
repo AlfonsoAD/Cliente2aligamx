@@ -7,6 +7,10 @@ import {getStandingsForSeason} from '../api/apiFootball'
 import SelectList from "../../components/Main/SelectList"
 import {temporadas,estadisticasJornadas} from "../../utilities/Arrays.Matchs";
 
+
+
+
+
 function Estadisticas() {
   const [year,setYear] = useState("2022")
 
