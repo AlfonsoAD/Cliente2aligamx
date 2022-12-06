@@ -27,10 +27,11 @@ const ModalEquipos = () => {
   const [logoTeam, setLogoTeam] = useState("");
   const [idUserNav, setIdUserNav] = useState("");
 
-  const fshowModal = () => setShowModal(false);
-  const tshowModal = () => setShowModal(true);
+  // const fshowModal = () => setShowModal(false);
+  // const tshowModal = () => setShowModal(true);
 
   const chooseTeam = (e) => {
+    console.log(e.target);
     setIdTeam(e.target.id);
     setNameTeam(e.target.name);
     setLogoTeam(e.target.src);
@@ -78,7 +79,7 @@ const ModalEquipos = () => {
                           src={value.logo}
                           height="38"
                           width="38"
-                          alt={`Logo de ${value.name}`}
+                          alt={value.logo}
                           id={value.id}
                           name={value.name}
                           className="hover:animate-ping h-24 w-24"

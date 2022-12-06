@@ -15,7 +15,7 @@ const CardProfileUser = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen bg-gradient-to-r from-teal-700 to-blue-900 ...">
+      <div className="flex justify-center items-center h-screen bg-gradient-to-r from-teal-700 to-white ...">
         <div className="a-box">
           <h1 className="text-2xl font-bold m-5 text-black">
             Datos del usuario
