@@ -20,8 +20,8 @@ export function useUserContext() {
 const UserProvider = ({ children }) => {
   const [user, setUser] = useState({
     userId: "",
-    userName: "",
-    userEmail: "",
+    userName: "defaultname",
+    userEmail: "defaultname@sdf",
   });
 
   useEffect(() => {
