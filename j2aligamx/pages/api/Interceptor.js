@@ -30,6 +30,7 @@ export const unregister = FetchInterceptor.register({
         //     },
         //   }).catch((err) => console.log(err));
         // }
+
       } catch (err) {
         console.log(err);
       }

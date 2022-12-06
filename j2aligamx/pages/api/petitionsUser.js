@@ -1,8 +1,9 @@
 import { unregister } from "./Interceptor";
 import jwt_decode from "jwt-decode";
 
+const urlApi = "https://web-production-b53e.up.railway.app/"
 //const urlApi = "https://api-ligamx.onrender.com";
-const urlApi = "http://localhost:4000";
+//const urlApi = "http://localhost:4000";
 
 var tokenAuth = "";
 
