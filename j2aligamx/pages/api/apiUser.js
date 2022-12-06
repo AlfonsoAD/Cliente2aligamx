@@ -1,6 +1,4 @@
 //BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
-import { unregister } from "./Interceptor";
-
 //Usuarios
 //Peticiones respecto al usuario
 // const urlApi = process.env.API_URL;
