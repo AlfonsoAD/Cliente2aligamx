@@ -1,17 +1,17 @@
 //BY JESÚS ALFONSO ANDRADE DOMÍNGUEZ 18100149
 //react, next
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 //Context
 import UserPreferencesProvider from "../components/Context/UserPreferencesProvider";
 import UserProvider from "../components/Context/UserProvider";
-import { captureToken } from "../components/Context/UserProvider";
+//import { captureToken } from "../components/Context/UserProvider";
 //Estilos
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
-  var accessTk = "";
+  //const [myToken, setMyToken] = useState("");
 
   useEffect(() => {
     validando();
@@ -26,12 +26,11 @@ function MyApp({ Component, pageProps }) {
         router.push("/session/login");
       }, 2000);
     } else {
-      accessTk = localStorage.getItem("accessToken");
-      console.log(accessTk);
-      captureToken(accessTk);
+      //setMyToken(localStorage.getItem("accessToken"));
+      //captureToken(accessTk);
     }
   };
-
+  // console.log(myToken);
   return (
     <UserProvider>
       <UserPreferencesProvider>
