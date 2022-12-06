@@ -18,6 +18,7 @@ module.exports = withPWA({
       "media.api-sports.io",
       "images.unsplash.com",
       "localhost",
+      "j2aligamx.vercel.app",
     ],
   },
 });

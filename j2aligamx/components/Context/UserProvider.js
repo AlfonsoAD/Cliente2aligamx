@@ -9,8 +9,8 @@ const userData = { userId: "", userName: "", userEmail: "" };
 
 const userContext = React.createContext(userData);
 
-export const captureToken = (tk) => {
-  token = tk;
+export const captureToken = (accessTk) => {
+  token = accessTk;
 };
 
 export function useUserContext() {
