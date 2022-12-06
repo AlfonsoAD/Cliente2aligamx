@@ -17,7 +17,6 @@ const Partidos = () => {
   const gettinMatches = () => {
     if (season && rounds) {
       getMatchs(season, rounds).then((data) => setDataMatchs(data));
-      console.log(datamatchs);
     }
   };
 
