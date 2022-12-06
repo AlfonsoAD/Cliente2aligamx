@@ -102,9 +102,11 @@ const MenPrincipal = () => {
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Abrir menu de usuario</span>
                       <Image
-                        src={logo != "" ? logo : IMG_USER_URL}
-                        width="34"
-                        height="34"
+                        src="https://media.api-sports.io/football/teams/2279.png"
+                        className="sm:h-8 sm:w-8"
+                        height="20"
+                        width="20"
+                        alt={`Logo`}
                       />
                     </Menu.Button>
                   </div>

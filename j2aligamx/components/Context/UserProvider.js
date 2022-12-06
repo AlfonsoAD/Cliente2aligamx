@@ -9,15 +9,16 @@ const userData = { userId: "", userName: "", userEmail: "" };
 
 const userContext = React.createContext(userData);
 
-export const captureToken = (accessTk) => {
-  token = accessTk;
-};
+// export const captureToken = (accessTk) => {
+//   accessTk;
+// };
 
 export function useUserContext() {
   return useContext(userContext);
 }
 
 const UserProvider = ({ children }) => {
+  // const [myToken, setMyToken] = useState(token);
   const [user, setUser] = useState({
     userId: "",
     userName: "defaultname",
@@ -25,10 +26,11 @@ const UserProvider = ({ children }) => {
   });
 
   useEffect(() => {
-    dataUser();
+    var token = localStorage.getItem("accessToken");
+    dataUser(token);
   }, []);
 
-  const dataUser = () => {
+  const dataUser = (token) => {
     if (token != "" && token != null && token != undefined) {
       let decode = jwt_decode(token);
       setUser({

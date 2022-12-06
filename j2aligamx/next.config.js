@@ -20,6 +20,12 @@ module.exports = withPWA({
       "localhost",
       "j2aligamx.vercel.app",
     ],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "media.api-sports.io",
+      },
+    ],
   },
 });
 
