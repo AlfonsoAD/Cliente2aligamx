@@ -38,7 +38,7 @@ const options = {
   },
 };
 
-export default function ({ datos, temp }) {
+const LineChart = ({ datos, temp }) => {
   let Partidosganados = [];
   let PartidosPerdidos = [];
   let PartidosEmpatados = [];
@@ -115,4 +115,6 @@ export default function ({ datos, temp }) {
   }, []);
 
   return <Line data={data} options={options} />;
-}
+};
+
+export default LineChart;
