@@ -36,6 +36,12 @@ const UserProvider = ({ children }) => {
         userName: decode.name,
         userEmail: decode.email,
       });
+    } else {
+      setUser({
+        userId: "a",
+        userName: "hola",
+        userEmail: "asa@aad",
+      });
     }
   };
 
