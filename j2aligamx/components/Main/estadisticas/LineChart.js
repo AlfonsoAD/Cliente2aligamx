@@ -91,7 +91,7 @@ const LineChart = ({ datos, temp }) => {
           data: Partidosganados,
           tension: 0.5,
           borderColor: "green",
-          pointRadius: 5,
+          pointRadius: 3,
           pointBackgroundColor: "Black",
         },
         {
@@ -99,7 +99,7 @@ const LineChart = ({ datos, temp }) => {
           data: PartidosPerdidos,
           tension: 0.5,
           borderColor: "red",
-          pointRadius: 5,
+          pointRadius: 3,
           pointBackgroundColor: "Black",
         },
         {
@@ -107,7 +107,7 @@ const LineChart = ({ datos, temp }) => {
           data: PartidosEmpatados,
           tension: 0.5,
           borderColor: "blue",
-          pointRadius: 5,
+          pointRadius: 3,
           pointBackgroundColor: "Black",
         },
       ],

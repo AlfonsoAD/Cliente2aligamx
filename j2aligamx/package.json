@@ -11,6 +11,7 @@
   "dependencies": {
     "@headlessui/react": "^1.7.4",
     "@heroicons/react": "^2.0.13",
+    "chart.js": "^4.0.1",
     "dayjs": "^1.11.6",
     "dotenv": "^16.0.3",
     "fetch-intercept": "^2.4.0",
