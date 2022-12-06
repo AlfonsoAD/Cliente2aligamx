@@ -1,8 +1,12 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
 import ModalRedirection from "../../components/Main/ModalRedirection";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
-import { getNewsSportsMx, getNewsSportsMx2 } from "../api/apiNews";
+//Api
+import { getNewsSportsMx2 } from "../api/apiNews";
+//react
 import { useEffect, useState } from "react";
 
 const Noticias = () => {

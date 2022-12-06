@@ -1,3 +1,6 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//Primer componente
+
 const Input = (props) => {
   let { typeInput, placeholder, value, onchange } = props;
 

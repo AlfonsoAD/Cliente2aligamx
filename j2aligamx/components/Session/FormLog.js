@@ -1,13 +1,15 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react,next
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-//Peticiones api
-import { petitionLogin } from "../../pages/api/petitionsUser";
+//Api
+import { postLogin } from "../../pages/api/apiUser";
 //Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-//Herramientas
+//Libreria de mensajes
 import Swal from "sweetalert2";
 
 const jwt = require("jsonwebtoken");
@@ -30,7 +32,7 @@ const FormLog = () => {
         setEmail(null);
         setPassword(null);
       } else {
-        await petitionLogin(email, password);
+        await postLogin(email, password);
         router.push("/main/home");
       }
     } catch (err) {

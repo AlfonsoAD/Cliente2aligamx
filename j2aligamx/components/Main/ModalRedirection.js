@@ -1,5 +1,8 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react,next
 import React, { useState } from "react";
 import { useRouter } from "next/router";
+//Componente
 import ButtonClick from "../ButtonClick";
 
 const ModalRedirection = ({ link, closeAction }) => {
@@ -24,8 +27,8 @@ const ModalRedirection = ({ link, closeAction }) => {
               <h3 className="text-3xl font-semibold">J2A LIGA MX</h3>
             </div>
             {/*body*/}
-            <div className="flex flex-wrap 100wv justify-center">
-              <h2>
+            <div className="flex flex-wrap 100wv justify-center m-4">
+              <h2 className="text-xl font-semibold">
                 Estás a punto de salir de J2A LIGA MX, ¿quieres seguir viendo la
                 nota?
               </h2>

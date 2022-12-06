@@ -17,6 +17,7 @@ module.exports = withPWA({
       "user-images.githubusercontent.com",
       "media.api-sports.io",
       "images.unsplash.com",
+      "localhost",
     ],
   },
 });

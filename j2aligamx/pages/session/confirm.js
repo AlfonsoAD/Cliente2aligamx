@@ -1,7 +1,12 @@
-import { useEffect } from "react";
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//Componentes
 import LayoutSession from "../../components/Session/LayoutSession";
 import FormConfirm from "../../components/Session/FormConfirm";
-import { petitionConfirmation } from "../../pages/api/petitionsUser";
+//react
+import { useEffect } from "react";
+//Api
+import { postConfirmation } from "../../pages/api/apiUser";
+//Libreria de mensajes
 import Swal from "sweetalert2";
 
 const Confirm = () => {
@@ -15,7 +20,7 @@ const Confirm = () => {
 
   const confirmation = async (token) => {
     try {
-      await petitionConfirmation(token);
+      await postConfirmation(token);
     } catch (err) {
       Swal.fire("Error", `${err}`, "error");
     }

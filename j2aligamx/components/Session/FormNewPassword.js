@@ -1,7 +1,9 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react, next
 import { useState } from "react";
 import { useRouter } from "next/router";
-//Peticion api
-import { petitionRecoverNewPassword } from "../../pages/api/petitionsUser";
+//Api
+import { postRecoverNewPassword } from "../../pages/api/apiUser";
 //Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
@@ -9,7 +11,7 @@ import ContainerForm from "./ContainerForm";
 //Hooks
 import validation from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
-//Herramientas
+//Libreria de mensajes
 import Swal from "sweetalert2";
 
 const FormNewPassword = () => {
@@ -42,7 +44,7 @@ const FormNewPassword = () => {
 
   const recoverNewPassword = async (token) => {
     try {
-      await petitionRecoverNewPassword(token, passwordConfirm);
+      await postRecoverNewPassword(token, passwordConfirm);
       Swal.fire("Éxito", "Contraseña cambiada", "success");
       setTimeout(() => {
         router.push("/session/login");

@@ -1,5 +1,8 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//Componentes
 import Header from "../Session/HeaderSession";
 import FooterSession from "../Session/FooterSession";
+//react
 import React from "react";
 
 const LayoutSession = ({ children }) => {
