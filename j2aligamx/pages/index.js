@@ -17,13 +17,14 @@ const Index = () => {
     accessTk = window.localStorage.getItem("accessToken");
     refreshTk = window.localStorage.getItem("refreshToken");
     id = window.localStorage.getItem("id");
-    validando();
+    //validando();
     //refresh();
     // captureToken(accessTk);
     captureId(id);
     init(accessTk);
   }, []);
 
+  
   const validando = () => {
     if (
       localStorage.getItem("accessToken") === null &&

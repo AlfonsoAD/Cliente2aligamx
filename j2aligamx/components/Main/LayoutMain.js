@@ -17,7 +17,7 @@ const LayoutMain = ({ children }) => {
   useEffect(() => {
     accessTk = window.localStorage.getItem("accessToken");
     id = window.localStorage.getItem("id");
-    validando();
+    //validando();
     captureId(id);
     init(accessTk);
   }, []);

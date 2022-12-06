@@ -5,6 +5,7 @@ import MatchsResults from "../../components/Main/MatchsResults";
 import SelectList from "../../components/Main/SelectList";
 import { useState, useEffect } from "react";
 import {getRounds, getMatchs} from "../../pages/api/apiFootball"
+import {jornadas,temporadas} from "../../utilities/Arrays.Matchs";
 
 const Partidos = () => {
     const[season,setSeason] = useState("2022");
@@ -34,13 +35,14 @@ const Partidos = () => {
             handleChange={(e) => {
                 setSeason(e.target.value)
                 }}
-            
+            data={temporadas}
             />
               <SelectList 
               tittle ="jornadas"
               handleChange={(e) => {
                   setRound(e.target.value)
-                  }}
+                  } } 
+              data={jornadas}
               />
             </div>
           <MatchContainer >

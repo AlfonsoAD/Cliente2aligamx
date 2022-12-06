@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+
+const API_KEY = "380c7569bcmshfc374ccea9bc205p188818jsn1df49d50b49f";
 //const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
-=======
-//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
-const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
->>>>>>> d01192bbb566192ab92b649f676af921d58c8f9d
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
 const LEAGUE_KEY = "262";
@@ -69,8 +65,8 @@ const getStandingsForSeason = async(year) => {
       `${API_URL}/standings?season=${year}&league=${LEAGUE_KEY}`,
       options
     );
-   const resJson = await res.json();
-   return resJson.response;
+  const resJson = await res.json();
+  return resJson.response;
   } catch (err) {
     console.log(err);
     throw new Error(`Algo ha salido mal ${err}`);
