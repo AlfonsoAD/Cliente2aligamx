@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 //Api
-import { postForgotPassword } from "../../pages/api/apiUsers";
+import { postForgotPassword } from "../../pages/api/apiUser";
 //Componentes
 import ContainerForm from "./ContainerForm";
 import Input from "../Input";
