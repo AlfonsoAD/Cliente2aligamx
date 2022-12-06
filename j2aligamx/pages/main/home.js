@@ -24,7 +24,7 @@ const Home = () => {
   const [showModal, setShowModal] = useState({ show: false, url: "" });
 
   useEffect(() => {
-    //petitions();
+    petitions();
   }, []);
 
   const petitions = () => {
