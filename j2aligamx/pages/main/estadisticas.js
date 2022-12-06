@@ -67,14 +67,6 @@ function Estadisticas() {
           console.log("HOLA")
         )}
       </div>
-
-      {/* <div class="m-4 shadow-2xl ... rounded-lg">
-            <TableCociente />    
-          </div>
-
-          <div class="m-4 shadow-2xl ... rounded-lg">
-            <BarChart />
-          </div> */}
     </LayoutMain>
   );
 }
