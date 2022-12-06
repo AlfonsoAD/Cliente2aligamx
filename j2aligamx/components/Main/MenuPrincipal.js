@@ -9,14 +9,12 @@ import Image from "next/image";
 
 const MenPrincipal = () => {
   const router = useRouter();
-
-  // const { user } = useUserContext();
-  // const { userName } = user;
+  const { user } = useUserContext();
+  const { userName } = user;
   const { userPreferences } = useUserPreferencesContext();
   const { logo } = userPreferences;
   const IMG_URL =
     "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png";
-
   const IMG_USER_URL =
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
@@ -86,10 +84,10 @@ const MenPrincipal = () => {
                         {item.name}
                       </a>
                     ))}
-                    {/* <h4
+                    <h4
                       className="text-gray-300 hover:bg-blueMenu hover:text-white
                           px-2 py-2 rounded-md text-sm font-medium ml-3"
-                    >{`${userName}`}</h4> */}
+                    >{`${userName}`}</h4>
                   </div>
                 </div>
               </div>
@@ -99,12 +97,13 @@ const MenPrincipal = () => {
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Open user menu</span>
-                      <Image
-                        className="animate-bounce rounded-full"
-                        src={logo != "" ? logo : IMG_USER_URL}
-                        height="34"
-                        width="34"
-                      />
+                      {logo && (
+                        <Image
+                          src={logo != "" ? logo : IMG_USER_URL}
+                          width="34"
+                          height="34"
+                        />
+                      )}
                     </Menu.Button>
                   </div>
                   <Transition

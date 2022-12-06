@@ -1,10 +1,15 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react, next
 import { useState } from "react";
+import Image from "next/image";
+//Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
 import LargeContainerBox from "../../components/Main/LargeContainerBox";
 import CardTransfer from "../../components/Main/CardTransfer";
+//Utilities
 import { teamsLogo } from "../../utilities/teamsInfo";
-import Image from "next/image";
+//Api
 import { getTransfers } from "../api/apiFootball";
 
 const Transferencias = () => {

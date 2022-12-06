@@ -1,3 +1,5 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
 import Image from "next/image";
 
 const FooterMain = () => {

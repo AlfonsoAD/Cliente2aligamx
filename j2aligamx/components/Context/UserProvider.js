@@ -1,4 +1,7 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
 import React, { useState, useContext, useEffect } from "react";
+//Libreria para decodificar token
 import jwt_decode from "jwt-decode";
 
 var token = "";
@@ -26,12 +29,14 @@ const UserProvider = ({ children }) => {
   }, []);
 
   const dataUser = () => {
-    let decode = jwt_decode(token);
-    setUser({
-      userId: decode.id,
-      userName: decode.name,
-      userEmail: decode.email,
-    });
+    if (token != "" && token != null && token != undefined) {
+      let decode = jwt_decode(token);
+      setUser({
+        userId: decode.id,
+        userName: decode.name,
+        userEmail: decode.email,
+      });
+    }
   };
 
   return (

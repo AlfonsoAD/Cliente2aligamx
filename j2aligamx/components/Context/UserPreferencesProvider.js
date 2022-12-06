@@ -1,7 +1,12 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
 import React, { useState, useContext, useEffect } from "react";
-import { petitionPreferences } from "../../pages/api/petitionsUser";
-
-var idUser = "";
+//Libreria de mensajes
+import Swal from "sweetalert2";
+//Api
+import { getPreferences } from "../../pages/api/apiUserPreferences";
+//Contexto
+import { useUserContext } from "./UserProvider";
 
 const preferences = {
   idPreferences: "",
@@ -13,15 +18,14 @@ const preferences = {
 
 const userPreferencesContext = React.createContext(preferences);
 
-export const captureId = (id) => {
-  idUser = id;
-};
-
 export function useUserPreferencesContext() {
   return useContext(userPreferencesContext);
 }
 
 const UserPreferencesProvider = ({ children }) => {
+  const { user } = useUserContext();
+  const { userId } = user;
+
   const [userPreferences, setUserPreferences] = useState({
     idPreferences: "",
     idFavTeam: "",
@@ -35,7 +39,7 @@ const UserPreferencesProvider = ({ children }) => {
   }, []);
 
   const dataUser = () => {
-    petitionPreferences(idUser)
+    getPreferences(userId)
       .then((res) => {
         setUserPreferences({
           idPreferences: res.IdPreferencias,
@@ -45,7 +49,7 @@ const UserPreferencesProvider = ({ children }) => {
           idUserP: res.idUser,
         });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => Swal.fire(`Error ${err}`));
   };
 
   return (

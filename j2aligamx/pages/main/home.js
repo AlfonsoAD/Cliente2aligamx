@@ -1,15 +1,23 @@
+//BY JESÚS ALFONSO ANDRADE DOMÍNGUEZ 18100149
+//Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
 import TeamsTablePosition from "../../components/Main/TeamsTablePosition";
 import MatchContainer from "../../components/Main/MatchContainer";
 import SmallContainerBox from "../../components/Main/SmallContainerBox";
-import { getOverallTable, getTopScorers } from "../api/apiFootball";
-import { getNewsSportsMx } from "../api/apiNews";
-import { useEffect, useState } from "react";
 import ModalEquipos from "../../components/Main/ModalEquipos";
 import ModalRedirection from "../../components/Main/ModalRedirection";
+//Apis
+import { getOverallTable, getTopScorers } from "../api/apiFootball";
+import { getNewsSportsMx } from "../api/apiNews";
+//Contextos
+import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
+//react, next
+import { useEffect, useState } from "react";
 import Image from "next/image";
 
 const Home = () => {
+  const { userPreferences } = useUserPreferencesContext();
+  const { idFavTeam } = userPreferences;
   const [table, setTable] = useState(null);
   const [news, setNews] = useState(null);
   const [scorers, setScorers] = useState([]);
@@ -42,7 +50,7 @@ const Home = () => {
 
   return (
     <LayoutMain>
-      <ModalEquipos />
+      {idFavTeam == "" ? <ModalEquipos /> : null}
       {showModal.show ? (
         <ModalRedirection
           link={showModal.url}

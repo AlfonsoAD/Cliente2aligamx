@@ -1,3 +1,5 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+
 const ButtonClick = (props) => {
   let { type, text, clase, click } = props;
 

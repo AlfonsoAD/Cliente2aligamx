@@ -1,10 +1,14 @@
+//Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
-import { useState, useEffect } from "react";
-import SelectTeam from "../../components/Main/SelectTeam";
-import { searchVideos } from "../api/apiYoutube";
 import LargeContainerBox from "../../components/Main/LargeContainerBox";
 import VideoContainer from "../../components/Main/datosvideo/VideoContainer";
+import SelectTeam from "../../components/Main/SelectTeam";
+//react
+import { useState, useEffect } from "react";
+//Api
+import { searchVideos } from "../api/apiYoutube";
+
 const Videos = () => {
   const [query, setQuery] = useState("Futbol Liga MX");
   const [dataVideos, setInfoVideos] = useState([]);

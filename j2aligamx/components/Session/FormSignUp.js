@@ -1,16 +1,18 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//next, react
 import { useState } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
-//Peticiones api
-import { petitionSignUp } from "../../pages/api/petitionsUser";
+//Api
+import { postSignUp } from "../../pages/api/apiUser";
 //Hooks
 import validations from "../../hooks/validations";
 import dataValidations from "../../hooks/dataValidations";
-//Componentes externos
+//Componentes
 import Input from "../Input";
 import ButtonClick from "../ButtonClick";
 import ContainerForm from "./ContainerForm";
-//Herramientas
+//Libreria de mensajes
 import Swal from "sweetalert2";
 
 const FormSignUp = () => {
@@ -40,7 +42,7 @@ const FormSignUp = () => {
     ) {
       try {
         e.preventDefault();
-        await petitionSignUp(email, password, userName);
+        await postSignUp(email, password, userName);
         limpiar();
         Swal.fire(
           "Registrado",

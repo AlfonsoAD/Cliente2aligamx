@@ -1,15 +1,18 @@
-import React, { useEffect, useState } from "react";
-import ButtonClick from "../ButtonClick";
-import { teamsLogo } from "../../utilities/teamsInfo";
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react, next
+import React, { useState } from "react";
 import Image from "next/image";
-import { petitionPostPreferences } from "../../pages/api/petitionsUser";
-import { useUserContext } from "../Context/UserProvider";
+//Componente
+import ButtonClick from "../ButtonClick";
+//Utilities
+import { teamsLogo } from "../../utilities/teamsInfo";
+//Api
+import { postPostPreferences } from "../../pages/api/apiUserPreferences";
+//Contexto
 import { useUserPreferencesContext } from "../Context/UserPreferencesProvider";
 import Swal from "sweetalert2";
 
 const ModalEquipos = () => {
-  // const { user } = useUserContext();
-  // const { userId, userName } = user;
   const { userPreferences } = useUserPreferencesContext();
   const { idFavTeam } = userPreferences;
   const [showModal, setShowModal] = useState(false);
@@ -30,11 +33,9 @@ const ModalEquipos = () => {
 
   const submit = () => {
     setShowModal(false);
-    petitionPostPreferences(idUserNav, idTeam, nameTeam, logoTeam).catch(
-      (err) => {
-        Swal.fire("Error", `Algo no ha sucedido bien ${err}`, "error");
-      }
-    );
+    postPostPreferences(idUserNav, idTeam, nameTeam, logoTeam).catch((err) => {
+      Swal.fire("Error", `Algo no ha sucedido bien ${err}`, "error");
+    });
   };
 
   return (

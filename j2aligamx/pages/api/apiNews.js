@@ -1,9 +1,10 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//Api de noticias
 const fetch = require("node-fetch");
 const url =
   "https://bing-news-search1.p.rapidapi.com/news/search?q=liga%20mx&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off";
 const url_2 =
   "https://bing-news-search1.p.rapidapi.com/news?originalImg=true&category=sports&cc=mx&setLang=es&safeSearch=Off&textFormat=Raw";
-
 const options = {
   method: "GET",
   headers: {
@@ -13,6 +14,7 @@ const options = {
   },
 };
 
+//Top noticias
 const getNewsSportsMx = async () => {
   try {
     const res = await fetch(url, options);
@@ -23,6 +25,7 @@ const getNewsSportsMx = async () => {
   }
 };
 
+//Noticias
 const getNewsSportsMx2 = async () => {
   try {
     const res = await fetch(url_2, options);

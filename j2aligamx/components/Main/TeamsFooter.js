@@ -1,6 +1,9 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react,next
 import React from "react";
-import { teamsLogo } from "../../utilities/teamsInfo";
 import Image from "next/image";
+//Utilities
+import { teamsLogo } from "../../utilities/teamsInfo";
 
 const TeamsFooter = () => {
   return (
