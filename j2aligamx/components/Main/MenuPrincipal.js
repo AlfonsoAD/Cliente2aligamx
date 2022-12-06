@@ -28,6 +28,10 @@ const MenPrincipal = () => {
     { name: "Videos", href: "/main/videos", current: false },
   ];
 
+  const goToProfile = (e) => {
+    router.push("/main/perfil");
+  };
+
   const logOut = (e) => {
     window.localStorage.removeItem("accessToken");
     window.localStorage.removeItem("refreshToken");
@@ -77,7 +81,7 @@ const MenPrincipal = () => {
                           item.current
                             ? "bg-blueMenu text-white"
                             : "text-gray-300 hover:bg-blueMenu hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                          "px-3 py-2 rounded-md text-sm font-medium mr-4"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
@@ -86,14 +90,14 @@ const MenPrincipal = () => {
                     ))}
                     <h4
                       className="text-gray-300 hover:bg-blueMenu hover:text-white
-                          px-2 py-2 rounded-md text-sm font-medium ml-3"
-                    >{`${userName}`}</h4>
+                          px-2 py-2 rounded-md text-sm font-medium "
+                    >{`Bienvenio ${userName}`}</h4>
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-2">
+                <Menu as="div" className="relative ml-1">
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Abrir menu de usuario</span>
@@ -117,8 +121,9 @@ const MenPrincipal = () => {
                       <Menu.Item>
                         <ButtonClick
                           type="submit"
-                          text="Configuración"
+                          text="Perfil"
                           clase="config"
+                          click={goToProfile}
                         />
                       </Menu.Item>
                       <Menu.Item>
