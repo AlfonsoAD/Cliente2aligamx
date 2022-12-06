@@ -2,8 +2,6 @@
 //react, next
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-//Api
-import { accessKey } from "./api/apiUserPreferences";
 //Context
 import UserPreferencesProvider from "../components/Context/UserPreferencesProvider";
 import UserProvider from "../components/Context/UserProvider";
@@ -21,8 +19,8 @@ function MyApp({ Component, pageProps }) {
 
   const validando = () => {
     if (
-      localStorage.getItem("accessToken") &&
-      localStorage.getItem("refreshToken")
+      localStorage.getItem("accessToken") === null &&
+      localStorage.getItem("refreshToken") === null
     ) {
       setTimeout(() => {
         router.push("/session/login");
@@ -33,7 +31,6 @@ function MyApp({ Component, pageProps }) {
         router.push("/main/home");
       }, 2000);
       captureToken(accessTk);
-      accessKey(accessTk);
     }
   };
 

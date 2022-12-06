@@ -7,15 +7,21 @@ import ButtonClick from "../ButtonClick";
 //Utilities
 import { teamsLogo } from "../../utilities/teamsInfo";
 //Api
-import { postPostPreferences } from "../../pages/api/apiUserPreferences";
+import useFetch from "../../pages/api/fetchRefresh";
 //Contexto
 import { useUserPreferencesContext } from "../Context/UserPreferencesProvider";
+import { useUserContext } from "../Context/UserProvider";
 import Swal from "sweetalert2";
 
 const ModalEquipos = () => {
+  const params = {};
+  const { user } = useUserContext();
   const { userPreferences } = useUserPreferencesContext();
+  const { callFetch } = useFetch();
+  const { userId } = user;
   const { idFavTeam } = userPreferences;
-  const [showModal, setShowModal] = useState(false);
+
+  const [showModal, setShowModal] = useState(true);
   const [idTeam, setIdTeam] = useState("");
   const [nameTeam, setNameTeam] = useState("");
   const [logoTeam, setLogoTeam] = useState("");
@@ -28,19 +34,26 @@ const ModalEquipos = () => {
     setIdTeam(e.target.id);
     setNameTeam(e.target.name);
     setLogoTeam(e.target.src);
-    setIdUserNav(window.localStorage.getItem("id"));
+    setIdUserNav(userId);
   };
 
   const submit = () => {
     setShowModal(false);
-    postPostPreferences(idUserNav, idTeam, nameTeam, logoTeam).catch((err) => {
+
+    params["body"] = JSON.stringify({
+      idEquipoFavorito: idTeam,
+      NombreEquipo: nameTeam,
+      LogoEquipo: logoTeam,
+      idUser: idUserNav,
+    });
+
+    callFetch(`/preferencias-usuarios`, params).catch((err) => {
       Swal.fire("Error", `Algo no ha sucedido bien ${err}`, "error");
     });
   };
 
   return (
     <>
-      {idFavTeam == "" ? tshowModal : fshowModal}
       {showModal ? (
         <>
           <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">

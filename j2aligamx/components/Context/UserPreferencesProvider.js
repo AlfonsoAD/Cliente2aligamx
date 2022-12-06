@@ -4,7 +4,7 @@ import React, { useState, useContext, useEffect } from "react";
 //Libreria de mensajes
 import Swal from "sweetalert2";
 //Api
-import { getPreferences } from "../../pages/api/apiUserPreferences";
+import useFetch from "../../pages/api/fetchRefresh";
 //Contexto
 import { useUserContext } from "./UserProvider";
 
@@ -23,6 +23,7 @@ export function useUserPreferencesContext() {
 }
 
 const UserPreferencesProvider = ({ children }) => {
+  const { callFetch } = useFetch();
   const { user } = useUserContext();
   const { userId } = user;
 
@@ -38,18 +39,15 @@ const UserPreferencesProvider = ({ children }) => {
     dataUser();
   }, []);
 
-  const dataUser = () => {
-    getPreferences(userId)
-      .then((res) => {
-        setUserPreferences({
-          idPreferences: res.IdPreferencias,
-          idFavTeam: res.idEquipoFavorito,
-          teamName: res.NombreEquipo,
-          logo: res.LogoEquipo,
-          idUserP: res.idUser,
-        });
-      })
-      .catch((err) => Swal.fire(`Error ${err}`));
+  const dataUser = async () => {
+    const res = await callFetch(`/preferencias-usuarios/`, 1);
+    setUserPreferences({
+      idPreferences: res.IdPreferencias,
+      idFavTeam: res.idEquipoFavorito,
+      teamName: res.NombreEquipo,
+      logo: res.LogoEquipo,
+      idUserP: res.idUser,
+    });
   };
 
   return (

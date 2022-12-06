@@ -1,38 +1,39 @@
-//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
-//BY CESAR CASTRO SALAZAR
+// //BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+// //BY CESAR CASTRO SALAZAR
 
-import FetchInterceptor from "fetch-intercept";
-import useFetch from "./fetchRefresh";
+// import FetchInterceptor from "fetch-intercept";
+// import useFetch from "./fetchRefresh";
 
-//Intercept de peticiones de apis (User, UserPreferences)
-const { callFetch } = useFetch();
+// //Intercept de peticiones de apis (User, UserPreferences)
+// const { callFetch } = useFetch();
+// const sacar = () => {
+//   window.localStorage.removeItem("accessToken");
+//   window.localStorage.removeItem("refreshToken");
+//   location.reload();
+// };
 
-const sacar = () => {
-  window.localStorage.removeItem("accessToken");
-  window.localStorage.removeItem("refreshToken");
-  location.reload();
-};
+// //Interceptor
+// export const unregister = FetchInterceptor.register({
+//   request: function (url, config) {
+//     return [url, config];
+//   },
 
-//Interceptor
-export const unregister = FetchInterceptor.register({
-  request: function (url, config) {
-    return [url, config];
-  },
+//   requestError: function (error) {
+//     return Promise.reject(error);
+//   },
 
-  requestError: function (error) {
-    return Promise.reject(error);
-  },
+//   response: function (response) {
+//     if (response.status == "401") {
+//       const { res, data } = callFetch(response.url);
+//       console.log(res, data);
 
-  response: function (response) {
-    if (response.status == "401") {
-      const { res, data } = callFetch(response.url).catch(sacar());
-      console.log(res, data);
-    }
-    console.log(response.url);
-    return response;
-  },
+//       console.log(response.url);
+//     }
 
-  responseError: function (error) {
-    return Promise.reject(error);
-  },
-});
+//     return response;
+//   },
+
+//   responseError: function (error) {
+//     return Promise.reject(error);
+//   },
+// });

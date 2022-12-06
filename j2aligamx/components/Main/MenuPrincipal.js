@@ -18,6 +18,7 @@ const MenPrincipal = () => {
   const IMG_USER_URL =
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
+  console.log(logo);
   const navigation = [
     { name: "Inicio", href: "/main/home", current: false },
     { name: "Partidos", href: "/main/partidos", current: false },
@@ -96,14 +97,12 @@ const MenPrincipal = () => {
                 <Menu as="div" className="relative ml-2">
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
-                      <span className="sr-only">Open user menu</span>
-                      {logo && (
-                        <Image
-                          src={logo != "" ? logo : IMG_USER_URL}
-                          width="34"
-                          height="34"
-                        />
-                      )}
+                      <span className="sr-only">Abrir menu de usuario</span>
+                      <Image
+                        src={logo != "" ? logo : IMG_USER_URL}
+                        width="34"
+                        height="34"
+                      />
                     </Menu.Button>
                   </div>
                   <Transition

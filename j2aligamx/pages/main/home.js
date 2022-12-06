@@ -50,7 +50,7 @@ const Home = () => {
 
   return (
     <LayoutMain>
-      {idFavTeam == "" ? <ModalEquipos /> : null}
+      {idFavTeam == " " ? <ModalEquipos /> : null}
       {showModal.show ? (
         <ModalRedirection
           link={showModal.url}
