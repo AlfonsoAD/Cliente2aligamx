@@ -6,7 +6,8 @@ import dayjs from "dayjs";
 let useFetch = () => {
   let config = {};
   let tokenAuth = "";
-  let baseURL = "http://localhost:4000";
+  //let baseURL = "http://localhost:4000";
+  let baseURL = "https://web-production-b53e.up.railway.app/";
 
   //Método para sacar al usuario de la página
   const expel = () => {
