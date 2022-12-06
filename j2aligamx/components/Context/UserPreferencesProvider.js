@@ -1,7 +1,12 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
 import React, { useState, useContext, useEffect } from "react";
-import { petitionPreferences } from "../../pages/api/petitionsUser";
-
-var idUser = "";
+//Libreria de mensajes
+import Swal from "sweetalert2";
+//Api
+import useFetch from "../../pages/api/fetchRefresh";
+//Contexto
+import { useUserContext } from "./UserProvider";
 
 const preferences = {
   idPreferences: "",
@@ -13,15 +18,15 @@ const preferences = {
 
 const userPreferencesContext = React.createContext(preferences);
 
-export const captureId = (id) => {
-  idUser = id;
-};
-
 export function useUserPreferencesContext() {
   return useContext(userPreferencesContext);
 }
 
 const UserPreferencesProvider = ({ children }) => {
+  const { callFetch } = useFetch();
+  const { user } = useUserContext();
+  const { userId } = user;
+
   const [userPreferences, setUserPreferences] = useState({
     idPreferences: "",
     idFavTeam: "",
@@ -34,18 +39,15 @@ const UserPreferencesProvider = ({ children }) => {
     dataUser();
   }, []);
 
-  const dataUser = () => {
-    petitionPreferences(idUser)
-      .then((res) => {
-        setUserPreferences({
-          idPreferences: res.IdPreferencias,
-          idFavTeam: res.idEquipoFavorito,
-          teamName: res.NombreEquipo,
-          logo: res.LogoEquipo,
-          idUserP: res.idUser,
-        });
-      })
-      .catch((err) => console.log(err));
+  const dataUser = async () => {
+    const res = await callFetch(`/preferencias-usuarios/`, 1);
+    setUserPreferences({
+      idPreferences: res.IdPreferencias,
+      idFavTeam: res.idEquipoFavorito,
+      teamName: res.NombreEquipo,
+      logo: res.LogoEquipo,
+      idUserP: res.idUser,
+    });
   };
 
   return (

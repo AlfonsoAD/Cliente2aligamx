@@ -1,3 +1,6 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//Splash spinner
+//next
 import Image from "next/image";
 
 const SpinnerSplash = () => {

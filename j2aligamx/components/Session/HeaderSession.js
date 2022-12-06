@@ -1,3 +1,5 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//next
 import Image from "next/image";
 
 const Header = () => {
