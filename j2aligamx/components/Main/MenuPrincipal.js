@@ -73,6 +73,9 @@ const MenPrincipal = () => {
                 </div>
                 <div className="hidden sm:ml-4 sm:block">
                   <div className="flex space-x-4">
+                    <p className="text-gray-300 hover:bg-blueMenu hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-6">
+                      {`Hola ${userName}`}
+                    </p>
                     {navigation.map((item) => (
                       <a
                         key={item.name}
@@ -81,17 +84,13 @@ const MenPrincipal = () => {
                           item.current
                             ? "bg-blueMenu text-white"
                             : "text-gray-300 hover:bg-blueMenu hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium mr-4"
+                          "px-3 py-2 rounded-md text-sm font-medium mr-6"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </a>
                     ))}
-                    <h4
-                      className="text-gray-300 hover:bg-blueMenu hover:text-white
-                          px-2 py-2 rounded-md text-sm font-medium "
-                    >{`Bienvenio ${userName}`}</h4>
                   </div>
                 </div>
               </div>
@@ -102,10 +101,10 @@ const MenPrincipal = () => {
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Abrir menu de usuario</span>
                       <Image
-                        src="https://media.api-sports.io/football/teams/2279.png"
+                        src={logo == "" ? IMG_USER_URL : logo}
                         className="sm:h-8 sm:w-8"
-                        height="20"
-                        width="20"
+                        height="44"
+                        width="44"
                         alt={`Logo`}
                       />
                     </Menu.Button>
