@@ -51,8 +51,27 @@ const getOverallTable = async () => {
   }
 };
 
+<<<<<<< HEAD
+const getStandingsForSeason = async(year) => {
+  try {
+
+    const res = await fetch(
+      `${API_URL}/standings?season=${year}&league=${LEAGUE_KEY}`,
+      options
+    );
+  const resJson = await res.json();
+  return resJson.response;
+  } catch (err) {
+    console.log(err);
+    throw new Error(`Algo ha salido mal ${err}`);
+  }
+}
+
+const getPlayers = async () => {
+=======
 //Jugadores por equipo
 const getPlayers = async (TEAM) => {
+>>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
   try {
     const res = await fetch(
       `${API_URL}/players?team=${TEAM}&season=2022`,
@@ -129,6 +148,10 @@ export {
   getMatchs,
   getTransfers,
   getTopScorers,
+<<<<<<< HEAD
+  getStandingsForSeason,
+=======
   getPlayers,
   getPlayerById,
+>>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
 };

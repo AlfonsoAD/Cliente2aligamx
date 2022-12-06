@@ -8,6 +8,7 @@ const Index = () => {
     validando();
   }, []);
 
+  
   const validando = () => {
     if (
       localStorage.getItem("accessToken") === null &&
