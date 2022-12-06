@@ -27,6 +27,7 @@ function MyApp({ Component, pageProps }) {
       }, 2000);
     } else {
       accessTk = localStorage.getItem("accessToken");
+      console.log(accessTk);
       captureToken(accessTk);
     }
   };
