@@ -27,9 +27,6 @@ function MyApp({ Component, pageProps }) {
       }, 2000);
     } else {
       accessTk = localStorage.getItem("accessToken");
-      setTimeout(() => {
-        router.push("/main/home");
-      }, 2000);
       captureToken(accessTk);
     }
   };

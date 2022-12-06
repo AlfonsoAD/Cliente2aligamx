@@ -42,11 +42,11 @@ const UserPreferencesProvider = ({ children }) => {
   const dataUser = async () => {
     const res = await callFetch(`/preferencias-usuarios/`, 1);
     setUserPreferences({
-      idPreferences: res.IdPreferencias,
-      idFavTeam: res.idEquipoFavorito,
-      teamName: res.NombreEquipo,
-      logo: res.LogoEquipo,
-      idUserP: res.idUser,
+      idPreferences: res?.IdPreferencias == null ? " " : res.IdPreferencias,
+      idFavTeam: res?.idEquipoFavorito == null ? " " : res.idEquipoFavorito,
+      teamName: res?.NombreEquipo == null ? " " : res.NombreEquipo,
+      logo: res?.LogoEquipo == null ? "" : res.LogoEquipo,
+      idUserP: res?.idUser == null ? " " : res.idUser,
     });
   };
 
