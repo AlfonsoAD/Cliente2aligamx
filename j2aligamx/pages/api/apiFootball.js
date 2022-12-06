@@ -1,13 +1,8 @@
-<<<<<<< HEAD
-
-const API_KEY = "380c7569bcmshfc374ccea9bc205p188818jsn1df49d50b49f";
-=======
 //BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
 //BY CESAR CASTRO SALAZAR
 
 const API_KEY = "6dfc3e4f53mshdb4451369cc012dp1d5198jsn2611769d2f7c";
 //const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
->>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
 //const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";

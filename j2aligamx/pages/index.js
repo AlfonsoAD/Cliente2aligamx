@@ -5,18 +5,7 @@ import { useRouter } from "next/router";
 const Index = () => {
   const router = useRouter();
   useEffect(() => {
-<<<<<<< HEAD
-    accessTk = window.localStorage.getItem("accessToken");
-    refreshTk = window.localStorage.getItem("refreshToken");
-    id = window.localStorage.getItem("id");
-    //validando();
-    //refresh();
-    // captureToken(accessTk);
-    captureId(id);
-    init(accessTk);
-=======
     validando();
->>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
   }, []);
 
   

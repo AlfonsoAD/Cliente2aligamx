@@ -7,32 +7,6 @@ import TeamsFooter from "./TeamsFooter";
 import FooterMain from "./FooterMain";
 
 const LayoutMain = ({ children }) => {
-<<<<<<< HEAD
-  const router = useRouter();
-  var id = "",
-    accessTk = "";
-
-  useEffect(() => {
-    accessTk = window.localStorage.getItem("accessToken");
-    id = window.localStorage.getItem("id");
-    //validando();
-    captureId(id);
-    init(accessTk);
-  }, []);
-
-  const validando = () => {
-    if (
-      localStorage.getItem("accessToken") === null &&
-      localStorage.getItem("refreshToken") === null
-    ) {
-      setTimeout(() => {
-        router.push("/session/login");
-      }, 2000);
-    }
-  };
-
-=======
->>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
   //Regreso de componente
   return (
     <React.Fragment>
