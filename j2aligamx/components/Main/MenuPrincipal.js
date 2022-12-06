@@ -18,7 +18,6 @@ const MenPrincipal = () => {
   const IMG_USER_URL =
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
-  console.log(logo);
   const navigation = [
     { name: "Inicio", href: "/main/home", current: false },
     { name: "Partidos", href: "/main/partidos", current: false },
@@ -28,6 +27,10 @@ const MenPrincipal = () => {
     { name: "Noticias", href: "/main/noticias", current: false },
     { name: "Videos", href: "/main/videos", current: false },
   ];
+
+  const goToProfile = (e) => {
+    router.push("/main/perfil");
+  };
 
   const logOut = (e) => {
     window.localStorage.removeItem("accessToken");
@@ -70,6 +73,9 @@ const MenPrincipal = () => {
                 </div>
                 <div className="hidden sm:ml-4 sm:block">
                   <div className="flex space-x-4">
+                    <p className="text-gray-300 hover:bg-blueMenu hover:text-white px-3 py-2 rounded-md text-sm font-medium mr-6">
+                      {`Hola ${userName}`}
+                    </p>
                     {navigation.map((item) => (
                       <a
                         key={item.name}
@@ -78,30 +84,28 @@ const MenPrincipal = () => {
                           item.current
                             ? "bg-blueMenu text-white"
                             : "text-gray-300 hover:bg-blueMenu hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                          "px-3 py-2 rounded-md text-sm font-medium mr-6"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </a>
                     ))}
-                    <h4
-                      className="text-gray-300 hover:bg-blueMenu hover:text-white
-                          px-2 py-2 rounded-md text-sm font-medium ml-3"
-                    >{`${userName}`}</h4>
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-2">
+                <Menu as="div" className="relative ml-1">
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
                       <span className="sr-only">Abrir menu de usuario</span>
                       <Image
-                        src={logo != "" ? logo : IMG_USER_URL}
-                        width="34"
-                        height="34"
+                        src={logo == "" ? IMG_USER_URL : logo}
+                        className="sm:h-8 sm:w-8"
+                        height="44"
+                        width="44"
+                        alt={`Logo`}
                       />
                     </Menu.Button>
                   </div>
@@ -118,8 +122,9 @@ const MenPrincipal = () => {
                       <Menu.Item>
                         <ButtonClick
                           type="submit"
-                          text="Configuración"
+                          text="Perfil"
                           clase="config"
+                          click={goToProfile}
                         />
                       </Menu.Item>
                       <Menu.Item>

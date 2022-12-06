@@ -122,6 +122,18 @@ const getTopScorers = async () => {
     throw new Error(`Algo ha salido mal ${err}`);
   }
 };
+const getStandingsForSeason = async (year) => {
+  try {
+    const res = await fetch(
+      `${API_URL}/standings?season=${year}&league=${LEAGUE_KEY}`,
+      options
+    );
+    const resJson = await res.json();
+    return resJson.response;
+  } catch (err) {
+    throw new Error("Algo ha salido mal ${err}");
+  }
+};
 
 export {
   getTeamsLeague,
@@ -131,4 +143,5 @@ export {
   getTopScorers,
   getPlayers,
   getPlayerById,
+  getStandingsForSeason,
 };

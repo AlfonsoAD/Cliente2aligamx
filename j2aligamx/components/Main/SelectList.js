@@ -1,6 +1,6 @@
-const SelectList = ({tittle,handleChange}) => {
-
-    const jornadas = ["Apertura - 1",
+const SelectList = ({ tittle, handleChange }) => {
+  const jornadas = [
+    "Apertura - 1",
     "Apertura - 2",
     "Apertura - 3",
     "Apertura - 4",
@@ -41,48 +41,48 @@ const SelectList = ({tittle,handleChange}) => {
     "Clausura - Reclasificación",
     "Clausura - Quarter-finals",
     "Clausura - Semi-finals",
-    "Clausura - Final"]
+    "Clausura - Final",
+  ];
 
-    const temporadas = ["2022",
-    "2021",
-    "2020",
-    "2019",
-    "2018",
-    "2017",
-    "2016"]
+  const temporadas = ["2022", "2021", "2020", "2019", "2018", "2017", "2016"];
 
-    return (
-        <div
-        className="mb-3 xl:w-96">
-            <select 
-            className="form-select form-select-lg mb-3
-            blueButton
-            appearance-none
-            block
-            w-full
-            px-4
-            py-2
-            text-xl
-            font-normal
-            text-gray-700
-            bg-white bg-clip-padding bg-no-repeat
-            border border-solid border-gray-300
-            rounded
-            transition
-            ease-in-out
-            m-0
-            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" 
-            aria-label=".form-select-lg example"
-            onChange={handleChange} 
-            >
-                {tittle == "jornadas" ? 
-                  jornadas.map((item) => (<option key={item} value={item}>{item}</option>))
-                :
-                  temporadas.map((item) => (<option key={item} value={item}>{item}</option>))
-                }
-            </select>
-        </div>
-    )
-}
+  return (
+    <div className="mb-3 xl:w-96">
+      <select
+        className="form-select form-select-lg mb-3
+          blueButton
+          appearance-none
+          block
+          w-full
+          px-4
+          py-2
+          text-xl
+          font-normal
+          text-gray-700
+          bg-white bg-clip-padding bg-no-repeat
+          border border-solid border-gray-300
+          rounded
+          transition
+          ease-in-out
+          m-0
+          focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+        aria-label=".form-select-lg example"
+        onChange={handleChange}
+      >
+        {tittle == "jornadas"
+          ? jornadas.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))
+          : temporadas.map((item) => (
+              <option key={item} value={item}>
+                {item}
+              </option>
+            ))}
+      </select>
+    </div>
+  );
+};
 
 export default SelectList;

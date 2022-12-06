@@ -57,7 +57,7 @@ let useFetch = () => {
     let par = params;
     //Tomar el accestoken, refrestoken y se decodifican
     tokenAuth = window.localStorage.getItem("accessToken");
-    const user = jwt_decode(window.localStorage.getItem("accessToken"));
+    const user = jwt_decode(tokenAuth);
     const isExpired = dayjs.unix(user.exp).diff(dayjs()) < 1;
     const refreshTk = jwt_decode(window.localStorage.getItem("refreshToken"));
     const useless = dayjs.unix(refreshTk.exp).diff(dayjs()) < 1;
@@ -74,12 +74,11 @@ let useFetch = () => {
 
     //Preparación de la solicitud
     if (params == 1) {
-      par = user.id;
       config["headers"] = {
         Authorization: `Bearer ${tokenAuth}`,
         "content-Type": "application/JSON",
       };
-      const res = await requestOriginalFetch(url, config, par);
+      const res = await requestOriginalFetch(url, config, user.id);
       return res;
     } else {
       config = {
