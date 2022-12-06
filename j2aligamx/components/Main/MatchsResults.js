@@ -26,7 +26,7 @@ const MatchsResults = (teamsdata) => {
       <div className="flex justify-center flex-wrap">
         <div className="m-12">
           {/*<Image alt="Local" src={objhome.logo} width="14" height="14" />*/}
-          <img class="local" src={objhome.logo} className="h-14 w-14" />
+          <img src={objhome.logo} className="h-14 w-14" />
         </div>
         <div className="m-12">
           {/*<Image alt="Visitante" src={objaway.logo} width="14" height="14" />*/}
