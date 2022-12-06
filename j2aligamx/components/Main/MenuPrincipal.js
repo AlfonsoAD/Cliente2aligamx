@@ -9,14 +9,12 @@ import Image from "next/image";
 
 const MenPrincipal = () => {
   const router = useRouter();
-
-  // const { user } = useUserContext();
-  // const { userName } = user;
+  const { user } = useUserContext();
+  const { userName } = user;
   const { userPreferences } = useUserPreferencesContext();
   const { logo } = userPreferences;
   const IMG_URL =
     "https://user-images.githubusercontent.com/90345024/200611188-36f932c9-ffba-4a67-a66b-1c1fd0ed1b89.png";
-
   const IMG_USER_URL =
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80";
 
@@ -25,9 +23,14 @@ const MenPrincipal = () => {
     { name: "Partidos", href: "/main/partidos", current: false },
     { name: "Estadísticas", href: "/main/estadisticas", current: false },
     { name: "Transferencias", href: "/main/transferencias", current: false },
+    { name: "Jugadores", href: "/main/jugadores", current: false },
     { name: "Noticias", href: "/main/noticias", current: false },
     { name: "Videos", href: "/main/videos", current: false },
   ];
+
+  const goToProfile = (e) => {
+    router.push("/main/perfil");
+  };
 
   const logOut = (e) => {
     window.localStorage.removeItem("accessToken");
@@ -78,31 +81,32 @@ const MenPrincipal = () => {
                           item.current
                             ? "bg-blueMenu text-white"
                             : "text-gray-300 hover:bg-blueMenu hover:text-white",
-                          "px-3 py-2 rounded-md text-sm font-medium"
+                          "px-3 py-2 rounded-md text-sm font-medium mr-4"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
                         {item.name}
                       </a>
                     ))}
-                    {/* <h4
+                    <h4
                       className="text-gray-300 hover:bg-blueMenu hover:text-white
-                          px-2 py-2 rounded-md text-sm font-medium ml-3"
-                    >{`${userName}`}</h4> */}
+                          px-2 py-2 rounded-md text-sm font-medium "
+                    >{`Bienvenio ${userName}`}</h4>
                   </div>
                 </div>
               </div>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+              <div className="absolute inset-y-0 right-0 flex items-center justify-center pr-2 sm:static sm:inset-auto sm:ml-4 sm:pr-0">
                 {/* Profile dropdown */}
-                <Menu as="div" className="relative ml-2">
+                <Menu as="div" className="relative ml-1">
                   <div>
                     <Menu.Button className="flex rounded-full bg-transparent text-sm ">
-                      <span className="sr-only">Open user menu</span>
+                      <span className="sr-only">Abrir menu de usuario</span>
                       <Image
-                        className="animate-bounce rounded-full"
-                        src={logo != "" ? logo : IMG_USER_URL}
-                        height="34"
-                        width="34"
+                        src="https://media.api-sports.io/football/teams/2279.png"
+                        className="sm:h-8 sm:w-8"
+                        height="20"
+                        width="20"
+                        alt={`Logo`}
                       />
                     </Menu.Button>
                   </div>
@@ -119,8 +123,9 @@ const MenPrincipal = () => {
                       <Menu.Item>
                         <ButtonClick
                           type="submit"
-                          text="Configuración"
+                          text="Perfil"
                           clase="config"
+                          click={goToProfile}
                         />
                       </Menu.Item>
                       <Menu.Item>

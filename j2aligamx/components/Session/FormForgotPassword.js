@@ -1,7 +1,9 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react,next
 import { useState } from "react";
 import Link from "next/link";
-//Peticiones api
-import { petitionForgotPassword } from "../../pages/api/petitionsUser";
+//Api
+import { postForgotPassword } from "../../pages/api/apiUser";
 //Componentes
 import ContainerForm from "./ContainerForm";
 import Input from "../Input";
@@ -30,7 +32,7 @@ const FormForgotPassword = () => {
         Swal.fire("Error", "Llena todos los campos", "error");
         setEmail(null);
       } else {
-        await petitionForgotPassword(email);
+        await postForgotPassword(email);
         Swal.fire(
           "Continua para seguir con el proceso",
           "Verifica tu correo para confirmar tu cuenta",

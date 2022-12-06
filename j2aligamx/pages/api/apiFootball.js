@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 
 const API_KEY = "380c7569bcmshfc374ccea9bc205p188818jsn1df49d50b49f";
+=======
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//BY CESAR CASTRO SALAZAR
+
+const API_KEY = "6dfc3e4f53mshdb4451369cc012dp1d5198jsn2611769d2f7c";
+//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+>>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
 //const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
-const LEAGUE_KEY = "262";
 
+//Headers y parametros a las llamadas de la api
+const LEAGUE_KEY = "262";
 const options = {
   method: "GET",
   headers: {
@@ -13,12 +22,9 @@ const options = {
   },
 };
 
+//Equipos de la liga
 const getTeamsLeague = async () => {
-  const wlsTeams = window.localStorage.getItem("teams");
   try {
-    if (wlsTeams) {
-      return wlsTeams;
-    }
     const res = await fetch(
       `${API_URL}/teams?league=${LEAGUE_KEY}&season=2022`,
       options
@@ -29,7 +35,6 @@ const getTeamsLeague = async () => {
     }
 
     const resJson = await res.json();
-    window.localStorage.setItem("teams", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
     console.log(err);
@@ -37,27 +42,21 @@ const getTeamsLeague = async () => {
   }
 };
 
+//Tablade la liga
 const getOverallTable = async () => {
   try {
-    if (window.localStorage.getItem("standings")) {
-      const res = JSON.parse(window.localStorage.getItem("standings"));
-      return res;
-    }
-
     const res = await fetch(
       `${API_URL}/standings?season=2022&league=${LEAGUE_KEY}`,
       options
     );
-
     const resJson = await res.json();
-    window.localStorage.setItem("standings", JSON.stringify(resJson));
     return resJson;
   } catch (err) {
-    console.log(err);
     throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
+<<<<<<< HEAD
 const getStandingsForSeason = async(year) => {
   try {
 
@@ -74,36 +73,17 @@ const getStandingsForSeason = async(year) => {
 }
 
 const getPlayers = async () => {
+=======
+//Jugadores por equipo
+const getPlayers = async (TEAM) => {
+>>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
   try {
-    if (window.localStorage.getItem("players")) {
-      return window.localStorage.getItem("players");
-    }
-
     const res = await fetch(
-      `${API_URL}/players?league=${LEAGUE_KEY}&season=2022`,
+      `${API_URL}/players?team=${TEAM}&season=2022`,
       options
     );
 
     const resJson = await res.json();
-    window.localStorage.setItem("standings", JSON.stringify(resJson));
-    return resJson;
-  } catch (err) {
-    console.log(err);
-    throw new Error(`Algo ha salido mal ${err}`);
-  }
-};
-
-const getSeasons = async () => {
-  try {
-    if (window.localStorage.getItem("seasons")) {
-      resSeason = awaitJSON.parse(window.localStorage.getItem("seasons"));
-      return resSeason;
-    }
-
-    const res = await fetch(`${API_URL}/leagues/seasons`, options);
-
-    const resJson = await res.json();
-    window.localStorage.setItem("seasons", JSON.stringify(resJson));
     return resJson.response;
   } catch (err) {
     console.log(err);
@@ -111,15 +91,15 @@ const getSeasons = async () => {
   }
 };
 
-const getRounds = async (SEASON) => {
+//Jugador por ID
+const getPlayerById = async (ID_PLAYER) => {
   try {
     const res = await fetch(
-      `${API_URL}/fixtures/rounds?league=${LEAGUE_KEY}&season=${SEASON}`,
+      `${API_URL}/players?id=${ID_PLAYER}&season=2022`,
       options
     );
 
     const resJson = await res.json();
-    /*window.localStorage.setItem("rounds", JSON.stringify(resJson));*/
     return resJson.response;
   } catch (err) {
     console.log(err);
@@ -127,6 +107,7 @@ const getRounds = async (SEASON) => {
   }
 };
 
+//Partidos de la temporada
 const getMatchs = async (SEASON, ROUND) => {
   try {
     const res = await fetch(
@@ -137,11 +118,11 @@ const getMatchs = async (SEASON, ROUND) => {
     const resJson = await res.json();
     return resJson.response;
   } catch (err) {
-    console.log(err);
     throw new Error(`Algo ha salido mal ${err}`);
   }
 };
 
+//Transferencia de jugadores
 const getTransfers = async (idTeam) => {
   try {
     const res = await fetch(`${API_URL}/transfers?team=${idTeam}`, options);
@@ -152,6 +133,7 @@ const getTransfers = async (idTeam) => {
   }
 };
 
+//Goleadores de la liga
 const getTopScorers = async () => {
   try {
     const res = await fetch(
@@ -168,10 +150,13 @@ const getTopScorers = async () => {
 export {
   getTeamsLeague,
   getOverallTable,
-  getSeasons,
-  getRounds,
   getMatchs,
   getTransfers,
   getTopScorers,
+<<<<<<< HEAD
   getStandingsForSeason,
+=======
+  getPlayers,
+  getPlayerById,
+>>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
 };

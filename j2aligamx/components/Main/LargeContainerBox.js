@@ -1,3 +1,5 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
 import React from "react";
 
 const LargeContainerBox = ({ children, id }) => {

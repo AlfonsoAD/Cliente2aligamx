@@ -1,15 +1,13 @@
-import React, { useEffect } from "react";
-import { useRouter } from "next/router";
-//Componentes externos
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
+import React from "react";
+//Componentes
 import MenPrincipal from "./MenuPrincipal";
 import TeamsFooter from "./TeamsFooter";
-//Herramientas
 import FooterMain from "./FooterMain";
-import UserPreferencesProvider from "../Context/UserPreferencesProvider";
-import { captureId } from "../Context/UserPreferencesProvider";
-import { init } from "../../pages/api/petitionsUser";
 
 const LayoutMain = ({ children }) => {
+<<<<<<< HEAD
   const router = useRouter();
   var id = "",
     accessTk = "";
@@ -33,20 +31,21 @@ const LayoutMain = ({ children }) => {
     }
   };
 
+=======
+>>>>>>> 822f69a9873a8ebeb94510b397e83dd4439ea188
   //Regreso de componente
   return (
     <React.Fragment>
-      <UserPreferencesProvider>
-        <MenPrincipal />
-        <main
-          style={{ height: "100vh" }}
-          className="bg-no-repeat bg-cover min-h-full bg-white"
-        >
-          {children}
-          <TeamsFooter />
-          <FooterMain />
-        </main>
-      </UserPreferencesProvider>
+      <MenPrincipal />
+      <main
+        style={{ height: "100vh" }}
+        className="bg-no-repeat bg-cover min-h-full bg-white"
+      >
+        {children}
+        <TeamsFooter />
+        <p className="text-xl font-semibold">v 1.0</p>
+        <FooterMain />
+      </main>
     </React.Fragment>
   );
 };

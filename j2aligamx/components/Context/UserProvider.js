@@ -1,4 +1,7 @@
+//BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
+//react
 import React, { useState, useContext, useEffect } from "react";
+//Libreria para decodificar token
 import jwt_decode from "jwt-decode";
 
 var token = "";
@@ -6,32 +9,42 @@ const userData = { userId: "", userName: "", userEmail: "" };
 
 const userContext = React.createContext(userData);
 
-export const captureToken = (tk) => {
-  token = tk;
-};
+// export const captureToken = (accessTk) => {
+//   accessTk;
+// };
 
 export function useUserContext() {
   return useContext(userContext);
 }
 
 const UserProvider = ({ children }) => {
+  // const [myToken, setMyToken] = useState(token);
   const [user, setUser] = useState({
     userId: "",
-    userName: "",
-    userEmail: "",
+    userName: "defaultname",
+    userEmail: "defaultname@sdf",
   });
 
   useEffect(() => {
-    dataUser();
+    var token = localStorage.getItem("accessToken");
+    dataUser(token);
   }, []);
 
-  const dataUser = () => {
-    let decode = jwt_decode(token);
-    setUser({
-      userId: decode.id,
-      userName: decode.name,
-      userEmail: decode.email,
-    });
+  const dataUser = (token) => {
+    if (token != "" && token != null && token != undefined) {
+      let decode = jwt_decode(token);
+      setUser({
+        userId: decode.id,
+        userName: decode.name,
+        userEmail: decode.email,
+      });
+    } else {
+      setUser({
+        userId: "a",
+        userName: "hola",
+        userEmail: "asa@aad",
+      });
+    }
   };
 
   return (
