@@ -1,5 +1,7 @@
+//BY CESAR CASTRO SALAZAR 18100157
 import Image from "next/image";
-
+//componente creado para almacenar la informacion de un partido
+//Recibe un objeto json que contiene toda la informacion necesitada
 const MatchsResults = (teamsdata) => {
   const objhome = teamsdata.teamsdata.home || {
     name: "indefinido",
@@ -10,8 +12,8 @@ const MatchsResults = (teamsdata) => {
     logo: "assets/images/logoj2aligamx.png",
   };
   const objgoals = teamsdata.goals || { home: "--", away: "--" };
+  //Tratamiento para crear formato especifico de fecha
   const objdate = teamsdata.date || "Sin Fecha";
-
   const splitDate = objdate.split("T");
   var dateMatch = splitDate[0];
   dateMatch = dateMatch.split("-");

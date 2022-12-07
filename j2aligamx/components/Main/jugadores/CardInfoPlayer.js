@@ -1,6 +1,8 @@
+//BY CESAR CASTRO SALAZAR 18100157
 import React from "react";
 import Image from "next/image";
-
+//Componente con una propiedad que recibe la informacion de un jugador
+//especifico de un jugador especifico
 const CardInfoPlayer = ({ data }) => {
   return (
     <div className="bg-white max-w-sm rounded overflow-hidden shadow-lg m-3 w-240">
