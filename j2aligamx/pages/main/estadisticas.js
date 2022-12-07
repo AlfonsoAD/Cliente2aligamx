@@ -24,7 +24,7 @@ function Estadisticas() {
   useEffect(() => {
     setTimeout(() => {
       setStandings(null);
-      //gettingStandings();
+      gettingStandings();
     }, 3000);
   }, [year, rounds]);
 
