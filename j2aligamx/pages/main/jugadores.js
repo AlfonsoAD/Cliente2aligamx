@@ -10,7 +10,6 @@ import { useUserPreferencesContext } from "../../components/Context/UserPreferen
 import { getPlayers, getPlayerById } from "../api/apiFootball";
 //react
 import { useState, useEffect } from "react";
-import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 
 const Jugadores = () => {
   const { userPreferences } = useUserPreferencesContext();
