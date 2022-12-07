@@ -8,7 +8,7 @@ import ModalEquipos from "../../components/Main/ModalEquipos";
 import ModalRedirection from "../../components/Main/ModalRedirection";
 //Apis
 import { getOverallTable, getTopScorers } from "../api/apiFootball";
-import { getNewsSportsMx } from "../api/apiNews";
+import { getNewsSports } from "../api/apiNews";
 //Contextos
 import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 //react, next
@@ -22,7 +22,6 @@ const Home = () => {
   const [news, setNews] = useState(null);
   const [scorers, setScorers] = useState([]);
   const [showModal, setShowModal] = useState({ show: false, url: "" });
-  const [query, setQuery] = useState("LigaMX-FMF");
 
   useEffect(() => {
     petitions();
@@ -36,7 +35,7 @@ const Home = () => {
       getTopScorers()
         .then((res) => setScorers(res))
         .catch((err) => console.log(err));
-      getNewsSportsMx(query)
+      getNewsSports()
         .then((res) => setNews(res))
         .catch((err) => console.log(err));
     }, 3000);
