@@ -27,4 +27,16 @@ const getNewsSportsMx = async (query) => {
   }
 };
 
-export { getNewsSportsMx };
+const getNewsSports = async () => {
+  try {
+    const res = await fetch(
+      `${url}search?q=LigaMX&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off`,
+      options
+    );
+    const resJson = await res.json();
+    return resJson.value;
+  } catch (err) {
+    throw new Error(`Algo ha salido mal, ${err}`);
+  }
+};
+export { getNewsSportsMx, getNewsSports };
