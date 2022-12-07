@@ -24,7 +24,7 @@ function Estadisticas() {
   useEffect(() => {
     setTimeout(() => {
       setStandings(null);
-      gettingStandings();
+      //gettingStandings();
     }, 3000);
   }, [year, rounds]);
 
@@ -34,10 +34,13 @@ function Estadisticas() {
     }, 3000);
   }, [rounds]);
 
-  console.log(rounds);
-
   return (
     <LayoutMain>
+      <div className="m-2">
+        <h1 className="text-3xl font-semibold text-blueMenu text-center">
+          Estadísticas de equipos
+        </h1>
+      </div>
       <div class="m-4 shadow-2xl ... rounded-sm text-align: center">
         <SelectList
           style="text-align:center;"
@@ -52,13 +55,12 @@ function Estadisticas() {
           style="text-align:center;"
           handleChange={(e) => {
             setRound(e.target.value);
-            console.log("cambio de temp");
           }}
           data={year == "2022" ? ["Apertura"] : estadisticasJornadas}
         />
 
-        <h1 className="text-2xl font-bold text-blueMenu text-center m-6">
-          Partidos por equipo
+        <h1 className="text-2xl font-semibold text-blueMenu text-center m-6">
+          Partidos por equipo en la temporada
         </h1>
         {standings == null ? console.log("hola") : null}
         {standings && standings.length > 0 ? (

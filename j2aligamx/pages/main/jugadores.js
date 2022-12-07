@@ -15,10 +15,10 @@ const Jugadores = () => {
   const { userPreferences } = useUserPreferencesContext();
   const { idFavTeam } = userPreferences;
   const { teamName } = userPreferences;
-  const auxID = ({ idFavTeam });
-  console.log(auxID.idFavTeam)
+  const auxID = { idFavTeam };
+  console.log(auxID.idFavTeam);
   //Estado inicido en el equipo del estado del equipo por defect
-  const [team, setTeam] = useState('');
+  const [team, setTeam] = useState("");
   //variable auxiliar para almacenar id del jugador
   var idplayer;
   //Estados para almacenar respuesta de las peticiones
@@ -33,12 +33,12 @@ const Jugadores = () => {
   //Cada que cambia de estado team se realiza el metodo
   useEffect(() => {
     setTimeout(() => {
-      if(team != ''){
-        console.log("Entra")
+      if (team != "") {
+        console.log("Entra");
         gettingPlayers();
         setSinglePlayerInfo([]);
       }
-    },200);
+    }, 200);
   }, [team]);
 
   return (
@@ -50,24 +50,30 @@ const Jugadores = () => {
         title="Jugadores"
       />
       <div className="flex justify-center">
-      {team == idFavTeam ? 
-        <h4>{`JUGADORES PERTENECIENTES TU EQUIPO FAVORITO: ${teamName}`}</h4>:
-        <h4>{`JUGADORES PERTENECIENTES A EQUIPO SELECCIONADO`}</h4>}
+        {team == idFavTeam ? (
+          <h4>{`JUGADORES PERTENECIENTES TU EQUIPO FAVORITO: ${teamName}`}</h4>
+        ) : (
+          <h4>{`JUGADORES PERTENECIENTES A EQUIPO SELECCIONADO`}</h4>
+        )}
       </div>
       <div className="flex justify-center flex-wrap">
-      {playersInfo.length > 0 ? (
+        {playersInfo.length > 0 ? (
           <TablePlayers
-          data={playersInfo}
-          handleChange={(e) => {
-            idplayer = e.target.value;
-            console.log(idplayer);
-            //Cuando se presiona un boton se manda el id y se realiza la siguiente peticion
-            getPlayerById(idplayer).then((data) => setSinglePlayerInfo(data));
-            console.log(singleplayerinfo);
-          }}
-        />) :
-        <div><h4>Selecciona un equipo para saber de sus jugadores</h4></div>}
-        
+            data={playersInfo}
+            handleChange={(e) => {
+              idplayer = e.target.value;
+              console.log(idplayer);
+              //Cuando se presiona un boton se manda el id y se realiza la siguiente peticion
+              getPlayerById(idplayer).then((data) => setSinglePlayerInfo(data));
+              console.log(singleplayerinfo);
+            }}
+          />
+        ) : (
+          <div>
+            <h4>Selecciona un equipo para saber de sus jugadores</h4>
+          </div>
+        )}
+
         {singleplayerinfo.length > 0 ? (
           <CardInfoPlayer data={singleplayerinfo} />
         ) : null}

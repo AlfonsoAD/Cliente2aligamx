@@ -23,6 +23,7 @@ a {
   html {
     color-scheme: dark;
   }
+
   body {
     color: black;
     background: white;
@@ -35,35 +36,36 @@ a {
   text-align: center;
 }
 
+/* Carda para la información de los usuarios */
 .img-container {
-    height: 230px;
-    width: 200px;
-    overflow: hidden;
-    border-radius: 0px 0px 20px 20px;
-    display: inline-block;
+  height: 230px;
+  width: 200px;
+  overflow: hidden;
+  border-radius: 0px 0px 20px 20px;
+  display: inline-block;
 }
 
 .img-container img {
-    transform: skew(0deg, -13deg);
-    height: 250px;
-    margin: -35px 0px 0px -70px;
+  transform: skew(0deg, -13deg);
+  height: 250px;
+  margin: -35px 0px 0px -70px;
 }
 
 .inner-skew {
-    display: inline-block;
-    border-radius: 20px;
-    overflow: hidden;
-    padding: 0px;
-    transform: skew(0deg, 13deg);
-    font-size: 0px;
-    margin: 30px 0px 0px 0px;
-    background: #c8c2c2;
-    height: 250px;
-    width: 200px;
+  display: inline-block;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 0px;
+  transform: skew(0deg, 13deg);
+  font-size: 0px;
+  margin: 30px 0px 0px 0px;
+  background: #010d5e;
+  height: 250px;
+  width: 200px;
 }
 
 .text-container {
-  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
   padding: 120px 20px 20px 20px;
   border-radius: 20px;
   background: #fff;
@@ -76,4 +78,49 @@ a {
   margin: 20px 0px 10px 0px;
   color: #04bcff;
   font-size: 18px;
+}
+
+/* Card para la información de los jugadores */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+*,
+
+:root {
+  --bg-shape-color: linear-gradient(120deg, #343A4F, #010d5e);
+  --lightblue: #3D9DEA;
+  --darkblue: #4A4EEE;
+  --text-color: #D5E1EF;
+}
+
+.wrapper {
+  width: 350px;
+  border-radius: 10px;
+  background-image: var(--bg-shape-color);
+  overflow: hidden;
+}
+
+.overviewInfo,
+.productSpecifications {
+  padding: 24px;
+}
+
+.overviewInfo {
+  background-image: linear-gradient(176deg, var(--lightblue), var(--darkblue));
+}
+
+.productinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  min-height: 200px;
+  margin-bottom: 50px;
+}
+
+.productImage {
+  position: absolute;
+  width: 321px;
+  height: auto;
+  /* transform: rotate(90deg) translate(-56px, 66px); */
 }

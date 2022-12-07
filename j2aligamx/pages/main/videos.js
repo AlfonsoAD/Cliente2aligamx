@@ -15,10 +15,10 @@ import { searchVideos } from "../api/apiYoutube";
 const Videos = () => {
   const { userPreferences } = useUserPreferencesContext();
   const { teamName } = userPreferences;
-  console.log(teamName)
+  console.log(teamName);
   //Estado de para saber cual sera la quiery a enviar al endpoint de la api
   //Iniciamos el estado con el equipo elegido por defecto
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   //Estado para almacenar la respuesta de la Api
   const [dataVideos, setInfoVideos] = useState([]);
   //Metodo para consultar la api
@@ -32,7 +32,7 @@ const Videos = () => {
       console.log(query);
       gettingVideos(query);
       console.log(dataVideos);
-    },2000)
+    }, 2000);
   }, [query]);
   //{teamName != "" ? gettingVideos(`Liga+MX+${teamName}`): console.log("Falso")}
   return (
