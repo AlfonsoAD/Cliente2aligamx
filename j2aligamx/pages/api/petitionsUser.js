@@ -1,4 +1,3 @@
-import { unregister } from "./Interceptor";
 import jwt_decode from "jwt-decode";
 
 const urlApi = "https://web-production-b53e.up.railway.app/"
