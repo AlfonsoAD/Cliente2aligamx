@@ -1,8 +1,11 @@
+//CESAR CASTRO SALAZAR 18100157
 //Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
 import SelectTeam from "../../components/Main/SelectTeam";
 import TablePlayers from "../../components/Main/jugadores/TablePlayers";
 import CardInfoPlayer from "../../components/Main/jugadores/CardInfoPlayer";
+//Contextos
+import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 //Api
 import { getPlayers, getPlayerById } from "../api/apiFootball";
 //react
@@ -12,10 +15,21 @@ import { useUserPreferencesContext } from "../../components/Context/UserPreferen
 const Jugadores = () => {
   const { userPreferences } = useUserPreferencesContext();
   const { idFavTeam } = userPreferences;
+  const { teamName } = userPreferences;
+  const auxID = { idFavTeam };
+  console.log(auxID.idFavTeam);
+  //Estado inicido en el equipo del estado del equipo por defect
   const [team, setTeam] = useState("");
+  //variable auxiliar para almacenar id del jugador
   var idplayer;
+  //Estados para almacenar respuesta de las peticiones
   var [singleplayerinfo, setSinglePlayerInfo] = useState([]);
   const [playersInfo, setPlayersInfo] = useState([]);
+
+  //Metodo para peticion que regresa todos los jugadores de un equipo
+  const gettingPlayers = () => {
+    getPlayers(team).then((data) => setPlayersInfo(data));
+  };
 
   //Cada que cambia de estado team se realiza el metodo
   useEffect(() => {
@@ -28,32 +42,39 @@ const Jugadores = () => {
     }, 200);
   }, [team]);
 
-  const gettingPlayers = () => {
-    getPlayers(team).then((data) => setPlayersInfo(data));
-  };
-
   return (
     <LayoutMain>
-      <div className="m-4">
-        <SelectTeam
-          handleChange={(e) => {
-            setTeam(e.target.value);
-          }}
-          title="Jugadores"
-        />
+      <SelectTeam
+        handleChange={(e) => {
+          setTeam(e.target.value);
+        }}
+        title="Jugadores"
+      />
+      <div className="flex justify-center">
+        {team == idFavTeam ? (
+          <h4>{`JUGADORES PERTENECIENTES TU EQUIPO FAVORITO: ${teamName}`}</h4>
+        ) : (
+          <h4>{`JUGADORES PERTENECIENTES A EQUIPO SELECCIONADO`}</h4>
+        )}
       </div>
-      {/* {idFavTeam != "" ? gettingPlayers() : null} */}
       <div className="flex justify-center flex-wrap">
-        <TablePlayers
-          data={playersInfo}
-          handleChange={(e) => {
-            idplayer = e.target.value;
-            console.log(idplayer);
-            getPlayerById(idplayer).then((data) => setSinglePlayerInfo(data));
-            console.log(singleplayerinfo);
-          }}
-        />
-        {/* <CardInfoPlayer data={singleplayerinfo} /> */}
+        {playersInfo.length > 0 ? (
+          <TablePlayers
+            data={playersInfo}
+            handleChange={(e) => {
+              idplayer = e.target.value;
+              console.log(idplayer);
+              //Cuando se presiona un boton se manda el id y se realiza la siguiente peticion
+              getPlayerById(idplayer).then((data) => setSinglePlayerInfo(data));
+              console.log(singleplayerinfo);
+            }}
+          />
+        ) : (
+          <div>
+            <h4>Selecciona un equipo para saber de sus jugadores</h4>
+          </div>
+        )}
+
         {singleplayerinfo.length > 0 ? (
           <CardInfoPlayer data={singleplayerinfo} />
         ) : null}

@@ -1,7 +1,8 @@
 //BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
-//BY CESAR CASTRO SALAZAR
+//BY CESAR CASTRO SALAZAR 18100157
 
-//const API_KEY = "6dfc3e4f53mshdb4451369cc012dp1d5198jsn2611769d2f7c";
+//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+//"6dfc3e4f53mshdb4451369cc012dp1d5198jsn2611769d2f7c";
 //const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
 const API_KEY = "fd0150a209msh26dac29b51e401fp19e1a3jsn84ed8934783e";
 const API_HOST = "api-football-v1.p.rapidapi.com";

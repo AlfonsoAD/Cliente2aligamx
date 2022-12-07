@@ -1,10 +1,12 @@
+//BY CESAR CASTRO SALAZAR 18100157
+//En este archivo de javascript se almacenan arreglos con informacion 
+//estatica para diversos componentes
 const jornadas = ["Apertura - 1",
     "Apertura - 2",
     "Apertura - 3",
     "Apertura - 4",
     "Apertura - 5",
     "Apertura - 6",
-    "Apertura - 16",
     "Apertura - 7",
     "Apertura - 8",
     "Apertura - 9",
@@ -14,6 +16,7 @@ const jornadas = ["Apertura - 1",
     "Apertura - 13",
     "Apertura - 14",
     "Apertura - 15",
+    "Apertura - 16",
     "Apertura - 17",
     "Apertura - Reclasificación",
     "Apertura - Quarter-finals",
