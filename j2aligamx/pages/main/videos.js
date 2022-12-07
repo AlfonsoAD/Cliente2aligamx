@@ -1,27 +1,40 @@
+//BY CESAR CASTRO SALAZAR 18100157
 //Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
 import MatchContainer from "../../components/Main/MatchContainer";
 import LargeContainerBox from "../../components/Main/LargeContainerBox";
 import VideoContainer from "../../components/Main/datosvideo/VideoContainer";
 import SelectTeam from "../../components/Main/SelectTeam";
+//Contextos
+import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 //react
 import { useState, useEffect } from "react";
 //Api
 import { searchVideos } from "../api/apiYoutube";
 
 const Videos = () => {
-  const [query, setQuery] = useState("Futbol Liga MX");
+  const { userPreferences } = useUserPreferencesContext();
+  const { teamName } = userPreferences;
+  console.log(teamName)
+  //Estado de para saber cual sera la quiery a enviar al endpoint de la api
+  //Iniciamos el estado con el equipo elegido por defecto
+  const [query, setQuery] = useState('');
+  //Estado para almacenar la respuesta de la Api
   const [dataVideos, setInfoVideos] = useState([]);
-
-  const gettingVideos = () => {
-    console.log(query);
-    searchVideos(query).then((data) => setInfoVideos(data));
+  //Metodo para consultar la api
+  const gettingVideos = (q) => {
+    console.log(q);
+    searchVideos(`LIGA MX ${q}`).then((data) => setInfoVideos(data));
   };
-
+  //useEffect que se ejecuta cada vez que query cambi su estado
   useEffect(() => {
-    gettingVideos();
+    setTimeout(() => {
+      console.log(query);
+      gettingVideos(query);
+      console.log(dataVideos);
+    },2000)
   }, [query]);
-
+  //{teamName != "" ? gettingVideos(`Liga+MX+${teamName}`): console.log("Falso")}
   return (
     <LayoutMain>
       <div>
@@ -31,6 +44,7 @@ const Videos = () => {
           }}
         />
       </div>
+      {teamName == query ? <h4>VIDEOS DE TU EQUIPO FAVORITO</h4> : null}
       <div className="m-4">
         <MatchContainer>
           {dataVideos.map((item, index) =>

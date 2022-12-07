@@ -1,5 +1,6 @@
+//BY CESAR CASTRO SALAZAR 18100157
 import Image from "next/image";
-
+//Componente que almacena a los jugadores de un equipo
 const template = () => (
   <tr>
     <td
@@ -13,8 +14,10 @@ const template = () => (
 );
 
 const desconocido = "desconocido";
-
+//recibe una propiedad que regresa un objeto json que almacen la informacion de
+//los jugadores del equipo solicitado
 const TablePlayers = ({ data, handleChange }) => {
+  console.log(data);
   return (
     <div className="overflow-auto rounded-lg m-6 shadow-2xl">
       <table className="w-full">
