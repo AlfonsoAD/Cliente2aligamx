@@ -14,7 +14,6 @@ const Videos = () => {
   const [dataVideos, setInfoVideos] = useState([]);
 
   const gettingVideos = () => {
-    console.log(query);
     searchVideos(query).then((data) => setInfoVideos(data));
   };
 

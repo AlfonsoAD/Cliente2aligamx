@@ -17,10 +17,19 @@ const Jugadores = () => {
   var [singleplayerinfo, setSinglePlayerInfo] = useState([]);
   const [playersInfo, setPlayersInfo] = useState([]);
 
-  const tiempo = () => setTeam(idFavTeam);
+  //Cada que cambia de estado team se realiza el metodo
+  useEffect(() => {
+    setTimeout(() => {
+      if (team != "") {
+        console.log("Entra");
+        gettingPlayers();
+        setSinglePlayerInfo([]);
+      }
+    }, 200);
+  }, [team]);
 
   const gettingPlayers = () => {
-    getPlayers(idFavTeam).then((data) => setPlayersInfo(data));
+    getPlayers(team).then((data) => setPlayersInfo(data));
   };
 
   return (
@@ -33,7 +42,7 @@ const Jugadores = () => {
           title="Jugadores"
         />
       </div>
-      {idFavTeam != "" ? gettingPlayers() : null}
+      {/* {idFavTeam != "" ? gettingPlayers() : null} */}
       <div className="flex justify-center flex-wrap">
         <TablePlayers
           data={playersInfo}

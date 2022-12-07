@@ -2,10 +2,7 @@
 //Api de noticias
 const fetch = require("node-fetch");
 
-const url = "https://bing-news-search1.p.rapidapi.com/news";
-const urlComun = `https://bing-news-search1.p.rapidapi.com/news/search?q=ligamx-FMF&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off`;
-const url_2 =
-  "https://bing-news-search1.p.rapidapi.com/news?originalImg=true&category=sports&cc=mx&setLang=es&safeSearch=Off&textFormat=Raw";
+const url = "https://bing-news-search1.p.rapidapi.com/news/";
 
 const options = {
   method: "GET",
@@ -17,17 +14,12 @@ const options = {
 };
 
 //Top noticias
-const getNewsSportsMx = async (equipoFav) => {
+const getNewsSportsMx = async (query) => {
   try {
-    let res = "";
-    if (equipoFav != "") {
-      res = await fetch(
-        `${url}search?q=${equipoFav}&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off`,
-        options
-      );
-    } else {
-      res = await fetch(urlComun, options);
-    }
+    const res = await fetch(
+      `${url}search?q=${query}&setLang=es&cc=mx&freshness=Day&originalImg=true&textFormat=Raw&safeSearch=Off`,
+      options
+    );
     const resJson = await res.json();
     return resJson.value;
   } catch (err) {
@@ -35,16 +27,4 @@ const getNewsSportsMx = async (equipoFav) => {
   }
 };
 
-//Noticias
-const getNewsSportsMx2 = async () => {
-  try {
-    const res = await fetch(url_2, options);
-    const resJson = await res.json();
-    console.log(resJson);
-    return resJson.value;
-  } catch (err) {
-    throw new Error(`Algo ha salido mal, ${err}`);
-  }
-};
-
-export { getNewsSportsMx, getNewsSportsMx2 };
+export { getNewsSportsMx };

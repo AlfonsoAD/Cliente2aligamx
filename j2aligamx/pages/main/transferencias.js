@@ -19,7 +19,7 @@ const Transferencias = () => {
 
   const [response, setResponse] = useState(null);
   const [teamNameE, setTeamNameE] = useState("");
-  const [teamId, setTeamId] = useState("");
+  // const [teamId, setTeamId] = useState("");
 
   const clickLogo = (e) => {
     setTeamNameE(e.target.name);

@@ -3,10 +3,13 @@ import Image from "next/image";
 
 const CardInfoPlayer = ({ data }) => {
   return (
-    <div className="flex flex-wrap justify-center items-center bg-white max-w-sm rounded shadow-lg p-">
+    <div className="flex flex-wrap justify-start items-center bg-white max-w-sm rounded shadow-lg p-3 ">
       {data.map((value) => {
         return (
           <>
+            <h1 className="m-2 text-3xl font-bold text-center text-white bg-blueMenu w-full">
+              {value.player.firstname}
+            </h1>
             <Image
               src={value.player.photo}
               className="sm:h-8 sm:w-8 m-2"
@@ -16,106 +19,99 @@ const CardInfoPlayer = ({ data }) => {
                 value.player.name == null ? "desconocido" : value.player.name
               }`}
             />
-            <h1>Información personal</h1>
-            <div className="flex flex-nowrap justify-start items-start">
-              <p>
-                {`Nombre: ${
-                  value.player.firstname == null
-                    ? "desconocido"
-                    : value.player.firstname
-                } ${
-                  value.player.lastname == null
-                    ? "desconocido"
-                    : value.player.lastname
-                }`}
-                <br />
+            <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+              Información personal
+            </h1>
+            <ul className="space-y-1 max-w-md list-disc list-inside text-black">
+              <li>
                 {`Fecha de Nacimiento: ${
                   value.player.birth.date == null
                     ? "desconocido"
                     : value.player.birth.date
                 }`}
-                <br />
+              </li>
+              <li>
                 {`Ciudad: ${
                   value.player.birth.place == null
                     ? "desconocido"
                     : value.player.birth.place
                 }`}
-                <br />
+              </li>
+              <li>
                 {`Lesionado: ${value.player.injured == false ? "No" : "Si"}`}
-                <br />
-              </p>
-            </div>
+              </li>
+            </ul>
 
-            <h1 className="m-12">Estadistícas por temporada</h1>
+            <h1
+              className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center
+             w-full"
+            >
+              Estadistícas por temporada
+            </h1>
             {value.statistics.map((value2) => {
               return (
                 <>
-                  <div className="flex flex-nowrap justify-start items-start">
-                    <p>
-                      {`Posicion: ${
-                        value2.games.position == null
-                          ? "desconocido"
-                          : value2.games.position
-                      }`}
-                      <br />
-                      {`Apariciones: ${
-                        value2.games.appearences == null
-                          ? "---"
-                          : value2.games.appearences
-                      }`}
-                      <br />
-                      {`Minutos: ${
-                        value2.games.minutes == null
-                          ? "----"
-                          : value2.games.minutes
-                      }`}
-                      <br />
-                    </p>
-                  </div>
                   <br />
-                  <h1 className="ml-20 mr-20">Goles</h1>
-                  <div className="flex flex-nowrap justify-start items-start">
-                    <p>
-                      {`Total: ${
-                        value2.goals.total == null ? "0" : value2.goals.total
-                      }`}
-                      <br />
-                      {`Concedidos: ${
-                        value2.goals.conceded == null
-                          ? "0"
-                          : value2.goals.conceded
-                      }`}
-                      <br />
-                      {`Asistidos: ${
-                        value2.goals.assists == null
-                          ? "0"
-                          : value2.goals.assists
-                      }`}
-                      <br />
-                    </p>
-                  </div>
-                  <h1 className="ml-20 mr-20">Pases</h1>
-                  <div className="flex flex-nowrap justify-start items-start">
-                    <p>
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Datos
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>{`Posicion: ${
+                      value2.games.position == null
+                        ? "desconocido"
+                        : value2.games.position
+                    }`}</li>
+                    <li>{`Apariciones: ${
+                      value2.games.appearences == null
+                        ? "---"
+                        : value2.games.appearences
+                    }`}</li>
+                    <li>{`Minutos: ${
+                      value2.games.minutes == null
+                        ? "----"
+                        : value2.games.minutes
+                    }`}</li>
+                  </ul>
+
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Goles
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>{`Total: ${
+                      value2.goals.total == null ? "0" : value2.goals.total
+                    }`}</li>
+                    <li>{`Concedidos: ${
+                      value2.goals.conceded == null
+                        ? "0"
+                        : value2.goals.conceded
+                    }`}</li>
+                    <li>{`Asistidos: ${
+                      value2.goals.assists == null ? "0" : value2.goals.assists
+                    }`}</li>
+                  </ul>
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Pases
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>
                       {`Total: ${
                         value2.passes.total == null ? "0" : value2.passes.total
                       }`}
-                      <br />
-                    </p>
-                  </div>
-                  <h1 className="ml-20 mr-20">Tarjetas</h1>
-                  <div className="flex flex-nowrap justify-start items-start">
-                    <p>
-                      {`🟥 ${
-                        value2.cards.red == null ? "0" : value2.cards.red
-                      }`}
-                      <br />
+                    </li>
+                  </ul>
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Tarjetas
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>{`🟥 ${
+                      value2.cards.red == null ? "0" : value2.cards.red
+                    }`}</li>
+                    <li>
                       {`🟨 ${
                         value2.cards.yellow == null ? "0" : value2.cards.yellow
                       }`}
-                      <br />
-                    </p>
-                  </div>
+                    </li>
+                  </ul>
                 </>
               );
             })}
