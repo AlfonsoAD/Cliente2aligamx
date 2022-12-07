@@ -17,7 +17,6 @@ const LayoutMain = ({ children }) => {
       >
         {children}
         <TeamsFooter />
-        <p className="text-xl font-semibold">v 1.0</p>
         <FooterMain />
       </main>
     </React.Fragment>

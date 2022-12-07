@@ -1,6 +1,6 @@
 //BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
 //react, next
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 //Componentes
 import LayoutMain from "../../components/Main/LayoutMain";
@@ -11,19 +11,28 @@ import CardTransfer from "../../components/Main/CardTransfer";
 import { teamsLogo } from "../../utilities/teamsInfo";
 //Api
 import { getTransfers } from "../api/apiFootball";
-import SelectList from "../../components/Main/SelectList"
+import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 
 const Transferencias = () => {
+  // const { userPreferences } = useUserPreferencesContext();
+  // const { idFavTeam, teamName } = userPreferences;
+
   const [response, setResponse] = useState(null);
-  const [teamName, setTeamName] = useState("");
+  const [teamNameE, setTeamNameE] = useState("");
+  const [teamId, setTeamId] = useState("");
 
   const clickLogo = (e) => {
-    setTeamName(e.target.name);
+    setTeamNameE(e.target.name);
     getTransfers(e.target.id).then((res) => setResponse(res));
   };
 
   return (
     <LayoutMain>
+      <div className="m-2">
+        <h1 className="text-3xl font-semibold text-blueMenu text-center">
+          Historial de transferencias
+        </h1>
+      </div>
       <div className="m-4 flex flex-wrap justify-between items-center">
         <h1 className="text-4xl font-bold">Transferencias</h1>
         <h2 className="text-xl font-semibold">Elegir equipo</h2>
@@ -47,7 +56,7 @@ const Transferencias = () => {
         })}
       </div>
       <div className="flex justify-center items-center m-2">
-        <h2 className="text-xl font-semibold">{`Equipo elegido: ${teamName}`}</h2>
+        <h2 className="text-xl font-semibold">{`Equipo elegido: ${teamNameE}`}</h2>
       </div>
       <MatchContainer>
         {response == null ? console.log("Hola") : null}

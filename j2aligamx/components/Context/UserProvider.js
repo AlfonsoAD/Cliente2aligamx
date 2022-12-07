@@ -40,9 +40,9 @@ const UserProvider = ({ children }) => {
       });
     } else {
       setUser({
-        userId: "a",
-        userName: "hola",
-        userEmail: "asa@aad",
+        userId: "",
+        userName: "",
+        userEmail: "",
       });
     }
   };

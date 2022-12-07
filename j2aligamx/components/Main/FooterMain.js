@@ -49,6 +49,7 @@ const FooterMain = () => {
           <div className="order-1 md:order-2">
             <span className="px-2">Acerca de nosotros</span>
             <span className="px-2 border-l">Contáctanos</span>
+            <span className="px-2 border-l"> App version 1.60.0</span>
           </div>
         </div>
       </div>

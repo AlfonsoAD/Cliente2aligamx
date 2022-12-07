@@ -7,29 +7,33 @@ import CardInfoPlayer from "../../components/Main/jugadores/CardInfoPlayer";
 import { getPlayers, getPlayerById } from "../api/apiFootball";
 //react
 import { useState, useEffect } from "react";
+import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 
 const Jugadores = () => {
-  const [team, setTeam] = useState("2287");
+  const { userPreferences } = useUserPreferencesContext();
+  const { idFavTeam } = userPreferences;
+  const [team, setTeam] = useState("");
   var idplayer;
   var [singleplayerinfo, setSinglePlayerInfo] = useState([]);
   const [playersInfo, setPlayersInfo] = useState([]);
 
-  const gettingPlayers = () => {
-    getPlayers(team).then((data) => setPlayersInfo(data));
-  };
+  const tiempo = () => setTeam(idFavTeam);
 
-  useEffect(() => {
-    gettingPlayers();
-  }, [team]);
+  const gettingPlayers = () => {
+    getPlayers(idFavTeam).then((data) => setPlayersInfo(data));
+  };
 
   return (
     <LayoutMain>
-      <SelectTeam
-        handleChange={(e) => {
-          setTeam(e.target.value);
-        }}
-        title="Jugadores"
-      />
+      <div className="m-4">
+        <SelectTeam
+          handleChange={(e) => {
+            setTeam(e.target.value);
+          }}
+          title="Jugadores"
+        />
+      </div>
+      {idFavTeam != "" ? gettingPlayers() : null}
       <div className="flex justify-center flex-wrap">
         <TablePlayers
           data={playersInfo}
@@ -40,6 +44,7 @@ const Jugadores = () => {
             console.log(singleplayerinfo);
           }}
         />
+        {/* <CardInfoPlayer data={singleplayerinfo} /> */}
         {singleplayerinfo.length > 0 ? (
           <CardInfoPlayer data={singleplayerinfo} />
         ) : null}

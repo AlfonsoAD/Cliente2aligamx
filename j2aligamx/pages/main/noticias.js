@@ -29,6 +29,11 @@ const Noticias = () => {
 
   return (
     <LayoutMain>
+      <div className="m-2">
+        <h1 className="text-3xl font-semibold text-blueMenu text-center">
+          Noticias de Liga BBVA MX
+        </h1>
+      </div>
       {showModal.show ? (
         <ModalRedirection
           link={showModal.url}
