@@ -3,7 +3,7 @@
 //Peticiones respecto al usuario
 // const urlApi = process.env.API_URL;
 //const urlApi = "http://localhost:4000";
-const urlApi = "https://web-production-b53e.up.railway.app/";
+const urlApi = "https://web-production-09c5.up.railway.app/";
 
 //Registro de usuario
 const postSignUp = async (email, password, userName) => {
