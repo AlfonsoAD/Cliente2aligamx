@@ -1,9 +1,10 @@
 //BY JESÚS ALFONSO ANDRADE DOMINGUEZ 18100149
-//BY CESAR CASTRO SALAZAR
+//BY CESAR CASTRO SALAZAR 18100157
 
-const API_KEY = "6dfc3e4f53mshdb4451369cc012dp1d5198jsn2611769d2f7c";
 //const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
-//const API_KEY = "6c19fda727msh737e4cf302cbe7fp179ddfjsn6976923c3e7f";
+//"6dfc3e4f53mshdb4451369cc012dp1d5198jsn2611769d2f7c";
+//const API_KEY = "b77b479b40msh6c5afaede940157p1c6cf9jsn8c0b96b94453";
+const API_KEY = "fd0150a209msh26dac29b51e401fp19e1a3jsn84ed8934783e";
 const API_HOST = "api-football-v1.p.rapidapi.com";
 const API_URL = "https://api-football-v1.p.rapidapi.com/v3";
 
@@ -122,6 +123,18 @@ const getTopScorers = async () => {
     throw new Error(`Algo ha salido mal ${err}`);
   }
 };
+const getStandingsForSeason = async (year) => {
+  try {
+    const res = await fetch(
+      `${API_URL}/standings?season=${year}&league=${LEAGUE_KEY}`,
+      options
+    );
+    const resJson = await res.json();
+    return resJson.response;
+  } catch (err) {
+    throw new Error("Algo ha salido mal ${err}");
+  }
+};
 
 export {
   getTeamsLeague,
@@ -131,4 +144,5 @@ export {
   getTopScorers,
   getPlayers,
   getPlayerById,
+  getStandingsForSeason,
 };

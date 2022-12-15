@@ -8,7 +8,7 @@ import ModalEquipos from "../../components/Main/ModalEquipos";
 import ModalRedirection from "../../components/Main/ModalRedirection";
 //Apis
 import { getOverallTable, getTopScorers } from "../api/apiFootball";
-import { getNewsSportsMx } from "../api/apiNews";
+import { getNewsSports } from "../api/apiNews";
 //Contextos
 import { useUserPreferencesContext } from "../../components/Context/UserPreferencesProvider";
 //react, next
@@ -17,7 +17,7 @@ import Image from "next/image";
 
 const Home = () => {
   const { userPreferences } = useUserPreferencesContext();
-  const { idFavTeam } = userPreferences;
+  const { idFavTeam, teamName } = userPreferences;
   const [table, setTable] = useState(null);
   const [news, setNews] = useState(null);
   const [scorers, setScorers] = useState([]);
@@ -32,17 +32,30 @@ const Home = () => {
       getOverallTable()
         .then((res) => setTable(res))
         .catch((err) => console.log(err));
-      getNewsSportsMx()
-        .then((res) => setNews(res))
-        .catch((err) => console.log(err));
       getTopScorers()
         .then((res) => setScorers(res))
         .catch((err) => console.log(err));
+      getNewsSports()
+        .then((res) => setNews(res))
+        .catch((err) => console.log(err));
     }, 3000);
   };
+
   const topScorers = scorers.filter(
     (value) => value.statistics[0].goals.total > 7
   );
+
+  // const newsTeamFav = () => {
+  //   getNewsSportsMx(teamName)
+  //     .then((res) => setNews(res))
+  //     .catch((err) => console.log(err));
+  // };
+
+  // const newsLigaMx = () => {
+  //   getNewsSportsMx()
+  //     .then((res) => setNews(res))
+  //     .catch((err) => console.log(err));
+  // };
 
   const ModalRedToNote = (url) => {
     setShowModal({ show: true, url: url });
@@ -50,7 +63,12 @@ const Home = () => {
 
   return (
     <LayoutMain>
-      {idFavTeam == " " ? <ModalEquipos /> : null}
+      <div className="m-2">
+        <h1 className="text-3xl font-semibold text-blueMenu text-center">
+          Bienvenido a J2A LIGA MX
+        </h1>
+      </div>
+      {teamName === "" ? <ModalEquipos /> : null}
       {showModal.show ? (
         <ModalRedirection
           link={showModal.url}
@@ -59,6 +77,7 @@ const Home = () => {
           }}
         />
       ) : null}
+      {/* {teamName != "" ? newsTeamFav() : newsLigaMx()} */}
       <div className="flex justify-center flex-wrap">
         <TeamsTablePosition data={table} />
         <div className="m-1">

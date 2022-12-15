@@ -1,5 +1,6 @@
+//BY CESAR CASTRO SALAZAR 18100157
 import { teamsLogo } from "../../utilities/teamsInfo";
-
+//Select el cual se usa para obtener los equipos de la temporada actual
 const SelectTeam = ({handleChange, title}) => {
 
     return (
@@ -29,7 +30,7 @@ const SelectTeam = ({handleChange, title}) => {
                 <option key="default" value="Futbol+Liga+MX">Elige un equipo</option>
                 {title == "Jugadores" ?
                   teamsLogo.map((item) => (<option key={item.name} value={item.id}>{item.name}</option>)):
-                  teamsLogo.map((item) => (<option key={item.name} value={`Futbol+${item.name}`}>{item.name}</option>))
+                  teamsLogo.map((item) => (<option key={item.name} value={item.name}>{item.name}</option>))
                 }
             </select>
         </div>

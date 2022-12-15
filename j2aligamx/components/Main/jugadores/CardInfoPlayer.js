@@ -1,122 +1,125 @@
+//BY CESAR CASTRO SALAZAR 18100157
 import React from "react";
 import Image from "next/image";
-
+//Componente con una propiedad que recibe la informacion de un jugador
+//especifico de un jugador especifico
 const CardInfoPlayer = ({ data }) => {
   return (
-    <div className="bg-white max-w-sm rounded overflow-hidden shadow-lg m-3 w-240">
-      <Image
-        src={data[0].player.photo}
-        className="sm:h-8 sm:w-8"
-        height="150"
-        width="100"
-        alt={`Foto de ${
-          data[0].player.name == null ? "desconocido" : data[0].player.name
-        }`}
-      />
-      <div>
-        <h1>INFORMACION PERSONAL</h1>
-        <p>
-          {`Nombre: ${
-            data[0].player.firstname == null
-              ? "desconocido"
-              : data[0].player.firstname
-          } ${
-            data[0].player.lastname == null
-              ? "desconocido"
-              : data[0].player.lastname
-          }`}
-          <br />
-          {`Fecha de Nacimiento: ${
-            data[0].player.birth.date == null
-              ? "desconocido"
-              : data[0].player.birth.date
-          }`}
-          <br />
-          {`Ciudad: ${
-            data[0].player.birth.place == null
-              ? "desconocido"
-              : data[0].player.birth.place
-          }`}
-          <br />
-          {`Lesionado: ${data[0].player.injured == false ? "No" : "Si"}`}
-          <br />
-          {data[0].statistics[0].games.captain == true ? `CAPITAN` : null}
-        </p>
-      </div>
-      <div>
-        <h1>ESTADISTICAS</h1>
-        <p>
-          {`Posicion: ${
-            data[0].statistics[0].games.position == null
-              ? "desconocido"
-              : data[0].statistics[0].games.position
-          }`}
-          <br />
-          {`Apariciones: ${
-            data[0].statistics[0].games.appearences == null
-              ? "---"
-              : data[0].statistics[0].games.appearences
-          }`}
-          <br />
-          {`Minutos: ${
-            data[0].statistics[0].games.minutes == null
-              ? "----"
-              : data[0].statistics[0].games.minutes
-          }`}
-          <br />
-        </p>
-      </div>
-      <div>
-        <h1>GOLES</h1>
-        <p>
-          {`Total: ${
-            data[0].statistics[0].goals.total == null
-              ? "0"
-              : data[0].statistics[0].goals.total
-          }`}
-          <br />
-          {`Concedidos: ${
-            data[0].statistics[0].goals.conceded == null
-              ? "0"
-              : data[0].statistics[0].goals.conceded
-          }`}
-          <br />
-          {`Asistidos: ${
-            data[0].statistics[0].goals.assists == null
-              ? "0"
-              : data[0].statistics[0].goals.assists
-          }`}
-          <br />
-        </p>
-      </div>
-      <div>
-        <h1>PASES</h1>
-        <p>
-          {`Total: ${
-            data[0].statistics[0].passes.total == null
-              ? "0"
-              : data[0].statistics[0].passes.total
-          }`}
-          <br />
-        </p>
-      </div>
-      <div>
-        <h1>TARJETAS</h1>
-        <p>
-          {`🟥 ${
-            data[0].statistics[0].cards.red == null
-              ? "0"
-              : data[0].statistics[0].cards.red
-          }`}
-          <br />
-          {`🟨 ${
-            data[0].statistics[0].cards.yellow == null
-              ? "0"
-              : data[0].statistics[0].cards.yellow
-          }`}
-          <br />
-        </p>
-      </div>
+    <div className="flex flex-wrap justify-start items-center bg-white max-w-sm rounded shadow-lg p-3 ">
+      {data.map((value) => {
+        return (
+          <>
+            <h1 className="m-2 text-3xl font-bold text-center text-white bg-blueMenu w-full">
+              {value.player.firstname}
+            </h1>
+            <Image
+              src={value.player.photo}
+              className="sm:h-8 sm:w-8 m-2"
+              height="280"
+              width="280"
+              alt={`Foto de ${
+                value.player.name == null ? "desconocido" : value.player.name
+              }`}
+            />
+            <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+              Información personal
+            </h1>
+            <ul className="space-y-1 max-w-md list-disc list-inside text-black">
+              <li>
+                {`Fecha de Nacimiento: ${
+                  value.player.birth.date == null
+                    ? "desconocido"
+                    : value.player.birth.date
+                }`}
+              </li>
+              <li>
+                {`Ciudad: ${
+                  value.player.birth.place == null
+                    ? "desconocido"
+                    : value.player.birth.place
+                }`}
+              </li>
+              <li>
+                {`Lesionado: ${value.player.injured == false ? "No" : "Si"}`}
+              </li>
+            </ul>
+
+            <h1
+              className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center
+             w-full"
+            >
+              Estadistícas por temporada
+            </h1>
+            {value.statistics.map((value2) => {
+              return (
+                <>
+                  <br />
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Datos
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>{`Posicion: ${
+                      value2.games.position == null
+                        ? "desconocido"
+                        : value2.games.position
+                    }`}</li>
+                    <li>{`Apariciones: ${
+                      value2.games.appearences == null
+                        ? "---"
+                        : value2.games.appearences
+                    }`}</li>
+                    <li>{`Minutos: ${
+                      value2.games.minutes == null
+                        ? "----"
+                        : value2.games.minutes
+                    }`}</li>
+                  </ul>
+
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Goles
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>{`Total: ${
+                      value2.goals.total == null ? "0" : value2.goals.total
+                    }`}</li>
+                    <li>{`Concedidos: ${
+                      value2.goals.conceded == null
+                        ? "0"
+                        : value2.goals.conceded
+                    }`}</li>
+                    <li>{`Asistidos: ${
+                      value2.goals.assists == null ? "0" : value2.goals.assists
+                    }`}</li>
+                  </ul>
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Pases
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>
+                      {`Total: ${
+                        value2.passes.total == null ? "0" : value2.passes.total
+                      }`}
+                    </li>
+                  </ul>
+                  <h1 className="m-2 text-xl font-semibold  text-white bg-blueMenu text-center w-full">
+                    Tarjetas
+                  </h1>
+                  <ul className="space-y-1 max-w-md list-disc list-inside text-black text-start">
+                    <li>{`🟥 ${
+                      value2.cards.red == null ? "0" : value2.cards.red
+                    }`}</li>
+                    <li>
+                      {`🟨 ${
+                        value2.cards.yellow == null ? "0" : value2.cards.yellow
+                      }`}
+                    </li>
+                  </ul>
+                </>
+              );
+            })}
+          </>
+        );
+      })}{" "}
     </div>
   );
 };

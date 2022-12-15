@@ -15,18 +15,17 @@ const CardProfileUser = () => {
 
   return (
     <>
-      <div className="flex justify-center items-center h-screen bg-gradient-to-r from-teal-700 to-blue-900 ...">
+      <div className="flex justify-center items-center h-screen bg-gradient-to-r from-teal-700 to-white ...">
         <div className="a-box">
-          <h1 className="text-2xl font-bold m-5 text-black">
-            Datos del usuario
-          </h1>
+          <h1 className="text-2xl font-bold m-5 text-black">Tu información</h1>
           <div className="img-container">
             <div className="img-inner">
-              <div className="inner-skew">
+              <div className="inner-skew flex items-center justify-center">
                 <Image
                   src={logo == "" ? IMG_USER_URL : logo}
-                  height="320"
-                  width="310"
+                  height="290"
+                  width="290"
+                  alt="Logo de equipo fav del usuario"
                 />
               </div>
             </div>
